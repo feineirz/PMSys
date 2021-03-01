@@ -9,7 +9,7 @@
 	Public Shared Function ReleaseCapture() As Boolean
 	End Function
 
-	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
+	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, lblTitle.MouseDown
 		Const WM_NCLBUTTONDOWN As Integer = &HA1
 		Const HT_CAPTION As Integer = &H2
 

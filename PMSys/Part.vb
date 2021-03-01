@@ -14,514 +14,514 @@ Imports System.Windows.Forms
 
 Public Class Part
 
-'============================== Class Header ==============================
+  '============================== Class Header ==============================
 
 #Region "Class Header"
 
-    Private Shared ConnString As String = "Server=10.13.1.10;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
-    Private Shared tableName As String = "Part"
+  Private Shared ConnString As String = "Server=" + My.Settings.Host + ";Database=" + My.Settings.Database + ";Uid=" + My.Settings.Username + ";Pwd=" + My.Settings.Password + ";"
+  Private Shared tableName As String = "Part"
 
-    Private _SQLConn As New MySqlConnection(ConnString)
-    Private _CMD As MySqlCommand
-    Private _QRY As String
+  Private _SQLConn As New MySqlConnection(ConnString)
+  Private _CMD As MySqlCommand
+  Private _QRY As String
 
-    Shared Function BytesToImage(ByVal ImageBytes() As Byte) As Image
+  Shared Function BytesToImage(ByVal ImageBytes() As Byte) As Image
 
-        Dim IMG As Image
-        Dim MS As New MemoryStream(ImageBytes)
+    Dim IMG As Image
+    Dim MS As New MemoryStream(ImageBytes)
 
-        IMG = Image.FromStream(MS)
-        Return IMG
+    IMG = Image.FromStream(MS)
+    Return IMG
 
-    End Function
+  End Function
 
-    Shared Function ImageToBytes(ByVal Image As Image) As Byte()
+  Shared Function ImageToBytes(ByVal Image As Image) As Byte()
 
-        Dim MS As New MemoryStream
-        Dim BT() As Byte
+    Dim MS As New MemoryStream
+    Dim BT() As Byte
 
-        Image.Save(MS, Image.RawFormat)
-        BT = MS.GetBuffer()
-        Return BT
+    Image.Save(MS, Image.RawFormat)
+    BT = MS.GetBuffer()
+    Return BT
 
-    End Function
+  End Function
 
-	Private _part_id As Integer
-	Private _part_no As String
-	Private _part_name As String
-	Private _price As Decimal
-	Private _remark As String
+  Private _part_id As Integer
+  Private _part_no As String
+  Private _part_name As String
+  Private _price As Decimal
+  Private _remark As String
 
-	Structure PartInfo
-		Dim part_id As Integer
-		Dim part_no As String
-		Dim part_name As String
-		Dim price As Decimal
-		Dim remark As String
-	End Structure
+  Structure PartInfo
+    Dim part_id As Integer
+    Dim part_no As String
+    Dim part_name As String
+    Dim price As Decimal
+    Dim remark As String
+  End Structure
 
-    Sub New(Part_part_id As String)
+  Sub New(Part_part_id As String)
 
-        Dim SQLConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim RD As MySqlDataReader
-        Dim QRY As String
+    Dim SQLConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim RD As MySqlDataReader
+    Dim QRY As String
 
-        QRY = "SELECT *" &
-					" FROM " & tableName &
-					" WHERE part_id = '" & Part_part_id & "'"
+    QRY = "SELECT *" &
+            " FROM " & tableName &
+            " WHERE part_id = '" & Part_part_id & "'"
 
-        Try
-            SQLConn.Open()
-            CMD = New MySqlCommand(QRY, SQLConn)
-            RD = CMD.ExecuteReader
+    Try
+      SQLConn.Open()
+      CMD = New MySqlCommand(QRY, SQLConn)
+      RD = CMD.ExecuteReader
 
-            If RD.HasRows Then
-                While RD.Read
-					_part_id = RD!part_id
-					_part_no = RD!part_no
-					_part_name = RD!part_name
-					_price = RD!price
-					_remark = RD!remark
-                End While
-            End If
-            SQLConn.Close()
+      If RD.HasRows Then
+        While RD.Read
+          _part_id = RD!part_id
+          _part_no = RD!part_no
+          _part_name = RD!part_name
+          _price = RD!price
+          _remark = RD!remark
+        End While
+      End If
+      SQLConn.Close()
 
-        Catch ex As Exception
-            SQLConn.Close()
-            MsgBox("[Error] Sub : New" & vbCrLf & ex.Message)
+    Catch ex As Exception
+      SQLConn.Close()
+      MsgBox("[Error] Sub : New" & vbCrLf & ex.Message)
 
-        End Try
+    End Try
 
-    End Sub
+  End Sub
 
 #End Region
 
-'============================== Class Properties ==============================
+  '============================== Class Properties ==============================
 
 #Region "Class Properties"
 
-    ReadOnly Property part_id As Integer
-        Get
-            Return _part_id
-        End Get
-    End Property
+  ReadOnly Property part_id As Integer
+    Get
+      Return _part_id
+    End Get
+  End Property
 
-    Property part_no As String
-        Get
-            Return _part_no
-        End Get
-        Set(ByVal value As String)
-            _QRY = "UPDATE " & tableName &
-						" SET part_no = '" & value & "'" &
-						" WHERE part_id = '" & _part_id & "'"
+  Property part_no As String
+    Get
+      Return _part_no
+    End Get
+    Set(ByVal value As String)
+      _QRY = "UPDATE " & tableName &
+              " SET part_no = '" & value & "'" &
+              " WHERE part_id = '" & _part_id & "'"
 
-            Try
-                _SQLConn.Open()
-                _CMD = New MySqlCommand(_QRY, _SQLConn)
-                _CMD.ExecuteNonQuery()
-                _SQLConn.Close()
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
 
-            Catch ex As Exception
-                _SQLConn.Close()
-                MsgBox("[Error] Property : part_no" & vbCrLf & ex.Message, , "Error")
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : part_no" & vbCrLf & ex.Message, , "Error")
 
-            End Try
+      End Try
 
-            _part_no = value
-        End Set
-    End Property
+      _part_no = value
+    End Set
+  End Property
 
-    Property part_name As String
-        Get
-            Return _part_name
-        End Get
-        Set(ByVal value As String)
-            _QRY = "UPDATE " & tableName &
-						" SET part_name = '" & value & "'" &
-						" WHERE part_id = '" & _part_id & "'"
+  Property part_name As String
+    Get
+      Return _part_name
+    End Get
+    Set(ByVal value As String)
+      _QRY = "UPDATE " & tableName &
+              " SET part_name = '" & value & "'" &
+              " WHERE part_id = '" & _part_id & "'"
 
-            Try
-                _SQLConn.Open()
-                _CMD = New MySqlCommand(_QRY, _SQLConn)
-                _CMD.ExecuteNonQuery()
-                _SQLConn.Close()
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
 
-            Catch ex As Exception
-                _SQLConn.Close()
-                MsgBox("[Error] Property : part_name" & vbCrLf & ex.Message, , "Error")
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : part_name" & vbCrLf & ex.Message, , "Error")
 
-            End Try
+      End Try
 
-            _part_name = value
-        End Set
-    End Property
+      _part_name = value
+    End Set
+  End Property
 
-    Property price As Decimal
-        Get
-            Return _price
-        End Get
-        Set(ByVal value As Decimal)
-            _QRY = "UPDATE " & tableName &
-						" SET price = '" & value & "'" &
-						" WHERE part_id = '" & _part_id & "'"
+  Property price As Decimal
+    Get
+      Return _price
+    End Get
+    Set(ByVal value As Decimal)
+      _QRY = "UPDATE " & tableName &
+              " SET price = '" & value & "'" &
+              " WHERE part_id = '" & _part_id & "'"
 
-            Try
-                _SQLConn.Open()
-                _CMD = New MySqlCommand(_QRY, _SQLConn)
-                _CMD.ExecuteNonQuery()
-                _SQLConn.Close()
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
 
-            Catch ex As Exception
-                _SQLConn.Close()
-                MsgBox("[Error] Property : price" & vbCrLf & ex.Message, , "Error")
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : price" & vbCrLf & ex.Message, , "Error")
 
-            End Try
+      End Try
 
-            _price = value
-        End Set
-    End Property
+      _price = value
+    End Set
+  End Property
 
-    Property remark As String
-        Get
-            Return _remark
-        End Get
-        Set(ByVal value As String)
-            _QRY = "UPDATE " & tableName &
-						" SET remark = '" & value & "'" &
-						" WHERE part_id = '" & _part_id & "'"
+  Property remark As String
+    Get
+      Return _remark
+    End Get
+    Set(ByVal value As String)
+      _QRY = "UPDATE " & tableName &
+              " SET remark = '" & value & "'" &
+              " WHERE part_id = '" & _part_id & "'"
 
-            Try
-                _SQLConn.Open()
-                _CMD = New MySqlCommand(_QRY, _SQLConn)
-                _CMD.ExecuteNonQuery()
-                _SQLConn.Close()
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
 
-            Catch ex As Exception
-                _SQLConn.Close()
-                MsgBox("[Error] Property : remark" & vbCrLf & ex.Message, , "Error")
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : remark" & vbCrLf & ex.Message, , "Error")
 
-            End Try
+      End Try
 
-            _remark = value
-        End Set
-    End Property
+      _remark = value
+    End Set
+  End Property
 
 #End Region
 
-'============================== Required Function ==============================
+  '============================== Required Function ==============================
 
 #Region "Required Function"
 
-    Shared Function Add(ByVal PartInfoA As PartInfo) As Boolean
+  Shared Function Add(ByVal PartInfoA As PartInfo) As Boolean
 
-        Dim SQLConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim QRY As String
+    Dim SQLConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim QRY As String
 
-        QRY = "INSERT INTO " & tableName & "(part_id, part_no, part_name, price, remark)" &
-					" VALUES(@part_id, @part_no, @part_name, @price, @remark)"
+    QRY = "INSERT INTO " & tableName & "(part_id, part_no, part_name, price, remark)" &
+            " VALUES(@part_id, @part_no, @part_name, @price, @remark)"
 
-        Try
-            SQLConn.Open()
-            CMD = New MySqlCommand(QRY, SQLConn)
+    Try
+      SQLConn.Open()
+      CMD = New MySqlCommand(QRY, SQLConn)
 
-			CMD.Parameters.AddWithValue("@part_id", PartInfoA.part_id)
-			CMD.Parameters.AddWithValue("@part_no", PartInfoA.part_no)
-			CMD.Parameters.AddWithValue("@part_name", PartInfoA.part_name)
-			CMD.Parameters.AddWithValue("@price", PartInfoA.price)
-			CMD.Parameters.AddWithValue("@remark", PartInfoA.remark)
+      CMD.Parameters.AddWithValue("@part_id", PartInfoA.part_id)
+      CMD.Parameters.AddWithValue("@part_no", PartInfoA.part_no)
+      CMD.Parameters.AddWithValue("@part_name", PartInfoA.part_name)
+      CMD.Parameters.AddWithValue("@price", PartInfoA.price)
+      CMD.Parameters.AddWithValue("@remark", PartInfoA.remark)
 
-            CMD.ExecuteNonQuery()
-            SQLConn.Close()
+      CMD.ExecuteNonQuery()
+      SQLConn.Close()
 
-        Catch ex As Exception
-            SQLConn.Close()
-            MsgBox("[Error] Function : Add" & vbCrLf & ex.Message)
-            Return False
+    Catch ex As Exception
+      SQLConn.Close()
+      MsgBox("[Error] Function : Add" & vbCrLf & ex.Message)
+      Return False
 
-        End Try
+    End Try
 
-        Return True
+    Return True
 
+  End Function
+
+  Shared Function Delete(ByVal Part_part_id As String) As Boolean
+
+    Dim SQLConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim QRY As String
+
+    QRY = "DELETE FROM" &
+            " " & tableName &
+            " WHERE part_id='" & Part_part_id & "'"
+
+    Try
+      SQLConn.Open()
+      CMD = New MySqlCommand(QRY, SQLConn)
+      CMD.ExecuteNonQuery()
+      SQLConn.Close()
+
+    Catch ex As Exception
+      SQLConn.Close()
+      MsgBox("[Error] Function : Delete" & vbCrLf & ex.Message)
+      Return False
+
+    End Try
+
+    Return True
+
+  End Function
+
+  '------------------------------ List Property ------------------------------
+
+  Structure ListItem
+    Dim Items() As PartInfo
+    Dim Count As Integer
+  End Structure
+
+  Shared Function List(Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "part_id") As ListItem
+
+    If Not Condition = "" Then Condition = " WHERE " & Condition
+    If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
+
+    Dim SQLConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim RD As MySqlDataReader
+    Dim QRY As String
+
+    Dim ListItemA As ListItem
+    Dim PartInfoA() As PartInfo = Nothing
+
+    ListItemA.Items = Nothing
+    ListItemA.Count = 0
+
+    QRY = "SELECT *" &
+            " FROM " & tableName &
+            " " & Condition &
+            " " & SortOrder
+
+    Try
+      SQLConn.Open()
+      CMD = New MySqlCommand(QRY, SQLConn)
+      RD = CMD.ExecuteReader
+      Dim Ix As Integer = 0
+      If RD.HasRows Then
+
+        While RD.Read
+          ReDim Preserve PartInfoA(Ix)
+
+          PartInfoA(Ix).part_id = RD!part_id
+          PartInfoA(Ix).part_no = RD!part_no
+          PartInfoA(Ix).part_name = RD!part_name
+          PartInfoA(Ix).price = RD!price
+          PartInfoA(Ix).remark = RD!remark
+
+          Ix += 1
+        End While
+      End If
+
+      SQLConn.Close()
+
+      ListItemA.Items = PartInfoA
+      ListItemA.Count = Ix
+
+    Catch ex As Exception
+      SQLConn.Close()
+      ListItemA.Count = 0
+      MsgBox("[Error] Function : List" & vbCrLf & ex.Message)
+
+    End Try
+
+    Return ListItemA
+
+  End Function
+
+  Public Class ComboBoxItems
+
+    Private _DisplayMember As String
+    Private _subDisplayMember As String
+    Private _ValueMember As String
+
+    Public Overrides Function ToString() As String
+      Return _ValueMember
     End Function
 
-    Shared Function Delete(ByVal Part_part_id As String) As Boolean
-
-        Dim SQLConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim QRY As String
-		
-        QRY = "DELETE FROM" &
-					" " & tableName & 
-					" WHERE part_id='" & Part_part_id & "'"
-
-        Try
-            SQLConn.Open()
-            CMD = New MySqlCommand(QRY, SQLConn)
-            CMD.ExecuteNonQuery()
-            SQLConn.Close()
-
-        Catch ex As Exception
-            SQLConn.Close()
-            MsgBox("[Error] Function : Delete" & vbCrLf & ex.Message)
-            Return False
-
-        End Try
-
-        Return True
-
+    Public Function ToCodeName() As String
+      Return _DisplayMember
     End Function
 
-'------------------------------ List Property ------------------------------
+    Public Sub New(ByVal DisplayMember As String, ByVal ValueMember As String)
+      _DisplayMember = DisplayMember
+      _ValueMember = ValueMember
+    End Sub
+    Public ReadOnly Property DisplayMember() As String
+      Get
+        Return _DisplayMember
+      End Get
+    End Property
 
-    Structure ListItem
-        Dim Items() As PartInfo
-        Dim Count As Integer
-    End Structure
+    Public ReadOnly Property ValueMember() As String
+      Get
+        Return _ValueMember
+      End Get
+    End Property
 
-    Shared Function List(Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "part_id") As ListItem
+  End Class
 
-        If Not Condition = "" Then Condition = " WHERE " & Condition
-        If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
+  Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "ID") As List(Of ComboBoxItems)
 
-        Dim SQLConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim RD As MySqlDataReader
-        Dim QRY As String
+    If Not Condition = "" Then Condition = " WHERE " & Condition
+    If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
 
-        Dim ListItemA As ListItem
-        Dim PartInfoA() As PartInfo = Nothing
+    Dim SQLConn As New MySqlConnection(ConnString)
+    Dim RD As MySqlDataReader
+    Dim CMD As MySqlCommand
+    Dim QRY As String
 
-        ListItemA.Items = Nothing
-        ListItemA.Count = 0
+    Dim cmbItems = New List(Of ComboBoxItems)
 
-        QRY = "SELECT *" &
-					" FROM " & tableName &
-					" " & Condition &
-					" " & SortOrder
+    QRY = "SELECT * " &
+                      " FROM " & tableName &
+                      " " & Condition &
+                      " " & SortOrder
 
-        Try
-            SQLConn.Open()
-            CMD = New MySqlCommand(QRY, SQLConn)
-            RD = CMD.ExecuteReader
-            Dim Ix As Integer = 0
-            If RD.HasRows Then
+    Try
+      SQLConn.Open()
+      CMD = New MySqlCommand(QRY, SQLConn)
+      CMD.CommandTimeout = 30
+      RD = CMD.ExecuteReader()
 
-                While RD.Read
-                    ReDim Preserve PartInfoA(Ix)
+      If RD.HasRows = True Then
+        While RD.Read()
+          If Not subDisplayMember = "" Then
+            Dim DM As String = RD.Item(DisplayMember) & Delimeter & RD.Item(subDisplayMember)
+            Dim VM As String = RD.Item(ValueMember)
+            cmbItems.Add(New ComboBoxItems(DM, VM))
+          Else
+            cmbItems.Add(New ComboBoxItems(RD.Item(DisplayMember), RD.Item(ValueMember)))
+          End If
+        End While
+      End If
 
-					PartInfoA(Ix).part_id = RD!part_id
-					PartInfoA(Ix).part_no = RD!part_no
-					PartInfoA(Ix).part_name = RD!part_name
-					PartInfoA(Ix).price = RD!price
-					PartInfoA(Ix).remark = RD!remark
+      SQLConn.Close()
 
-                    Ix += 1
-                End While
-            End If
+    Catch ex As Exception
+      SQLConn.Close()
+      MsgBox("[Error] Function : ToComboBoxItems" & vbCrLf & ex.Message)
 
-            SQLConn.Close()
+    End Try
 
-            ListItemA.Items = PartInfoA
-            ListItemA.Count = Ix
+    RefCMB.DisplayMember = "DisplayMember"
+    RefCMB.ValueMember = "ValueMember"
+    RefCMB.DataSource = cmbItems
 
-        Catch ex As Exception
-            SQLConn.Close()
-            ListItemA.Count = 0
-            MsgBox("[Error] Function : List" & vbCrLf & ex.Message)
+    Return cmbItems
 
-        End Try
+  End Function
 
-        Return ListItemA
+  Function ToPartInfo() As PartInfo
 
-    End Function
+    Dim CI As PartInfo = Nothing
 
-    Public Class ComboBoxItems
+    CI.part_id = _part_id
+    CI.part_no = _part_no
+    CI.part_name = _part_name
+    CI.price = _price
+    CI.remark = _remark
 
-        Private _DisplayMember As String
-        Private _subDisplayMember As String
-        Private _ValueMember As String
+    Return CI
 
-        Public Overrides Function ToString() As String
-            Return _ValueMember
-        End Function
+  End Function
 
-        Public Function ToCodeName() As String
-            Return _DisplayMember
-        End Function
+  Shared Function Count(ByVal Condition As String) As Integer
 
-        Public Sub New(ByVal DisplayMember As String, ByVal ValueMember As String)
-            _DisplayMember = DisplayMember
-            _ValueMember = ValueMember
-        End Sub
-        Public ReadOnly Property DisplayMember() As String
-            Get
-                Return _DisplayMember
-            End Get
-        End Property
+    Dim DBConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim recCount As Integer = 0
+    Dim QRY As String
 
-        Public ReadOnly Property ValueMember() As String
-            Get
-                Return _ValueMember
-            End Get
-        End Property
+    QRY = "SELECT COUNT(ID) " &
+            " FROM Part " &
+            " WHERE " & Condition
+    Try
+      DBConn.Open()
+      CMD = New MySqlCommand(QRY, DBConn)
+      recCount = CMD.ExecuteScalar
+      DBConn.Close()
 
-    End Class
+    Catch ex As Exception
+      DBConn.Close()
+      MsgBox("[Error] Function : Count" & vbCrLf & ex.Message)
 
-    Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "ID") As List(Of ComboBoxItems)
+    End Try
 
-        If Not Condition = "" Then Condition = " WHERE " & Condition
-        If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
+    Return recCount
 
-        Dim SQLConn As New MySqlConnection(ConnString)
-        Dim RD As MySqlDataReader
-        Dim CMD As MySqlCommand
-        Dim QRY As String
-
-        Dim cmbItems = New List(Of ComboBoxItems)
-
-        QRY = "SELECT * " &
-                    " FROM " & tableName &
-                    " " & Condition &
-                    " " & SortOrder
-
-        Try
-            SQLConn.Open()
-            CMD = New MySqlCommand(QRY, SQLConn)
-            CMD.CommandTimeout = 30
-            RD = CMD.ExecuteReader()
-
-            If RD.HasRows = True Then
-                While RD.Read()
-                    If Not subDisplayMember = "" Then
-                        Dim DM As String = RD.Item(DisplayMember) & Delimeter & RD.Item(subDisplayMember)
-                        Dim VM As String = RD.Item(ValueMember)
-                        cmbItems.Add(New ComboBoxItems(DM, VM))
-                    Else
-                        cmbItems.Add(New ComboBoxItems(RD.Item(DisplayMember), RD.Item(ValueMember)))
-                    End If
-                End While
-            End If
-
-            SQLConn.Close()
-
-        Catch ex As Exception
-            SQLConn.Close()
-            MsgBox("[Error] Function : ToComboBoxItems" & vbCrLf & ex.Message)
-
-        End Try
-
-        RefCMB.DisplayMember = "DisplayMember"
-        RefCMB.ValueMember = "ValueMember"
-				RefCMB.DataSource = cmbItems
-
-        Return cmbItems
-
-    End Function
-
-    Function ToPartInfo() As PartInfo
-
-        Dim CI As PartInfo = Nothing
-
-		CI.part_id = _part_id
-		CI.part_no = _part_no
-		CI.part_name = _part_name
-		CI.price = _price
-		CI.remark = _remark
-
-        Return CI
-
-    End Function
-
-    Shared Function Count(ByVal Condition As String) As Integer
-
-        Dim DBConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim recCount As Integer = 0
-        Dim QRY As String
-
-        QRY = "SELECT COUNT(ID) " & _
-					" FROM Part " & _
-					" WHERE " & Condition
-        Try
-            DBConn.Open()
-            CMD = New MySqlCommand(QRY, DBConn)
-            recCount = CMD.ExecuteScalar
-            DBConn.Close()
-
-        Catch ex As Exception
-            DBConn.Close()
-			MsgBox("[Error] Function : Count" & vbCrLf & ex.Message)
-
-        End Try
-
-        Return recCount
-
-    End Function
+  End Function
 
 #End Region
 
-'============================== Extra Function ==============================
+  '============================== Extra Function ==============================
 
 #Region "Extra Function"
 
-    Structure IsExistInfo
-        Dim Value As Boolean
-        Dim Items() As String
-        Dim Count As Integer
-        Dim Err As Boolean
-    End Structure
+  Structure IsExistInfo
+    Dim Value As Boolean
+    Dim Items() As String
+    Dim Count As Integer
+    Dim Err As Boolean
+  End Structure
 
-    Shared Function IsExist(ByVal contentString As String, Optional ByVal columnName As String = "part_id") As IsExistInfo
+  Shared Function IsExist(ByVal contentString As String, Optional ByVal columnName As String = "part_id") As IsExistInfo
 
-        Dim DBConn As New MySqlConnection(ConnString)
-        Dim CMD As MySqlCommand
-        Dim RD As MySqlDataReader
-        Dim QRY As String
+    Dim DBConn As New MySqlConnection(ConnString)
+    Dim CMD As MySqlCommand
+    Dim RD As MySqlDataReader
+    Dim QRY As String
 
-        Dim IsExistInfoA As IsExistInfo
+    Dim IsExistInfoA As IsExistInfo
+    IsExistInfoA.Value = True
+    IsExistInfoA.Items = Nothing
+    IsExistInfoA.Err = False
+
+    Dim Items() As String = Nothing
+    Dim I As Integer = 0
+
+    QRY = "SELECT part_id" &
+            " FROM " & tableName &
+            " WHERE " & columnName & "='" & contentString & "'"
+
+    Try
+      DBConn.Open()
+      CMD = New MySqlCommand(QRY, DBConn)
+      RD = CMD.ExecuteReader
+      DBConn.Close()
+
+      If RD.HasRows Then
         IsExistInfoA.Value = True
-        IsExistInfoA.Items = Nothing
-        IsExistInfoA.Err = False
+        While RD.Read
+          ReDim Preserve Items(I)
+          Items(I) = RD!part_id
+          I += 1
+        End While
+      End If
 
-        Dim Items() As String = Nothing
-        Dim I As Integer = 0
+      IsExistInfoA.Items = Items
+      IsExistInfoA.Count = I
 
-        QRY = "SELECT part_id" &
-					" FROM " & tableName &
-					" WHERE " & columnName & "='" & contentString & "'"
+    Catch ex As Exception
+      DBConn.Close()
+      MsgBox("[Error] Function : IsExist" & vbCrLf & ex.Message)
+      IsExistInfoA.Err = True
+      Return IsExistInfoA
 
-        Try
-            DBConn.Open()
-            CMD = New MySqlCommand(QRY, DBConn)
-            RD = CMD.ExecuteReader
-            DBConn.Close()
+    End Try
 
-            If RD.HasRows Then
-                IsExistInfoA.Value = True
-                While RD.Read
-                    ReDim Preserve Items(I)
-                    Items(I) = RD!part_id
-                    I += 1
-				End While
-            End If
+    DBConn.Close()
+    Return IsExistInfoA
 
-            IsExistInfoA.Items = Items
-            IsExistInfoA.Count = I
-
-        Catch ex As Exception
-            DBConn.Close()
-            MsgBox("[Error] Function : IsExist" & vbCrLf & ex.Message)
-			IsExistInfoA.Err = True
-            Return IsExistInfoA
-
-        End Try
-
-        DBConn.Close()
-        Return IsExistInfoA
-
-    End Function
+  End Function
 
 
 

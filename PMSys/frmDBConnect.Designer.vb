@@ -22,7 +22,8 @@ Partial Class frmDBConnect
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
-		Me.Label1 = New System.Windows.Forms.Label()
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDBConnect))
+		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.btnExit = New System.Windows.Forms.Button()
 		Me.btnConnect = New System.Windows.Forms.Button()
@@ -34,24 +35,28 @@ Partial Class frmDBConnect
 		Me.Label5 = New System.Windows.Forms.Label()
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.tbxPassword = New System.Windows.Forms.TextBox()
+		Me.picDatabase = New System.Windows.Forms.PictureBox()
+		CType(Me.picDatabase, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
-		'Label1
+		'lblTitle
 		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Verdana", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(76, 32)
-		Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(112, 32)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "PM.Sys"
+		Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.ForeColor = System.Drawing.Color.White
+		Me.lblTitle.Location = New System.Drawing.Point(0, 0)
+		Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+		Me.lblTitle.Name = "lblTitle"
+		Me.lblTitle.Size = New System.Drawing.Size(420, 57)
+		Me.lblTitle.TabIndex = 0
+		Me.lblTitle.Text = "PM.Sys"
+		Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'Label2
 		'
 		Me.Label2.AutoSize = True
 		Me.Label2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.Location = New System.Drawing.Point(79, 64)
+		Me.Label2.Location = New System.Drawing.Point(130, 80)
 		Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(209, 18)
@@ -60,7 +65,7 @@ Partial Class frmDBConnect
 		'
 		'btnExit
 		'
-		Me.btnExit.Location = New System.Drawing.Point(265, 249)
+		Me.btnExit.Location = New System.Drawing.Point(292, 260)
 		Me.btnExit.Name = "btnExit"
 		Me.btnExit.Size = New System.Drawing.Size(94, 29)
 		Me.btnExit.TabIndex = 5
@@ -69,7 +74,7 @@ Partial Class frmDBConnect
 		'
 		'btnConnect
 		'
-		Me.btnConnect.Location = New System.Drawing.Point(148, 249)
+		Me.btnConnect.Location = New System.Drawing.Point(175, 260)
 		Me.btnConnect.Name = "btnConnect"
 		Me.btnConnect.Size = New System.Drawing.Size(111, 29)
 		Me.btnConnect.TabIndex = 4
@@ -78,7 +83,7 @@ Partial Class frmDBConnect
 		'
 		'tbxHost
 		'
-		Me.tbxHost.Location = New System.Drawing.Point(200, 105)
+		Me.tbxHost.Location = New System.Drawing.Point(227, 116)
 		Me.tbxHost.Name = "tbxHost"
 		Me.tbxHost.Size = New System.Drawing.Size(159, 27)
 		Me.tbxHost.TabIndex = 0
@@ -86,7 +91,7 @@ Partial Class frmDBConnect
 		'
 		'tbxDatabase
 		'
-		Me.tbxDatabase.Location = New System.Drawing.Point(200, 138)
+		Me.tbxDatabase.Location = New System.Drawing.Point(227, 149)
 		Me.tbxDatabase.Name = "tbxDatabase"
 		Me.tbxDatabase.Size = New System.Drawing.Size(159, 27)
 		Me.tbxDatabase.TabIndex = 1
@@ -94,7 +99,7 @@ Partial Class frmDBConnect
 		'
 		'tbxUsername
 		'
-		Me.tbxUsername.Location = New System.Drawing.Point(200, 171)
+		Me.tbxUsername.Location = New System.Drawing.Point(227, 182)
 		Me.tbxUsername.Name = "tbxUsername"
 		Me.tbxUsername.Size = New System.Drawing.Size(159, 27)
 		Me.tbxUsername.TabIndex = 2
@@ -102,7 +107,7 @@ Partial Class frmDBConnect
 		'Label3
 		'
 		Me.Label3.AutoSize = True
-		Me.Label3.Location = New System.Drawing.Point(147, 108)
+		Me.Label3.Location = New System.Drawing.Point(174, 119)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(53, 18)
 		Me.Label3.TabIndex = 7
@@ -111,7 +116,7 @@ Partial Class frmDBConnect
 		'Label4
 		'
 		Me.Label4.AutoSize = True
-		Me.Label4.Location = New System.Drawing.Point(107, 141)
+		Me.Label4.Location = New System.Drawing.Point(134, 152)
 		Me.Label4.Name = "Label4"
 		Me.Label4.Size = New System.Drawing.Size(93, 18)
 		Me.Label4.TabIndex = 8
@@ -120,7 +125,7 @@ Partial Class frmDBConnect
 		'Label5
 		'
 		Me.Label5.AutoSize = True
-		Me.Label5.Location = New System.Drawing.Point(103, 174)
+		Me.Label5.Location = New System.Drawing.Point(130, 185)
 		Me.Label5.Name = "Label5"
 		Me.Label5.Size = New System.Drawing.Size(97, 18)
 		Me.Label5.TabIndex = 9
@@ -129,7 +134,7 @@ Partial Class frmDBConnect
 		'Label6
 		'
 		Me.Label6.AutoSize = True
-		Me.Label6.Location = New System.Drawing.Point(108, 207)
+		Me.Label6.Location = New System.Drawing.Point(135, 218)
 		Me.Label6.Name = "Label6"
 		Me.Label6.Size = New System.Drawing.Size(92, 18)
 		Me.Label6.TabIndex = 10
@@ -137,11 +142,21 @@ Partial Class frmDBConnect
 		'
 		'tbxPassword
 		'
-		Me.tbxPassword.Location = New System.Drawing.Point(200, 204)
+		Me.tbxPassword.Location = New System.Drawing.Point(227, 215)
 		Me.tbxPassword.Name = "tbxPassword"
 		Me.tbxPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
 		Me.tbxPassword.Size = New System.Drawing.Size(159, 27)
 		Me.tbxPassword.TabIndex = 3
+		'
+		'picDatabase
+		'
+		Me.picDatabase.Image = CType(resources.GetObject("picDatabase.Image"), System.Drawing.Image)
+		Me.picDatabase.Location = New System.Drawing.Point(24, 80)
+		Me.picDatabase.Name = "picDatabase"
+		Me.picDatabase.Size = New System.Drawing.Size(90, 90)
+		Me.picDatabase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+		Me.picDatabase.TabIndex = 11
+		Me.picDatabase.TabStop = False
 		'
 		'frmDBConnect
 		'
@@ -149,6 +164,7 @@ Partial Class frmDBConnect
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.White
 		Me.ClientSize = New System.Drawing.Size(420, 312)
+		Me.Controls.Add(Me.picDatabase)
 		Me.Controls.Add(Me.tbxPassword)
 		Me.Controls.Add(Me.Label6)
 		Me.Controls.Add(Me.Label5)
@@ -160,19 +176,21 @@ Partial Class frmDBConnect
 		Me.Controls.Add(Me.btnConnect)
 		Me.Controls.Add(Me.btnExit)
 		Me.Controls.Add(Me.Label2)
-		Me.Controls.Add(Me.Label1)
+		Me.Controls.Add(Me.lblTitle)
 		Me.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+		Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
 		Me.Margin = New System.Windows.Forms.Padding(4)
 		Me.Name = "frmDBConnect"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 		Me.Text = "DBConnect"
+		CType(Me.picDatabase, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
 	End Sub
 
-	Friend WithEvents Label1 As Label
+	Friend WithEvents lblTitle As Label
 	Friend WithEvents Label2 As Label
 	Friend WithEvents btnExit As Button
 	Friend WithEvents btnConnect As Button
@@ -184,4 +202,5 @@ Partial Class frmDBConnect
 	Friend WithEvents Label5 As Label
 	Friend WithEvents Label6 As Label
 	Friend WithEvents tbxPassword As TextBox
+	Friend WithEvents picDatabase As PictureBox
 End Class

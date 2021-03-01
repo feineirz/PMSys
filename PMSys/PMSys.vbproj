@@ -49,6 +49,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>maintenance.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
@@ -116,6 +119,18 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddMachine.Designer.vb">
+      <DependentUpon>frmAddMachine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddMachine.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddPart.Designer.vb">
+      <DependentUpon>frmAddPart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddPart.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDBConnect.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +144,7 @@
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Machine.vb" />
     <Compile Include="mdlFunc.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -146,8 +162,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Part.vb" />
+    <Compile Include="PM.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmAddMachine.resx">
+      <DependentUpon>frmAddMachine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddPart.resx">
+      <DependentUpon>frmAddPart.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDBConnect.resx">
       <DependentUpon>frmDBConnect.vb</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +197,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="maintenance.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
