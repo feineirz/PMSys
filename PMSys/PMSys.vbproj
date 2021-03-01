@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="maintenance.ico" />
+    <None Include="Resources\DBInit.sql.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

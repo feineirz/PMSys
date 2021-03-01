@@ -59,5 +59,35 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to DROP DATABASE PMSys;
+        '''
+        '''CREATE DATABASE PMSys
+        '''	character set &apos;utf8mb4&apos;
+        '''	collate &apos;utf8mb4_general_ci&apos;
+        ''';
+        '''	
+        '''USE PMSys;
+        '''
+        '''CREATE TABLE Machine(
+        '''	machine_id int unsigned auto_increment not null primary key,
+        '''	machine_name nvarchar(255) not null,
+        '''	detail text,
+        '''	remark text
+        ''')ENGINE=INNODB;
+        '''
+        '''CREATE TABLE Part(
+        '''	part_id int unsigned auto_increment not null primary key,
+        '''	part_no nvarchar(255) not null default &apos;&apos;,
+        '''	part_name nvarchar(255) not null default &apos;&apos;,
+        '''	price decimal(10,2) not null default 0,
+        '''	 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property DBInit_sql() As String
+            Get
+                Return ResourceManager.GetString("DBInit.sql", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
