@@ -14,11 +14,11 @@ Imports System.Windows.Forms
 
 Public Class Machine
 
-'============================== Class Header =============================='
+	'============================== Class Header =============================='
 
 #Region "Class Header"
 
-	Private Shared ConnString As String = "Server=10.13.1.10;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
+	Private Shared ConnString As String = "Server=" + My.Settings.Host + ";Database=" + My.Settings.Database + ";Uid=" + My.Settings.Username + ";Pwd=" + My.Settings.Password + ";"
 	Private Shared tableName As String = "Machine"
 
 	Private _SQLConn As New MySqlConnection(ConnString)
@@ -46,7 +46,7 @@ Public Class Machine
 
 	End Function
 
-	Shared Function GetMySQLConnection As MySqlConnection
+	Shared Function GetMySQLConnection() As MySqlConnection
 
 		Try
 			Dim SQLConn As New MySqlConnection(ConnString)
@@ -58,7 +58,7 @@ Public Class Machine
 
 		End Try
 
-	End Function 
+	End Function
 
 	Private _machine_id As Integer
 	Private _machine_code As String
@@ -117,124 +117,124 @@ Public Class Machine
 
 #End Region
 
-'============================== Class Properties =============================='
+	'============================== Class Properties =============================='
 
 #Region "Class Properties"
 
-  '--- machine_id ---'
-  ReadOnly Property machine_id As Integer
-    Get
-      Return _machine_id
-    End Get
-  End Property
+	'--- machine_id ---'
+	ReadOnly Property machine_id As Integer
+		Get
+			Return _machine_id
+		End Get
+	End Property
 
-  '--- machine_code ---'
-  Property machine_code As String
-    Get
-      Return _machine_code
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET machine_code = '" & value & "'" &
-             " WHERE machine_id = '" & _machine_id & "'"
+	'--- machine_code ---'
+	Property machine_code As String
+		Get
+			Return _machine_code
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET machine_code = '" & value & "'" &
+						 " WHERE machine_id = '" & _machine_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Machine.machine_code" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Machine.machine_code" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _machine_code = value
-    End Set
-  End Property
+			_machine_code = value
+		End Set
+	End Property
 
-  '--- machine_name ---'
-  Property machine_name As String
-    Get
-      Return _machine_name
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET machine_name = '" & value & "'" &
-             " WHERE machine_id = '" & _machine_id & "'"
+	'--- machine_name ---'
+	Property machine_name As String
+		Get
+			Return _machine_name
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET machine_name = '" & value & "'" &
+						 " WHERE machine_id = '" & _machine_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Machine.machine_name" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Machine.machine_name" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _machine_name = value
-    End Set
-  End Property
+			_machine_name = value
+		End Set
+	End Property
 
-  '--- detail ---'
-  Property detail As String
-    Get
-      Return _detail
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET detail = '" & value & "'" &
-             " WHERE machine_id = '" & _machine_id & "'"
+	'--- detail ---'
+	Property detail As String
+		Get
+			Return _detail
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET detail = '" & value & "'" &
+						 " WHERE machine_id = '" & _machine_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Machine.detail" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Machine.detail" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _detail = value
-    End Set
-  End Property
+			_detail = value
+		End Set
+	End Property
 
-  '--- remark ---'
-  Property remark As String
-    Get
-      Return _remark
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET remark = '" & value & "'" &
-             " WHERE machine_id = '" & _machine_id & "'"
+	'--- remark ---'
+	Property remark As String
+		Get
+			Return _remark
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET remark = '" & value & "'" &
+						 " WHERE machine_id = '" & _machine_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Machine.remark" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Machine.remark" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _remark = value
-    End Set
-  End Property
+			_remark = value
+		End Set
+	End Property
 
 #End Region
 
-'============================== Required Function =============================='
+	'============================== Required Function =============================='
 
 #Region "Required Function"
 
@@ -333,9 +333,9 @@ Public Class Machine
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-		Try		
+		Try
 			QRY = "DELETE FROM" &
-						" " & tableName & 
+						" " & tableName &
 						" WHERE machine_id='" & Machine_machine_id & "'"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -515,7 +515,7 @@ Public Class Machine
 	'---------- TOCLASSINFO ----------'
 	Function ToMachineInfo() As MachineInfo
 
-    Dim CI As MachineInfo = Nothing
+		Dim CI As MachineInfo = Nothing
 
 		CI.machine_id = _machine_id
 		CI.machine_code = _machine_code
@@ -523,9 +523,9 @@ Public Class Machine
 		CI.detail = _detail
 		CI.remark = _remark
 
-    Return CI
+		Return CI
 
-  End Function
+	End Function
 
 	'---------- COUNT ----------'
 	Shared Function Count(ByVal Condition As String, Optional SQLConn As MySqlConnection = Nothing) As Integer
@@ -542,8 +542,8 @@ Public Class Machine
 		Dim QRY As String
 
 		Try
-			QRY = "SELECT COUNT(machine_id) " & _
-						" FROM Machine " & _
+			QRY = "SELECT COUNT(machine_id) " &
+						" FROM Machine " &
 						" WHERE " & Condition
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -600,15 +600,15 @@ Public Class Machine
 
 #End Region
 
-'============================== Custom Functions =============================='
+	'============================== Custom Functions =============================='
 
 #Region "Custom Functions"
 
-  '-----------------------------------------------'
-  '---------- ADD CUSTOM FUNCTIONS HERE ----------'
-  '-----------------------------------------------'
-  '---- DO NOT COPY OR PASTE ON THIS SECTION -----'
-  '-----------------------------------------------'
+	'-----------------------------------------------'
+	'---------- ADD CUSTOM FUNCTIONS HERE ----------'
+	'-----------------------------------------------'
+	'---- DO NOT COPY OR PASTE ON THIS SECTION -----'
+	'-----------------------------------------------'
 
 
 
