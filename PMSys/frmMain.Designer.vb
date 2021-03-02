@@ -104,7 +104,7 @@ Partial Class frmMain
 		Me.btnMachineSearch.FlatAppearance.BorderSize = 0
 		Me.btnMachineSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnMachineSearch.Image = CType(resources.GetObject("btnMachineSearch.Image"), System.Drawing.Image)
-		Me.btnMachineSearch.Location = New System.Drawing.Point(404, 8)
+		Me.btnMachineSearch.Location = New System.Drawing.Point(527, 8)
 		Me.btnMachineSearch.Name = "btnMachineSearch"
 		Me.btnMachineSearch.Size = New System.Drawing.Size(24, 24)
 		Me.btnMachineSearch.TabIndex = 3
@@ -112,7 +112,7 @@ Partial Class frmMain
 		'
 		'tbxMachineSearch
 		'
-		Me.tbxMachineSearch.Location = New System.Drawing.Point(279, 9)
+		Me.tbxMachineSearch.Location = New System.Drawing.Point(402, 9)
 		Me.tbxMachineSearch.Name = "tbxMachineSearch"
 		Me.tbxMachineSearch.Size = New System.Drawing.Size(119, 23)
 		Me.tbxMachineSearch.TabIndex = 3
@@ -122,7 +122,7 @@ Partial Class frmMain
 		Me.btnAddMachine.BackColor = System.Drawing.Color.LimeGreen
 		Me.btnAddMachine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnAddMachine.ForeColor = System.Drawing.Color.White
-		Me.btnAddMachine.Location = New System.Drawing.Point(557, 8)
+		Me.btnAddMachine.Location = New System.Drawing.Point(557, 7)
 		Me.btnAddMachine.Name = "btnAddMachine"
 		Me.btnAddMachine.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddMachine.TabIndex = 1
@@ -200,7 +200,7 @@ Partial Class frmMain
 		'Label3
 		'
 		Me.Label3.AutoSize = True
-		Me.Label3.Location = New System.Drawing.Point(221, 12)
+		Me.Label3.Location = New System.Drawing.Point(344, 12)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(60, 16)
 		Me.Label3.TabIndex = 4
@@ -225,7 +225,7 @@ Partial Class frmMain
 		Me.btnPartSearch.FlatAppearance.BorderSize = 0
 		Me.btnPartSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnPartSearch.Image = CType(resources.GetObject("btnPartSearch.Image"), System.Drawing.Image)
-		Me.btnPartSearch.Location = New System.Drawing.Point(404, 8)
+		Me.btnPartSearch.Location = New System.Drawing.Point(527, 8)
 		Me.btnPartSearch.Name = "btnPartSearch"
 		Me.btnPartSearch.Size = New System.Drawing.Size(24, 24)
 		Me.btnPartSearch.TabIndex = 7
@@ -233,7 +233,7 @@ Partial Class frmMain
 		'
 		'tbxPartSearch
 		'
-		Me.tbxPartSearch.Location = New System.Drawing.Point(279, 9)
+		Me.tbxPartSearch.Location = New System.Drawing.Point(402, 9)
 		Me.tbxPartSearch.Name = "tbxPartSearch"
 		Me.tbxPartSearch.Size = New System.Drawing.Size(119, 23)
 		Me.tbxPartSearch.TabIndex = 5
@@ -243,7 +243,7 @@ Partial Class frmMain
 		Me.btnAddPart.BackColor = System.Drawing.Color.LimeGreen
 		Me.btnAddPart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnAddPart.ForeColor = System.Drawing.Color.White
-		Me.btnAddPart.Location = New System.Drawing.Point(557, 8)
+		Me.btnAddPart.Location = New System.Drawing.Point(557, 7)
 		Me.btnAddPart.Name = "btnAddPart"
 		Me.btnAddPart.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddPart.TabIndex = 1
@@ -322,7 +322,7 @@ Partial Class frmMain
 		'Label4
 		'
 		Me.Label4.AutoSize = True
-		Me.Label4.Location = New System.Drawing.Point(221, 12)
+		Me.Label4.Location = New System.Drawing.Point(344, 12)
 		Me.Label4.Name = "Label4"
 		Me.Label4.Size = New System.Drawing.Size(60, 16)
 		Me.Label4.TabIndex = 6
@@ -347,7 +347,7 @@ Partial Class frmMain
 		Me.btnMaintenanceSearch.FlatAppearance.BorderSize = 0
 		Me.btnMaintenanceSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnMaintenanceSearch.Image = CType(resources.GetObject("btnMaintenanceSearch.Image"), System.Drawing.Image)
-		Me.btnMaintenanceSearch.Location = New System.Drawing.Point(404, 8)
+		Me.btnMaintenanceSearch.Location = New System.Drawing.Point(1260, 8)
 		Me.btnMaintenanceSearch.Name = "btnMaintenanceSearch"
 		Me.btnMaintenanceSearch.Size = New System.Drawing.Size(24, 24)
 		Me.btnMaintenanceSearch.TabIndex = 7
@@ -355,7 +355,7 @@ Partial Class frmMain
 		'
 		'tbxMaintenanceSearch
 		'
-		Me.tbxMaintenanceSearch.Location = New System.Drawing.Point(279, 9)
+		Me.tbxMaintenanceSearch.Location = New System.Drawing.Point(1135, 9)
 		Me.tbxMaintenanceSearch.Name = "tbxMaintenanceSearch"
 		Me.tbxMaintenanceSearch.Size = New System.Drawing.Size(119, 23)
 		Me.tbxMaintenanceSearch.TabIndex = 5
@@ -365,7 +365,7 @@ Partial Class frmMain
 		Me.btnAddMaintenance.BackColor = System.Drawing.Color.LimeGreen
 		Me.btnAddMaintenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnAddMaintenance.ForeColor = System.Drawing.Color.White
-		Me.btnAddMaintenance.Location = New System.Drawing.Point(1290, 8)
+		Me.btnAddMaintenance.Location = New System.Drawing.Point(1290, 7)
 		Me.btnAddMaintenance.Name = "btnAddMaintenance"
 		Me.btnAddMaintenance.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddMaintenance.TabIndex = 1
@@ -481,7 +481,7 @@ Partial Class frmMain
 		'Label6
 		'
 		Me.Label6.AutoSize = True
-		Me.Label6.Location = New System.Drawing.Point(221, 12)
+		Me.Label6.Location = New System.Drawing.Point(1077, 12)
 		Me.Label6.Name = "Label6"
 		Me.Label6.Size = New System.Drawing.Size(60, 16)
 		Me.Label6.TabIndex = 6

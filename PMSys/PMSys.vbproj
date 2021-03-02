@@ -144,6 +144,12 @@
       <DependentUpon>frmDBConnect.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMachineInfo.Designer.vb">
+      <DependentUpon>frmMachineInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMachineInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDBConnect.resx">
       <DependentUpon>frmDBConnect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMachineInfo.resx">
+      <DependentUpon>frmMachineInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>

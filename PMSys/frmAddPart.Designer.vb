@@ -146,7 +146,7 @@ Partial Class frmAddPart
 		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.pnlFooter.Controls.Add(Me.btnClose)
 		Me.pnlFooter.Controls.Add(Me.btnSave)
-		Me.pnlFooter.Location = New System.Drawing.Point(-1, 494)
+		Me.pnlFooter.Location = New System.Drawing.Point(-1, 493)
 		Me.pnlFooter.Name = "pnlFooter"
 		Me.pnlFooter.Size = New System.Drawing.Size(550, 50)
 		Me.pnlFooter.TabIndex = 10

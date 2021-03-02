@@ -186,4 +186,13 @@
 		End If
 
 	End Sub
+
+	Private Sub lvwMachine_MouseDoubleClick(sender As Object, e As EventArgs) Handles lvwMachine.MouseDoubleClick
+
+		If lvwMachine.SelectedItems.Count = 1 Then
+			frmMachineInfo.ShowMachineInfo(lvwMachine.SelectedItems(0).Text)
+			frmMachineInfo.ShowDialog()
+		End If
+
+	End Sub
 End Class
