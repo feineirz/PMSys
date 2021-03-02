@@ -83,12 +83,19 @@
 				Dim diff As Integer = DateDiff(DateInterval.Day, Now, dtNext)
 
 				' Highlighter
-				If diff < 7 Then
+
+				If diff < 0 Then
+					lvi.BackColor = Color.DimGray
+					lvi.ForeColor = Color.White
+				ElseIf diff < 7 Then
 					lvi.BackColor = Color.OrangeRed
+					lvi.ForeColor = Color.White
 				ElseIf diff < 10 Then
 					lvi.BackColor = Color.Orange
+					lvi.ForeColor = Color.White
 				ElseIf diff < 15 Then
 					lvi.BackColor = Color.Yellow
+					lvi.ForeColor = Color.White
 				End If
 
 				lvi.SubItems.Add(dtNext.ToString("yyyy/MMM/dd"))
@@ -155,45 +162,27 @@
 
 	Private Sub mnu_PL_Edit_Click(sender As Object, e As EventArgs) Handles mnu_PL_Edit.Click
 
-		Dim p As New Part(lvwPartList.SelectedItems(0).Text)
-		With frmAddPart
-			.lblTitle.Text = "Edit Part Info"
-			.lblMode.Text = "Edit"
-			.lblPartID.Text = p.part_id
-			.tbxPartNo.Text = p.part_no
-			.tbxPartName.Text = p.part_name
-			.numPrice.Value = p.price
-			.tbxRemark.Text = p.remark
-			.ShowDialog()
-		End With
+		If lvwPartList.SelectedItems.Count = 1 Then
+			frmAddPart.EditMode(lvwPartList.SelectedItems(0).Text)
+			frmAddPart.ShowDialog()
+		End If
 
 	End Sub
 
 	Private Sub mnu_ML_Edit_Click(sender As Object, e As EventArgs) Handles mnu_ML_Edit.Click
 
-		Dim m As New Machine(lvwMachine.SelectedItems(0).Text)
-		With frmAddMachine
-			.lblTitle.Text = "Edit Machine Info"
-			.lblMode.Text = "Edit"
-			.lblMachineID.Text = m.machine_id
-			.tbxMachineCode.Text = m.machine_code
-			.tbxName.Text = m.machine_name
-			.tbxDetail.Text = m.detail
-			.tbxRemark.Text = m.remark
-
-			.ShowDialog()
-		End With
+		If lvwMachine.SelectedItems.Count = 1 Then
+			frmAddMachine.EditMode(lvwMachine.SelectedItems(0).Text)
+			frmAddMachine.ShowDialog()
+		End If
 
 	End Sub
 
 	Private Sub mnu_PML_Edit_Click(sender As Object, e As EventArgs) Handles mnu_PML_Edit.Click
 
 		If lvwPMList.SelectedItems.Count = 1 Then
-			With frmAddPM
-				.lblMode.Text = "Edit"
-				.lblPMID.Text = lvwPMList.SelectedItems(0).Text
-				.ShowDialog()
-			End With
+			frmAddPM.EditMode(lvwPMList.SelectedItems(0).Text)
+			frmAddPM.ShowDialog()
 		End If
 
 	End Sub

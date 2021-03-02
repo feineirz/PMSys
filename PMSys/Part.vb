@@ -18,7 +18,7 @@ Public Class Part
 
 #Region "Class Header"
 
-	Private Shared ConnString As String = "Server=200.0.0.3;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
+	Private Shared ConnString As String = "Server=10.13.1.10;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
 	Private Shared tableName As String = "Part"
 
 	Private _SQLConn As New MySqlConnection(ConnString)
@@ -60,19 +60,19 @@ Public Class Part
 
 	End Function 
 
-  Private _part_id As Integer
-  Private _part_name As String
-  Private _part_no As String
-  Private _price As Decimal
-  Private _remark As String
+	Private _part_id As Integer
+	Private _part_no As String
+	Private _part_name As String
+	Private _price As Decimal
+	Private _remark As String
 
-  Structure PartInfo
-    Dim part_id As Integer
-    Dim part_name As String
-    Dim part_no As String
-    Dim price As Decimal
-    Dim remark As String
-  End Structure
+	Structure PartInfo
+		Dim part_id As Integer
+		Dim part_no As String
+		Dim part_name As String
+		Dim price As Decimal
+		Dim remark As String
+	End Structure
 
 	'------------ CONSTRUCTOR ------------'
 	Sub New(Part_part_id As String, Optional SQLConn As MySqlConnection = Nothing)
@@ -98,11 +98,11 @@ Public Class Part
 
 			If RD.HasRows Then
 				While RD.Read
-          _part_id = RD!part_id
-          _part_name = RD!part_name
-          _part_no = RD!part_no
-          _price = RD!price
-          _remark = RD!remark
+					_part_id = RD!part_id
+					_part_no = RD!part_no
+					_part_name = RD!part_name
+					_price = RD!price
+					_remark = RD!remark
 				End While
 			End If
 			If autoCloseConnection Then SQLConn.Close()
@@ -128,32 +128,6 @@ Public Class Part
     End Get
   End Property
 
-  '--- part_name ---'
-  Property part_name As String
-    Get
-      Return _part_name
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET part_name = '" & value & "'" &
-             " WHERE part_id = '" & _part_id & "'"
-
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
-
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Part.part_name" & vbCrLf & ex.Message, , "Error")
-
-      End Try
-
-      _part_name = value
-    End Set
-  End Property
-
   '--- part_no ---'
   Property part_no As String
     Get
@@ -177,6 +151,32 @@ Public Class Part
       End Try
 
       _part_no = value
+    End Set
+  End Property
+
+  '--- part_name ---'
+  Property part_name As String
+    Get
+      Return _part_name
+    End Get
+    Set(ByVal value As String)
+      _QRY = "UPDATE " & tableName &
+             " SET part_name = '" & value & "'" &
+             " WHERE part_id = '" & _part_id & "'"
+
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
+
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : Part.part_name" & vbCrLf & ex.Message, , "Error")
+
+      End Try
+
+      _part_name = value
     End Set
   End Property
 
@@ -252,16 +252,16 @@ Public Class Part
 		Dim QRY As String
 
 		Try
-			QRY = "INSERT INTO " & tableName & "(part_id, part_name, part_no, price, remark)" &
-						" VALUES(@part_id, @part_name, @part_no, @price, @remark)"
+			QRY = "INSERT INTO " & tableName & "(part_id, part_no, part_name, price, remark)" &
+						" VALUES(@part_id, @part_no, @part_name, @price, @remark)"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
 
-      CMD.Parameters.AddWithValue("@part_id", PartInfoA.part_id)
-      CMD.Parameters.AddWithValue("@part_name", PartInfoA.part_name)
-      CMD.Parameters.AddWithValue("@part_no", PartInfoA.part_no)
-      CMD.Parameters.AddWithValue("@price", PartInfoA.price)
-      CMD.Parameters.AddWithValue("@remark", PartInfoA.remark)
+			CMD.Parameters.AddWithValue("@part_id", PartInfoA.part_id)
+			CMD.Parameters.AddWithValue("@part_no", PartInfoA.part_no)
+			CMD.Parameters.AddWithValue("@part_name", PartInfoA.part_name)
+			CMD.Parameters.AddWithValue("@price", PartInfoA.price)
+			CMD.Parameters.AddWithValue("@remark", PartInfoA.remark)
 
 			CMD.ExecuteNonQuery()
 			If autoCloseConnection Then SQLConn.Close()
@@ -277,8 +277,8 @@ Public Class Part
 
 	End Function
 
-	'---------- UPDATE ----------'
-	Shared Function Update(ByVal Part_part_id As String, ByVal ColumnName AS String, ByVal Value AS String, Optional SQLConn As MySqlConnection = Nothing) As Boolean
+	'---------- UPDATE ----------'	
+	Shared Function Update(ByVal PartInfoA As PartInfo, Optional SQLConn As MySqlConnection = Nothing) As Boolean
 
 		Dim autoCloseConnection As Boolean = False
 		If SQLConn Is Nothing Then
@@ -290,23 +290,33 @@ Public Class Part
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-			Try
-				QRY = "UPDATE " & tableName &
-							" SET " & ColumnName & " = '" & Value & "'" &
-							" WHERE part_id = '" & Part_part_id & "'"
+		Try
+			QRY = "UPDATE " & tableName &
+					" SET" &
+					" part_no = @part_no," &
+					" part_name = @part_name," &
+					" price = @price," &
+					" remark = @remark" &
+					" WHERE part_id='" & PartInfoA.part_id & "'"
 
-				CMD = New MySqlCommand(QRY, SQLConn)
-				CMD.ExecuteNonQuery()
-				If autoCloseConnection Then SQLConn.Close()
+			CMD = New MySqlCommand(QRY, SQLConn)
 
-				Return True
+			CMD.Parameters.AddWithValue("@part_no", PartInfoA.part_no)
+			CMD.Parameters.AddWithValue("@part_name", PartInfoA.part_name)
+			CMD.Parameters.AddWithValue("@price", PartInfoA.price)
+			CMD.Parameters.AddWithValue("@remark", PartInfoA.remark)
 
-			Catch ex As Exception
-				If autoCloseConnection Then SQLConn.Close()
-				MsgBox("[Error] Function : Part.Update" & vbCrLf & ex.Message, , "Error")
-				Return False
+			CMD.ExecuteNonQuery()
+			If autoCloseConnection Then SQLConn.Close()
 
-			End Try
+		Catch ex As Exception
+			If autoCloseConnection Then SQLConn.Close()
+			MsgBox("[Error] Function : Part.Update" & vbCrLf & ex.Message)
+			Return False
+
+		End Try
+
+		Return True
 
 	End Function
 
@@ -386,11 +396,11 @@ Public Class Part
 				While RD.Read
 					ReDim Preserve PartInfoA(Ix)
 
-          PartInfoA(Ix).part_id = RD!part_id
-          PartInfoA(Ix).part_name = RD!part_name
-          PartInfoA(Ix).part_no = RD!part_no
-          PartInfoA(Ix).price = RD!price
-          PartInfoA(Ix).remark = RD!remark
+					PartInfoA(Ix).part_id = RD!part_id
+					PartInfoA(Ix).part_no = RD!part_no
+					PartInfoA(Ix).part_name = RD!part_name
+					PartInfoA(Ix).price = RD!price
+					PartInfoA(Ix).remark = RD!remark
 
 					Ix += 1
 				End While
@@ -446,7 +456,7 @@ Public Class Part
 	End Class
 
 	'---------- TOCOMBOBOXITEMS ----------'
-	Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "ID", Optional SQLConn As MySqlConnection = Nothing) As List(Of ComboBoxItems)
+	Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "part_id", Optional SQLConn As MySqlConnection = Nothing) As List(Of ComboBoxItems)
 
 		If Not Condition = "" Then Condition = " WHERE " & Condition
 		If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
@@ -507,11 +517,11 @@ Public Class Part
 
     Dim CI As PartInfo = Nothing
 
-    CI.part_id = _part_id
-    CI.part_name = _part_name
-    CI.part_no = _part_no
-    CI.price = _price
-    CI.remark = _remark
+		CI.part_id = _part_id
+		CI.part_no = _part_no
+		CI.part_name = _part_name
+		CI.price = _price
+		CI.remark = _remark
 
     Return CI
 

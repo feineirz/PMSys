@@ -18,7 +18,7 @@ Public Class Machine
 
 #Region "Class Header"
 
-	Private Shared ConnString As String = "Server=200.0.0.3;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
+	Private Shared ConnString As String = "Server=10.13.1.10;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
 	Private Shared tableName As String = "Machine"
 
 	Private _SQLConn As New MySqlConnection(ConnString)
@@ -60,19 +60,19 @@ Public Class Machine
 
 	End Function 
 
-  Private _detail As String
-  Private _machine_code As String
-  Private _machine_id As Integer
-  Private _machine_name As String
-  Private _remark As String
+	Private _machine_id As Integer
+	Private _machine_code As String
+	Private _machine_name As String
+	Private _detail As String
+	Private _remark As String
 
-  Structure MachineInfo
-    Dim detail As String
-    Dim machine_code As String
-    Dim machine_id As Integer
-    Dim machine_name As String
-    Dim remark As String
-  End Structure
+	Structure MachineInfo
+		Dim machine_id As Integer
+		Dim machine_code As String
+		Dim machine_name As String
+		Dim detail As String
+		Dim remark As String
+	End Structure
 
 	'------------ CONSTRUCTOR ------------'
 	Sub New(Machine_machine_id As String, Optional SQLConn As MySqlConnection = Nothing)
@@ -98,11 +98,11 @@ Public Class Machine
 
 			If RD.HasRows Then
 				While RD.Read
-          _detail = RD!detail
-          _machine_code = RD!machine_code
-          _machine_id = RD!machine_id
-          _machine_name = RD!machine_name
-          _remark = RD!remark
+					_machine_id = RD!machine_id
+					_machine_code = RD!machine_code
+					_machine_name = RD!machine_name
+					_detail = RD!detail
+					_remark = RD!remark
 				End While
 			End If
 			If autoCloseConnection Then SQLConn.Close()
@@ -121,30 +121,11 @@ Public Class Machine
 
 #Region "Class Properties"
 
-  '--- detail ---'
-  Property detail As String
+  '--- machine_id ---'
+  ReadOnly Property machine_id As Integer
     Get
-      Return _detail
+      Return _machine_id
     End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET detail = '" & value & "'" &
-             " WHERE machine_id = '" & _machine_id & "'"
-
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
-
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Machine.detail" & vbCrLf & ex.Message, , "Error")
-
-      End Try
-
-      _detail = value
-    End Set
   End Property
 
   '--- machine_code ---'
@@ -173,13 +154,6 @@ Public Class Machine
     End Set
   End Property
 
-  '--- machine_id ---'
-  ReadOnly Property machine_id As Integer
-    Get
-      Return _machine_id
-    End Get
-  End Property
-
   '--- machine_name ---'
   Property machine_name As String
     Get
@@ -203,6 +177,32 @@ Public Class Machine
       End Try
 
       _machine_name = value
+    End Set
+  End Property
+
+  '--- detail ---'
+  Property detail As String
+    Get
+      Return _detail
+    End Get
+    Set(ByVal value As String)
+      _QRY = "UPDATE " & tableName &
+             " SET detail = '" & value & "'" &
+             " WHERE machine_id = '" & _machine_id & "'"
+
+      Try
+        _SQLConn.Open()
+        _CMD = New MySqlCommand(_QRY, _SQLConn)
+        _CMD.ExecuteNonQuery()
+        _SQLConn.Close()
+
+      Catch ex As Exception
+        _SQLConn.Close()
+        MsgBox("[Error] Property : Machine.detail" & vbCrLf & ex.Message, , "Error")
+
+      End Try
+
+      _detail = value
     End Set
   End Property
 
@@ -252,16 +252,16 @@ Public Class Machine
 		Dim QRY As String
 
 		Try
-			QRY = "INSERT INTO " & tableName & "(detail, machine_code, machine_id, machine_name, remark)" &
-						" VALUES(@detail, @machine_code, @machine_id, @machine_name, @remark)"
+			QRY = "INSERT INTO " & tableName & "(machine_id, machine_code, machine_name, detail, remark)" &
+						" VALUES(@machine_id, @machine_code, @machine_name, @detail, @remark)"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
 
-      CMD.Parameters.AddWithValue("@detail", MachineInfoA.detail)
-      CMD.Parameters.AddWithValue("@machine_code", MachineInfoA.machine_code)
-      CMD.Parameters.AddWithValue("@machine_id", MachineInfoA.machine_id)
-      CMD.Parameters.AddWithValue("@machine_name", MachineInfoA.machine_name)
-      CMD.Parameters.AddWithValue("@remark", MachineInfoA.remark)
+			CMD.Parameters.AddWithValue("@machine_id", MachineInfoA.machine_id)
+			CMD.Parameters.AddWithValue("@machine_code", MachineInfoA.machine_code)
+			CMD.Parameters.AddWithValue("@machine_name", MachineInfoA.machine_name)
+			CMD.Parameters.AddWithValue("@detail", MachineInfoA.detail)
+			CMD.Parameters.AddWithValue("@remark", MachineInfoA.remark)
 
 			CMD.ExecuteNonQuery()
 			If autoCloseConnection Then SQLConn.Close()
@@ -277,8 +277,8 @@ Public Class Machine
 
 	End Function
 
-	'---------- UPDATE ----------'
-	Shared Function Update(ByVal Machine_machine_id As String, ByVal ColumnName AS String, ByVal Value AS String, Optional SQLConn As MySqlConnection = Nothing) As Boolean
+	'---------- UPDATE ----------'	
+	Shared Function Update(ByVal MachineInfoA As MachineInfo, Optional SQLConn As MySqlConnection = Nothing) As Boolean
 
 		Dim autoCloseConnection As Boolean = False
 		If SQLConn Is Nothing Then
@@ -290,23 +290,33 @@ Public Class Machine
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-			Try
-				QRY = "UPDATE " & tableName &
-							" SET " & ColumnName & " = '" & Value & "'" &
-							" WHERE machine_id = '" & Machine_machine_id & "'"
+		Try
+			QRY = "UPDATE " & tableName &
+					" SET" &
+					" machine_code = @machine_code," &
+					" machine_name = @machine_name," &
+					" detail = @detail," &
+					" remark = @remark" &
+					" WHERE machine_id='" & MachineInfoA.machine_id & "'"
 
-				CMD = New MySqlCommand(QRY, SQLConn)
-				CMD.ExecuteNonQuery()
-				If autoCloseConnection Then SQLConn.Close()
+			CMD = New MySqlCommand(QRY, SQLConn)
 
-				Return True
+			CMD.Parameters.AddWithValue("@machine_code", MachineInfoA.machine_code)
+			CMD.Parameters.AddWithValue("@machine_name", MachineInfoA.machine_name)
+			CMD.Parameters.AddWithValue("@detail", MachineInfoA.detail)
+			CMD.Parameters.AddWithValue("@remark", MachineInfoA.remark)
 
-			Catch ex As Exception
-				If autoCloseConnection Then SQLConn.Close()
-				MsgBox("[Error] Function : Machine.Update" & vbCrLf & ex.Message, , "Error")
-				Return False
+			CMD.ExecuteNonQuery()
+			If autoCloseConnection Then SQLConn.Close()
 
-			End Try
+		Catch ex As Exception
+			If autoCloseConnection Then SQLConn.Close()
+			MsgBox("[Error] Function : Machine.Update" & vbCrLf & ex.Message)
+			Return False
+
+		End Try
+
+		Return True
 
 	End Function
 
@@ -386,11 +396,11 @@ Public Class Machine
 				While RD.Read
 					ReDim Preserve MachineInfoA(Ix)
 
-          MachineInfoA(Ix).detail = RD!detail
-          MachineInfoA(Ix).machine_code = RD!machine_code
-          MachineInfoA(Ix).machine_id = RD!machine_id
-          MachineInfoA(Ix).machine_name = RD!machine_name
-          MachineInfoA(Ix).remark = RD!remark
+					MachineInfoA(Ix).machine_id = RD!machine_id
+					MachineInfoA(Ix).machine_code = RD!machine_code
+					MachineInfoA(Ix).machine_name = RD!machine_name
+					MachineInfoA(Ix).detail = RD!detail
+					MachineInfoA(Ix).remark = RD!remark
 
 					Ix += 1
 				End While
@@ -446,7 +456,7 @@ Public Class Machine
 	End Class
 
 	'---------- TOCOMBOBOXITEMS ----------'
-	Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "ID", Optional SQLConn As MySqlConnection = Nothing) As List(Of ComboBoxItems)
+	Shared Function ToComboBoxItems(ByRef RefCMB As ComboBox, DisplayMember As String, ValueMember As String, Optional subDisplayMember As String = "", Optional Delimeter As String = " : ", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "machine_id", Optional SQLConn As MySqlConnection = Nothing) As List(Of ComboBoxItems)
 
 		If Not Condition = "" Then Condition = " WHERE " & Condition
 		If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
@@ -502,16 +512,16 @@ Public Class Machine
 
 	End Function
 
-  '---------- TOCLASSINFO ----------'
-  Function ToMachineInfo() As MachineInfo
+	'---------- TOCLASSINFO ----------'
+	Function ToMachineInfo() As MachineInfo
 
     Dim CI As MachineInfo = Nothing
 
-    CI.detail = _detail
-    CI.machine_code = _machine_code
-    CI.machine_id = _machine_id
-    CI.machine_name = _machine_name
-    CI.remark = _remark
+		CI.machine_id = _machine_id
+		CI.machine_code = _machine_code
+		CI.machine_name = _machine_name
+		CI.detail = _detail
+		CI.remark = _remark
 
     Return CI
 

@@ -46,18 +46,24 @@
 	Sub EditMode(PMID As Integer)
 
 		Dim pm As New PM(PMID)
-		Dim i As Integer
+		Dim i, idx As Integer
 
 		lblTitle.Text = "Edit PM Info"
+		lblMode.Text = "Edit"
+		lblPMID.Text = pm.pm_id
 		tbxPMType.Text = pm.pm_type
-		For i = 0 To cmbMachineID.Items.Count
-			If cmbMachineID.Items(i).ToString = pm.machine_id Then
+
+		For i = 0 To cmbMachineID.Items.Count - 1
+			idx = cmbMachineID.Items(i).ToString
+			If idx > 0 And idx = pm.machine_id Then
 				cmbMachineID.SelectedIndex = i
 				Exit For
 			End If
 		Next
-		For i = 0 To cmbPartID.Items.Count
-			If cmbPartID.Items(i).ToString = pm.part_id Then
+
+		For i = 0 To cmbPartID.Items.Count - 1
+			idx = cmbPartID.Items(i).ToString
+			If idx > 0 And idx = pm.part_id Then
 				cmbPartID.SelectedIndex = i
 				Exit For
 			End If
@@ -123,31 +129,21 @@
 	Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
 		Dim PMInfoA As PM.PMInfo
+		PMInfoA.pm_type = tbxPMType.Text.Trim
+		PMInfoA.machine_id = cmbMachineID.SelectedValue
+		PMInfoA.part_id = cmbPartID.SelectedValue
+		PMInfoA.unit_require = numRequiredQTY.Value
+		PMInfoA.frequency = numFrequency.Value
+		PMInfoA.last_pm = dtpLastPM.Value
+		PMInfoA.pm_action = tbxAction.Text.Trim
+		PMInfoA.remark = tbxRemark.Text.Trim
 
 		If lblMode.Text = "Add" Then
-
-			PMInfoA.pm_type = tbxPMType.Text.Trim
-			PMInfoA.machine_id = cmbMachineID.SelectedValue
-			PMInfoA.part_id = cmbPartID.SelectedValue
-			PMInfoA.unit_require = numRequiredQTY.Value
-			PMInfoA.frequency = numFrequency.Value
-			PMInfoA.last_pm = dtpLastPM.Value
-			PMInfoA.pm_action = tbxAction.Text.Trim
-			PMInfoA.remark = tbxRemark.Text.Trim
-
 			PM.Add(PMInfoA)
 
 		ElseIf lblMode.Text = "Edit" Then
-
-			Dim pm As New PM(lblPMID.Text)
-			pm.pm_type = tbxPMType.Text.Trim
-			pm.machine_id = cmbMachineID.SelectedValue
-			pm.part_id = cmbPartID.SelectedValue
-			pm.unit_require = numRequiredQTY.Value
-			pm.frequency = numFrequency.Value
-			pm.last_pm = dtpLastPM.Value
-			pm.pm_action = tbxAction.Text.Trim
-			pm.remark = tbxRemark.Text.Trim
+			PMInfoA.pm_id = lblPMID.Text
+			PM.Update(PMInfoA)
 
 		End If
 

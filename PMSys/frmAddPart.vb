@@ -21,6 +21,20 @@
 
 #End Region
 
+	Sub EditMode(PartID As Integer)
+
+		Dim p As New Part(PartID)
+
+		lblTitle.Text = "Edit Part Info"
+		lblMode.Text = "Edit"
+		lblPartID.Text = p.part_id
+		tbxPartNo.Text = p.part_no
+		tbxPartName.Text = p.part_name
+		numPrice.Value = p.price
+		tbxRemark.Text = p.remark
+
+	End Sub
+
 	Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
 		Me.Dispose()
@@ -29,22 +43,19 @@
 
 	Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
+		Dim PartInfoA As Part.PartInfo
+		PartInfoA.part_no = tbxPartNo.Text.Trim
+		PartInfoA.part_name = tbxPartName.Text.Trim
+		PartInfoA.price = numPrice.Value
+		PartInfoA.remark = tbxRemark.Text.Trim
+
 		If lblMode.Text = "Add" Then
-
-			Dim PartInfoA As Part.PartInfo
-			PartInfoA.part_no = tbxPartNo.Text.Trim
-			PartInfoA.part_name = tbxPartName.Text.Trim
-			PartInfoA.price = numPrice.Value
-			PartInfoA.remark = tbxRemark.Text.Trim
-
 			Part.Add(PartInfoA)
 
 		ElseIf lblMode.Text = "Edit" Then
-			Dim p As New Part(lblPartID.Text)
-			p.part_no = tbxPartNo.Text.Trim
-			p.part_name = tbxPartName.Text.Trim
-			p.price = numPrice.Value
-			p.remark = tbxRemark.Text.Trim
+			PartInfoA.part_id = lblPartID.Text
+			Part.Update(PartInfoA)
+
 		End If
 
 		frmMain.ListPart()

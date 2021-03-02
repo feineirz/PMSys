@@ -21,6 +21,24 @@
 
 #End Region
 
+	Private Sub InitEnv()
+
+	End Sub
+
+	Sub EditMode(MachineID As Integer)
+
+		Dim m As New Machine(MachineID)
+
+		lblTitle.Text = "Edit Machine Info"
+		lblMode.Text = "Edit"
+		lblMachineID.Text = m.machine_id
+		tbxMachineCode.Text = m.machine_code
+		tbxName.Text = m.machine_name
+		tbxDetail.Text = m.detail
+		tbxRemark.Text = m.remark
+
+	End Sub
+
 	Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
 		Me.Dispose()
@@ -37,16 +55,20 @@
 			Exit Sub
 		End If
 
-		If lblMode.Text = "Add" Then
-			MachineInfoA.machine_code = tbxMachineCode.Text.Trim
-			MachineInfoA.machine_name = tbxName.Text.Trim
-			MachineInfoA.detail = tbxDetail.Text.Trim
-			MachineInfoA.remark = tbxRemark.Text.Trim
+		MachineInfoA.machine_code = tbxMachineCode.Text.Trim
+		MachineInfoA.machine_name = tbxName.Text.Trim
+		MachineInfoA.detail = tbxDetail.Text.Trim
+		MachineInfoA.remark = tbxRemark.Text.Trim
 
+		If lblMode.Text = "Add" Then
 			Machine.Add(MachineInfoA)
 
 		ElseIf lblMode.Text = "Edit" Then
+			If Not lblMachineID.Text = "" Then
+				MachineInfoA.machine_id = lblMachineID.Text
+				Machine.Update(MachineInfoA)
 
+			End If
 		End If
 
 		frmMain.ListMachine()

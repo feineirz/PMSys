@@ -150,11 +150,12 @@ Partial Class frmMain
 		'col_M_ID
 		'
 		Me.col_M_ID.Text = "ID"
+		Me.col_M_ID.Width = 50
 		'
 		'col_MC_Code
 		'
 		Me.col_MC_Code.Text = "Code"
-		Me.col_MC_Code.Width = 100
+		Me.col_MC_Code.Width = 110
 		'
 		'col_M_Name
 		'
@@ -270,6 +271,7 @@ Partial Class frmMain
 		'col_P_ID
 		'
 		Me.col_P_ID.Text = "ID"
+		Me.col_P_ID.Width = 50
 		'
 		'col_P_PartNo
 		'
@@ -279,7 +281,7 @@ Partial Class frmMain
 		'col_P_Name
 		'
 		Me.col_P_Name.Text = "Name"
-		Me.col_P_Name.Width = 340
+		Me.col_P_Name.Width = 350
 		'
 		'col_P_Price
 		'
@@ -391,11 +393,12 @@ Partial Class frmMain
 		'col_PM_ID
 		'
 		Me.col_PM_ID.Text = "ID"
+		Me.col_PM_ID.Width = 50
 		'
 		'col_PM_Type
 		'
 		Me.col_PM_Type.Text = "Type"
-		Me.col_PM_Type.Width = 80
+		Me.col_PM_Type.Width = 90
 		'
 		'col_PM_MachineName
 		'
