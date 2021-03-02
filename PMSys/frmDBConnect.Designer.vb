@@ -36,7 +36,9 @@ Partial Class frmDBConnect
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.tbxPassword = New System.Windows.Forms.TextBox()
 		Me.picDatabase = New System.Windows.Forms.PictureBox()
+		Me.Panel1 = New System.Windows.Forms.Panel()
 		CType(Me.picDatabase, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.Panel1.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'lblTitle
@@ -65,18 +67,18 @@ Partial Class frmDBConnect
 		'
 		'btnExit
 		'
-		Me.btnExit.Location = New System.Drawing.Point(292, 260)
+		Me.btnExit.Location = New System.Drawing.Point(314, 9)
 		Me.btnExit.Name = "btnExit"
-		Me.btnExit.Size = New System.Drawing.Size(94, 29)
+		Me.btnExit.Size = New System.Drawing.Size(94, 32)
 		Me.btnExit.TabIndex = 5
 		Me.btnExit.Text = "Exit"
 		Me.btnExit.UseVisualStyleBackColor = True
 		'
 		'btnConnect
 		'
-		Me.btnConnect.Location = New System.Drawing.Point(175, 260)
+		Me.btnConnect.Location = New System.Drawing.Point(177, 9)
 		Me.btnConnect.Name = "btnConnect"
-		Me.btnConnect.Size = New System.Drawing.Size(111, 29)
+		Me.btnConnect.Size = New System.Drawing.Size(131, 32)
 		Me.btnConnect.TabIndex = 4
 		Me.btnConnect.Text = "Connect"
 		Me.btnConnect.UseVisualStyleBackColor = True
@@ -158,12 +160,25 @@ Partial Class frmDBConnect
 		Me.picDatabase.TabIndex = 11
 		Me.picDatabase.TabStop = False
 		'
+		'Panel1
+		'
+		Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.Panel1.Controls.Add(Me.btnExit)
+		Me.Panel1.Controls.Add(Me.btnConnect)
+		Me.Panel1.Location = New System.Drawing.Point(0, 270)
+		Me.Panel1.Name = "Panel1"
+		Me.Panel1.Size = New System.Drawing.Size(420, 50)
+		Me.Panel1.TabIndex = 12
+		'
 		'frmDBConnect
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.White
-		Me.ClientSize = New System.Drawing.Size(420, 312)
+		Me.ClientSize = New System.Drawing.Size(420, 320)
+		Me.Controls.Add(Me.Panel1)
 		Me.Controls.Add(Me.picDatabase)
 		Me.Controls.Add(Me.tbxPassword)
 		Me.Controls.Add(Me.Label6)
@@ -173,8 +188,6 @@ Partial Class frmDBConnect
 		Me.Controls.Add(Me.tbxUsername)
 		Me.Controls.Add(Me.tbxDatabase)
 		Me.Controls.Add(Me.tbxHost)
-		Me.Controls.Add(Me.btnConnect)
-		Me.Controls.Add(Me.btnExit)
 		Me.Controls.Add(Me.Label2)
 		Me.Controls.Add(Me.lblTitle)
 		Me.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -185,6 +198,7 @@ Partial Class frmDBConnect
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 		Me.Text = "DBConnect"
 		CType(Me.picDatabase, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.Panel1.ResumeLayout(False)
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -203,4 +217,5 @@ Partial Class frmDBConnect
 	Friend WithEvents Label6 As Label
 	Friend WithEvents tbxPassword As TextBox
 	Friend WithEvents picDatabase As PictureBox
+	Friend WithEvents Panel1 As Panel
 End Class

@@ -61,6 +61,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property close16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("close16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to DROP DATABASE PMSys;
         '''
         '''CREATE DATABASE PMSys
@@ -72,21 +82,50 @@ Namespace My.Resources
         '''
         '''CREATE TABLE Machine(
         '''	machine_id int unsigned auto_increment not null primary key,
-        '''	machine_name nvarchar(255) not null,
+        '''	machine_code varchar(255) not null default &apos;&apos;,
+        '''	machine_name varchar(255) not null,
         '''	detail text,
         '''	remark text
         ''')ENGINE=INNODB;
         '''
         '''CREATE TABLE Part(
         '''	part_id int unsigned auto_increment not null primary key,
-        '''	part_no nvarchar(255) not null default &apos;&apos;,
-        '''	part_name nvarchar(255) not null default &apos;&apos;,
-        '''	price decimal(10,2) not null default 0,
-        '''	 [rest of string was truncated]&quot;;.
+        '''	part_no varchar(255) not null default &apos;&apos;,
+        '''	part_name varchar(255) not null default &apos;&apos; [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property DBInit_sql() As String
             Get
                 Return ResourceManager.GetString("DBInit.sql", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property delete16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("delete16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property edit16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("edit16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property floppy_disk16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("floppy_disk16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
     End Module

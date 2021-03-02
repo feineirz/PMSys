@@ -31,50 +31,63 @@ Partial Class frmAddMachine
 		Me.btnClose = New System.Windows.Forms.Button()
 		Me.btnSave = New System.Windows.Forms.Button()
 		Me.lblNameError = New System.Windows.Forms.Label()
+		Me.lblTitle = New System.Windows.Forms.Label()
+		Me.pnlFooter = New System.Windows.Forms.Panel()
+		Me.Label4 = New System.Windows.Forms.Label()
+		Me.tbxMachineCode = New System.Windows.Forms.TextBox()
+		Me.lblMachineID = New System.Windows.Forms.Label()
+		Me.lblMode = New System.Windows.Forms.Label()
+		Me.pnlFooter.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'tbxName
 		'
+		Me.tbxName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxName.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.tbxName.Location = New System.Drawing.Point(22, 49)
+		Me.tbxName.Location = New System.Drawing.Point(43, 157)
 		Me.tbxName.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.tbxName.Name = "tbxName"
-		Me.tbxName.Size = New System.Drawing.Size(362, 27)
-		Me.tbxName.TabIndex = 0
+		Me.tbxName.Size = New System.Drawing.Size(488, 27)
+		Me.tbxName.TabIndex = 1
 		'
 		'tbxDetail
 		'
+		Me.tbxDetail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxDetail.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.tbxDetail.Location = New System.Drawing.Point(22, 105)
+		Me.tbxDetail.Location = New System.Drawing.Point(43, 213)
 		Me.tbxDetail.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.tbxDetail.Multiline = True
 		Me.tbxDetail.Name = "tbxDetail"
-		Me.tbxDetail.Size = New System.Drawing.Size(362, 91)
-		Me.tbxDetail.TabIndex = 1
+		Me.tbxDetail.Size = New System.Drawing.Size(488, 91)
+		Me.tbxDetail.TabIndex = 2
 		'
 		'tbxRemark
 		'
+		Me.tbxRemark.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxRemark.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.tbxRemark.Location = New System.Drawing.Point(22, 225)
+		Me.tbxRemark.Location = New System.Drawing.Point(43, 333)
 		Me.tbxRemark.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.tbxRemark.Multiline = True
 		Me.tbxRemark.Name = "tbxRemark"
-		Me.tbxRemark.Size = New System.Drawing.Size(362, 91)
-		Me.tbxRemark.TabIndex = 2
+		Me.tbxRemark.Size = New System.Drawing.Size(488, 133)
+		Me.tbxRemark.TabIndex = 3
 		'
 		'Label1
 		'
 		Me.Label1.AutoSize = True
-		Me.Label1.Location = New System.Drawing.Point(19, 28)
+		Me.Label1.Location = New System.Drawing.Point(40, 136)
 		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(55, 18)
+		Me.Label1.Size = New System.Drawing.Size(127, 18)
 		Me.Label1.TabIndex = 3
-		Me.Label1.Text = "Name"
+		Me.Label1.Text = "Machine Name"
 		'
 		'Label2
 		'
 		Me.Label2.AutoSize = True
-		Me.Label2.Location = New System.Drawing.Point(19, 84)
+		Me.Label2.Location = New System.Drawing.Point(40, 192)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(57, 18)
 		Me.Label2.TabIndex = 4
@@ -83,7 +96,7 @@ Partial Class frmAddMachine
 		'Label3
 		'
 		Me.Label3.AutoSize = True
-		Me.Label3.Location = New System.Drawing.Point(19, 204)
+		Me.Label3.Location = New System.Drawing.Point(40, 312)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(69, 18)
 		Me.Label3.TabIndex = 5
@@ -91,19 +104,25 @@ Partial Class frmAddMachine
 		'
 		'btnClose
 		'
-		Me.btnClose.Location = New System.Drawing.Point(305, 326)
+		Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnClose.Image = Global.PMSys.My.Resources.Resources.close16
+		Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnClose.Location = New System.Drawing.Point(436, 9)
 		Me.btnClose.Name = "btnClose"
-		Me.btnClose.Size = New System.Drawing.Size(79, 27)
-		Me.btnClose.TabIndex = 4
+		Me.btnClose.Size = New System.Drawing.Size(130, 32)
+		Me.btnClose.TabIndex = 5
 		Me.btnClose.Text = "Close"
 		Me.btnClose.UseVisualStyleBackColor = True
 		'
 		'btnSave
 		'
-		Me.btnSave.Location = New System.Drawing.Point(203, 326)
+		Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnSave.Image = Global.PMSys.My.Resources.Resources.floppy_disk16
+		Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnSave.Location = New System.Drawing.Point(300, 9)
 		Me.btnSave.Name = "btnSave"
-		Me.btnSave.Size = New System.Drawing.Size(96, 27)
-		Me.btnSave.TabIndex = 3
+		Me.btnSave.Size = New System.Drawing.Size(130, 32)
+		Me.btnSave.TabIndex = 4
 		Me.btnSave.Text = "Save"
 		Me.btnSave.UseVisualStyleBackColor = True
 		'
@@ -112,21 +131,92 @@ Partial Class frmAddMachine
 		Me.lblNameError.AutoSize = True
 		Me.lblNameError.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblNameError.ForeColor = System.Drawing.Color.Red
-		Me.lblNameError.Location = New System.Drawing.Point(92, 28)
+		Me.lblNameError.Location = New System.Drawing.Point(113, 136)
 		Me.lblNameError.Name = "lblNameError"
 		Me.lblNameError.Size = New System.Drawing.Size(0, 16)
 		Me.lblNameError.TabIndex = 6
+		'
+		'lblTitle
+		'
+		Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.ForeColor = System.Drawing.Color.White
+		Me.lblTitle.Location = New System.Drawing.Point(0, 0)
+		Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+		Me.lblTitle.Name = "lblTitle"
+		Me.lblTitle.Size = New System.Drawing.Size(574, 57)
+		Me.lblTitle.TabIndex = 7
+		Me.lblTitle.Text = "NEW MACHINE"
+		Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'pnlFooter
+		'
+		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.pnlFooter.Controls.Add(Me.btnClose)
+		Me.pnlFooter.Controls.Add(Me.btnSave)
+		Me.pnlFooter.Location = New System.Drawing.Point(0, 514)
+		Me.pnlFooter.Name = "pnlFooter"
+		Me.pnlFooter.Size = New System.Drawing.Size(574, 50)
+		Me.pnlFooter.TabIndex = 8
+		'
+		'Label4
+		'
+		Me.Label4.AutoSize = True
+		Me.Label4.Location = New System.Drawing.Point(40, 80)
+		Me.Label4.Name = "Label4"
+		Me.Label4.Size = New System.Drawing.Size(121, 18)
+		Me.Label4.TabIndex = 10
+		Me.Label4.Text = "Machine Code"
+		'
+		'tbxMachineCode
+		'
+		Me.tbxMachineCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxMachineCode.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.tbxMachineCode.Location = New System.Drawing.Point(43, 101)
+		Me.tbxMachineCode.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+		Me.tbxMachineCode.Name = "tbxMachineCode"
+		Me.tbxMachineCode.Size = New System.Drawing.Size(488, 27)
+		Me.tbxMachineCode.TabIndex = 0
+		'
+		'lblMachineID
+		'
+		Me.lblMachineID.AutoSize = True
+		Me.lblMachineID.Location = New System.Drawing.Point(124, 493)
+		Me.lblMachineID.Name = "lblMachineID"
+		Me.lblMachineID.Size = New System.Drawing.Size(93, 18)
+		Me.lblMachineID.TabIndex = 14
+		Me.lblMachineID.Text = "MachineID"
+		Me.lblMachineID.Visible = False
+		'
+		'lblMode
+		'
+		Me.lblMode.AutoSize = True
+		Me.lblMode.Location = New System.Drawing.Point(40, 493)
+		Me.lblMode.Name = "lblMode"
+		Me.lblMode.Size = New System.Drawing.Size(39, 18)
+		Me.lblMode.TabIndex = 13
+		Me.lblMode.Text = "Add"
+		Me.lblMode.Visible = False
 		'
 		'frmAddMachine
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.White
-		Me.ClientSize = New System.Drawing.Size(404, 379)
+		Me.BackColor = System.Drawing.Color.Gainsboro
+		Me.ClientSize = New System.Drawing.Size(573, 563)
 		Me.ControlBox = False
+		Me.Controls.Add(Me.lblMachineID)
+		Me.Controls.Add(Me.lblMode)
+		Me.Controls.Add(Me.Label4)
+		Me.Controls.Add(Me.tbxMachineCode)
+		Me.Controls.Add(Me.pnlFooter)
+		Me.Controls.Add(Me.lblTitle)
 		Me.Controls.Add(Me.lblNameError)
-		Me.Controls.Add(Me.btnSave)
-		Me.Controls.Add(Me.btnClose)
 		Me.Controls.Add(Me.Label3)
 		Me.Controls.Add(Me.Label2)
 		Me.Controls.Add(Me.Label1)
@@ -134,13 +224,13 @@ Partial Class frmAddMachine
 		Me.Controls.Add(Me.tbxDetail)
 		Me.Controls.Add(Me.tbxName)
 		Me.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
 		Me.MaximizeBox = False
 		Me.MinimizeBox = False
 		Me.Name = "frmAddMachine"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-		Me.Text = "Add Machine"
+		Me.pnlFooter.ResumeLayout(False)
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -155,4 +245,10 @@ Partial Class frmAddMachine
 	Friend WithEvents btnClose As Button
 	Friend WithEvents btnSave As Button
 	Friend WithEvents lblNameError As Label
+	Friend WithEvents lblTitle As Label
+	Friend WithEvents pnlFooter As Panel
+	Friend WithEvents Label4 As Label
+	Friend WithEvents tbxMachineCode As TextBox
+	Friend WithEvents lblMachineID As Label
+	Friend WithEvents lblMode As Label
 End Class

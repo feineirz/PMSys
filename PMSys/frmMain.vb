@@ -1,5 +1,26 @@
 ﻿Public Class frmMain
 
+#Region "Moveable Form Code"
+	<System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+	Public Shared Function SendMessage(hWnd As IntPtr, Msg As Integer, wParam As Integer, lParam As Integer) As Integer
+	End Function
+
+	<System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+	Public Shared Function ReleaseCapture() As Boolean
+	End Function
+
+	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, lblTitle.MouseDown
+		Const WM_NCLBUTTONDOWN As Integer = &HA1
+		Const HT_CAPTION As Integer = &H2
+
+		If e.Button = MouseButtons.Left Then
+			ReleaseCapture()
+			SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0)
+		End If
+	End Sub
+
+#End Region
+
 	Sub ListMachine()
 
 		Dim MachineList = Machine.List()
@@ -9,6 +30,7 @@
 		If MachineList.Count > 0 Then
 			For Each m In MachineList.Items
 				lvi = lvwMachine.Items.Add(m.machine_id)
+				lvi.SubItems.Add(m.machine_code)
 				lvi.SubItems.Add(m.machine_name)
 				lvi.SubItems.Add(m.detail)
 			Next
@@ -34,10 +56,64 @@
 
 	End Sub
 
+	Sub ListPM()
+
+		Dim mc As Machine
+		Dim pt As Part
+
+		Dim PMList = PM.List
+		Dim lvi As ListViewItem
+		lvwPMList.Items.Clear()
+
+		If PMList.Count > 0 Then
+			For Each pm In PMList.Items
+				lvi = lvwPMList.Items.Add(pm.pm_id)
+				lvi.SubItems.Add(pm.pm_type)
+				mc = New Machine(pm.machine_id)
+				lvi.SubItems.Add(mc.machine_name)
+				pt = New Part(pm.part_id)
+				lvi.SubItems.Add(pt.part_name)
+				lvi.SubItems.Add(pm.unit_require)
+				lvi.SubItems.Add(pm.frequency)
+				lvi.SubItems.Add(pt.price.ToString("#,##0.00"))
+				lvi.SubItems.Add((pt.price * pm.unit_require).ToString("#,##0.00"))
+				lvi.SubItems.Add(pm.last_pm.ToString("yyyy/MMM/dd"))
+
+				Dim dtNext As Date = DateAdd("d", pm.frequency, pm.last_pm)
+				Dim diff As Integer = DateDiff(DateInterval.Day, Now, dtNext)
+
+				' Highlighter
+				If diff < 7 Then
+					lvi.BackColor = Color.OrangeRed
+				ElseIf diff < 10 Then
+					lvi.BackColor = Color.Orange
+				ElseIf diff < 15 Then
+					lvi.BackColor = Color.Yellow
+				End If
+
+				lvi.SubItems.Add(dtNext.ToString("yyyy/MMM/dd"))
+				lvi.SubItems.Add(pm.pm_action)
+			Next
+		End If
+
+	End Sub
+
+	Sub CheckPMStatus()
+
+		For Each lvi In lvwPMList.Items
+
+
+
+
+		Next
+
+	End Sub
+
 	Private Sub InitEnv()
 
 		ListMachine()
 		ListPart()
+		ListPM()
 
 	End Sub
 
@@ -62,6 +138,63 @@
 	Private Sub btnAddPart_Click(sender As Object, e As EventArgs) Handles btnAddPart.Click
 
 		frmAddPart.ShowDialog()
+
+	End Sub
+
+	Private Sub btnAddMaintenance_Click(sender As Object, e As EventArgs) Handles btnAddMaintenance.Click
+
+		frmAddPM.ShowDialog()
+
+	End Sub
+
+	Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+
+		Application.Exit()
+
+	End Sub
+
+	Private Sub mnu_PL_Edit_Click(sender As Object, e As EventArgs) Handles mnu_PL_Edit.Click
+
+		Dim p As New Part(lvwPartList.SelectedItems(0).Text)
+		With frmAddPart
+			.lblTitle.Text = "Edit Part Info"
+			.lblMode.Text = "Edit"
+			.lblPartID.Text = p.part_id
+			.tbxPartNo.Text = p.part_no
+			.tbxPartName.Text = p.part_name
+			.numPrice.Value = p.price
+			.tbxRemark.Text = p.remark
+			.ShowDialog()
+		End With
+
+	End Sub
+
+	Private Sub mnu_ML_Edit_Click(sender As Object, e As EventArgs) Handles mnu_ML_Edit.Click
+
+		Dim m As New Machine(lvwMachine.SelectedItems(0).Text)
+		With frmAddMachine
+			.lblTitle.Text = "Edit Machine Info"
+			.lblMode.Text = "Edit"
+			.lblMachineID.Text = m.machine_id
+			.tbxMachineCode.Text = m.machine_code
+			.tbxName.Text = m.machine_name
+			.tbxDetail.Text = m.detail
+			.tbxRemark.Text = m.remark
+
+			.ShowDialog()
+		End With
+
+	End Sub
+
+	Private Sub mnu_PML_Edit_Click(sender As Object, e As EventArgs) Handles mnu_PML_Edit.Click
+
+		If lvwPMList.SelectedItems.Count = 1 Then
+			With frmAddPM
+				.lblMode.Text = "Edit"
+				.lblPMID.Text = lvwPMList.SelectedItems(0).Text
+				.ShowDialog()
+			End With
+		End If
 
 	End Sub
 End Class

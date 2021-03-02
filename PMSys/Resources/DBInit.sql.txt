@@ -9,27 +9,28 @@ USE PMSys;
 
 CREATE TABLE Machine(
 	machine_id int unsigned auto_increment not null primary key,
-	machine_name nvarchar(255) not null,
+	machine_code varchar(255) not null default '',
+	machine_name varchar(255) not null,
 	detail text,
 	remark text
 )ENGINE=INNODB;
 
 CREATE TABLE Part(
 	part_id int unsigned auto_increment not null primary key,
-	part_no nvarchar(255) not null default '',
-	part_name nvarchar(255) not null default '',
+	part_no varchar(255) not null default '',
+	part_name varchar(255) not null default '',
 	price decimal(10,2) not null default 0,
 	remark text
 )ENGINE=INNODB;
 
 CREATE TABLE PM(
 	pm_id int unsigned auto_increment not null primary key,
-	pm_type nvarchar(255) not null default '',
+	pm_type varchar(255) not null default '',
 	machine_id int unsigned not null,
 	part_id int unsigned not null,
 	unit_require int not null default 1,
 	frequency int not null default 30,
-	pm_action nvarchar(255) not null default '',
+	pm_action varchar(255) not null default '',
 	last_pm date not null default '2000-01-01',
 	remark text,
 	foreign key fk_pm_machine_id (machine_id)

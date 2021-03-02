@@ -22,39 +22,45 @@ Partial Class frmMain
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
+		Me.components = New System.ComponentModel.Container()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
 		Me.pnlMachine = New System.Windows.Forms.Panel()
-		Me.Label1 = New System.Windows.Forms.Label()
+		Me.btnMachineSearch = New System.Windows.Forms.Button()
+		Me.tbxMachineSearch = New System.Windows.Forms.TextBox()
+		Me.btnAddMachine = New System.Windows.Forms.Button()
 		Me.lvwMachine = New System.Windows.Forms.ListView()
 		Me.col_M_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_MC_Code = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_M_Name = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_M_Detail = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.btnAddMachine = New System.Windows.Forms.Button()
+		Me.cmsMachineList = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.mnu_ML_Edit = New System.Windows.Forms.ToolStripMenuItem()
+		Me.mnu_ML_Delete = New System.Windows.Forms.ToolStripMenuItem()
+		Me.Label1 = New System.Windows.Forms.Label()
+		Me.Label3 = New System.Windows.Forms.Label()
 		Me.pnlPart = New System.Windows.Forms.Panel()
+		Me.btnPartSearch = New System.Windows.Forms.Button()
+		Me.tbxPartSearch = New System.Windows.Forms.TextBox()
 		Me.btnAddPart = New System.Windows.Forms.Button()
 		Me.lvwPartList = New System.Windows.Forms.ListView()
 		Me.col_P_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_P_PartNo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_P_Name = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.Label2 = New System.Windows.Forms.Label()
 		Me.col_P_Price = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.tbxMachineSearch = New System.Windows.Forms.TextBox()
-		Me.Label3 = New System.Windows.Forms.Label()
+		Me.cmsPartList = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.mnu_PL_Edit = New System.Windows.Forms.ToolStripMenuItem()
+		Me.mnu_PL_Delete = New System.Windows.Forms.ToolStripMenuItem()
+		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Label4 = New System.Windows.Forms.Label()
-		Me.tbxPartSearch = New System.Windows.Forms.TextBox()
-		Me.btnMachineSearch = New System.Windows.Forms.Button()
-		Me.btnPartSearch = New System.Windows.Forms.Button()
 		Me.pnlMaintenance = New System.Windows.Forms.Panel()
 		Me.btnMaintenanceSearch = New System.Windows.Forms.Button()
 		Me.tbxMaintenanceSearch = New System.Windows.Forms.TextBox()
 		Me.btnAddMaintenance = New System.Windows.Forms.Button()
-		Me.lvwMaintenanceList = New System.Windows.Forms.ListView()
+		Me.lvwPMList = New System.Windows.Forms.ListView()
 		Me.col_PM_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_Type = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_MachineName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_PartName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.Label5 = New System.Windows.Forms.Label()
-		Me.Label6 = New System.Windows.Forms.Label()
 		Me.col_PM_PartQty = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_Frequency = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_PartPrice = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -62,10 +68,21 @@ Partial Class frmMain
 		Me.col_PM_LastPM = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_NextPM = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_Action = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.cmsPMList = New System.Windows.Forms.ContextMenuStrip(Me.components)
+		Me.mnu_PML_Edit = New System.Windows.Forms.ToolStripMenuItem()
+		Me.mnu_PML_Delete = New System.Windows.Forms.ToolStripMenuItem()
+		Me.Label5 = New System.Windows.Forms.Label()
+		Me.Label6 = New System.Windows.Forms.Label()
 		Me.pnlDashboard = New System.Windows.Forms.Panel()
+		Me.lblTitle = New System.Windows.Forms.Label()
+		Me.pnlFooter = New System.Windows.Forms.Panel()
+		Me.btnExit = New System.Windows.Forms.Button()
 		Me.pnlMachine.SuspendLayout()
+		Me.cmsMachineList.SuspendLayout()
 		Me.pnlPart.SuspendLayout()
+		Me.cmsPartList.SuspendLayout()
 		Me.pnlMaintenance.SuspendLayout()
+		Me.cmsPMList.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'pnlMachine
@@ -76,27 +93,49 @@ Partial Class frmMain
 		Me.pnlMachine.Controls.Add(Me.lvwMachine)
 		Me.pnlMachine.Controls.Add(Me.Label1)
 		Me.pnlMachine.Controls.Add(Me.Label3)
-		Me.pnlMachine.Location = New System.Drawing.Point(12, 12)
+		Me.pnlMachine.Location = New System.Drawing.Point(12, 81)
 		Me.pnlMachine.Name = "pnlMachine"
 		Me.pnlMachine.Size = New System.Drawing.Size(710, 220)
 		Me.pnlMachine.TabIndex = 0
 		'
-		'Label1
+		'btnMachineSearch
 		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.Location = New System.Drawing.Point(3, 10)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(138, 18)
-		Me.Label1.TabIndex = 1
-		Me.Label1.Text = "MACHINE LIST"
+		Me.btnMachineSearch.BackColor = System.Drawing.Color.DeepSkyBlue
+		Me.btnMachineSearch.FlatAppearance.BorderSize = 0
+		Me.btnMachineSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnMachineSearch.Image = CType(resources.GetObject("btnMachineSearch.Image"), System.Drawing.Image)
+		Me.btnMachineSearch.Location = New System.Drawing.Point(404, 8)
+		Me.btnMachineSearch.Name = "btnMachineSearch"
+		Me.btnMachineSearch.Size = New System.Drawing.Size(24, 24)
+		Me.btnMachineSearch.TabIndex = 3
+		Me.btnMachineSearch.UseVisualStyleBackColor = False
+		'
+		'tbxMachineSearch
+		'
+		Me.tbxMachineSearch.Location = New System.Drawing.Point(279, 9)
+		Me.tbxMachineSearch.Name = "tbxMachineSearch"
+		Me.tbxMachineSearch.Size = New System.Drawing.Size(119, 23)
+		Me.tbxMachineSearch.TabIndex = 3
+		'
+		'btnAddMachine
+		'
+		Me.btnAddMachine.BackColor = System.Drawing.Color.LimeGreen
+		Me.btnAddMachine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnAddMachine.ForeColor = System.Drawing.Color.White
+		Me.btnAddMachine.Location = New System.Drawing.Point(557, 8)
+		Me.btnAddMachine.Name = "btnAddMachine"
+		Me.btnAddMachine.Size = New System.Drawing.Size(149, 26)
+		Me.btnAddMachine.TabIndex = 1
+		Me.btnAddMachine.Text = "Add Machine"
+		Me.btnAddMachine.UseVisualStyleBackColor = False
 		'
 		'lvwMachine
 		'
 		Me.lvwMachine.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lvwMachine.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_M_ID, Me.col_M_Name, Me.col_M_Detail})
+		Me.lvwMachine.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_M_ID, Me.col_MC_Code, Me.col_M_Name, Me.col_M_Detail})
+		Me.lvwMachine.ContextMenuStrip = Me.cmsMachineList
 		Me.lvwMachine.FullRowSelect = True
 		Me.lvwMachine.GridLines = True
 		Me.lvwMachine.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
@@ -112,6 +151,11 @@ Partial Class frmMain
 		'
 		Me.col_M_ID.Text = "ID"
 		'
+		'col_MC_Code
+		'
+		Me.col_MC_Code.Text = "Code"
+		Me.col_MC_Code.Width = 100
+		'
 		'col_M_Name
 		'
 		Me.col_M_Name.Text = "Name"
@@ -120,16 +164,46 @@ Partial Class frmMain
 		'col_M_Detail
 		'
 		Me.col_M_Detail.Text = "Detail"
-		Me.col_M_Detail.Width = 420
+		Me.col_M_Detail.Width = 320
 		'
-		'btnAddMachine
+		'cmsMachineList
 		'
-		Me.btnAddMachine.Location = New System.Drawing.Point(557, 8)
-		Me.btnAddMachine.Name = "btnAddMachine"
-		Me.btnAddMachine.Size = New System.Drawing.Size(149, 25)
-		Me.btnAddMachine.TabIndex = 1
-		Me.btnAddMachine.Text = "Add Machine"
-		Me.btnAddMachine.UseVisualStyleBackColor = True
+		Me.cmsMachineList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_ML_Edit, Me.mnu_ML_Delete})
+		Me.cmsMachineList.Name = "cmsMachineList"
+		Me.cmsMachineList.Size = New System.Drawing.Size(108, 48)
+		'
+		'mnu_ML_Edit
+		'
+		Me.mnu_ML_Edit.Image = Global.PMSys.My.Resources.Resources.edit16
+		Me.mnu_ML_Edit.Name = "mnu_ML_Edit"
+		Me.mnu_ML_Edit.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_ML_Edit.Text = "Edit"
+		'
+		'mnu_ML_Delete
+		'
+		Me.mnu_ML_Delete.Image = Global.PMSys.My.Resources.Resources.delete16
+		Me.mnu_ML_Delete.Name = "mnu_ML_Delete"
+		Me.mnu_ML_Delete.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_ML_Delete.Text = "Delete"
+		'
+		'Label1
+		'
+		Me.Label1.AutoSize = True
+		Me.Label1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Location = New System.Drawing.Point(3, 10)
+		Me.Label1.Name = "Label1"
+		Me.Label1.Size = New System.Drawing.Size(138, 18)
+		Me.Label1.TabIndex = 1
+		Me.Label1.Text = "MACHINE LIST"
+		'
+		'Label3
+		'
+		Me.Label3.AutoSize = True
+		Me.Label3.Location = New System.Drawing.Point(221, 12)
+		Me.Label3.Name = "Label3"
+		Me.Label3.Size = New System.Drawing.Size(60, 16)
+		Me.Label3.TabIndex = 4
+		Me.Label3.Text = "Search:"
 		'
 		'pnlPart
 		'
@@ -139,19 +213,41 @@ Partial Class frmMain
 		Me.pnlPart.Controls.Add(Me.lvwPartList)
 		Me.pnlPart.Controls.Add(Me.Label2)
 		Me.pnlPart.Controls.Add(Me.Label4)
-		Me.pnlPart.Location = New System.Drawing.Point(12, 238)
+		Me.pnlPart.Location = New System.Drawing.Point(12, 307)
 		Me.pnlPart.Name = "pnlPart"
 		Me.pnlPart.Size = New System.Drawing.Size(710, 220)
 		Me.pnlPart.TabIndex = 2
 		'
+		'btnPartSearch
+		'
+		Me.btnPartSearch.BackColor = System.Drawing.Color.DeepSkyBlue
+		Me.btnPartSearch.FlatAppearance.BorderSize = 0
+		Me.btnPartSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnPartSearch.Image = CType(resources.GetObject("btnPartSearch.Image"), System.Drawing.Image)
+		Me.btnPartSearch.Location = New System.Drawing.Point(404, 8)
+		Me.btnPartSearch.Name = "btnPartSearch"
+		Me.btnPartSearch.Size = New System.Drawing.Size(24, 24)
+		Me.btnPartSearch.TabIndex = 7
+		Me.btnPartSearch.UseVisualStyleBackColor = False
+		'
+		'tbxPartSearch
+		'
+		Me.tbxPartSearch.Location = New System.Drawing.Point(279, 9)
+		Me.tbxPartSearch.Name = "tbxPartSearch"
+		Me.tbxPartSearch.Size = New System.Drawing.Size(119, 23)
+		Me.tbxPartSearch.TabIndex = 5
+		'
 		'btnAddPart
 		'
+		Me.btnAddPart.BackColor = System.Drawing.Color.LimeGreen
+		Me.btnAddPart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnAddPart.ForeColor = System.Drawing.Color.White
 		Me.btnAddPart.Location = New System.Drawing.Point(557, 8)
 		Me.btnAddPart.Name = "btnAddPart"
-		Me.btnAddPart.Size = New System.Drawing.Size(149, 25)
+		Me.btnAddPart.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddPart.TabIndex = 1
 		Me.btnAddPart.Text = "Add Part"
-		Me.btnAddPart.UseVisualStyleBackColor = True
+		Me.btnAddPart.UseVisualStyleBackColor = False
 		'
 		'lvwPartList
 		'
@@ -159,6 +255,7 @@ Partial Class frmMain
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwPartList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_P_ID, Me.col_P_PartNo, Me.col_P_Name, Me.col_P_Price})
+		Me.lvwPartList.ContextMenuStrip = Me.cmsPartList
 		Me.lvwPartList.FullRowSelect = True
 		Me.lvwPartList.GridLines = True
 		Me.lvwPartList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
@@ -184,6 +281,32 @@ Partial Class frmMain
 		Me.col_P_Name.Text = "Name"
 		Me.col_P_Name.Width = 340
 		'
+		'col_P_Price
+		'
+		Me.col_P_Price.Text = "Price"
+		Me.col_P_Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_P_Price.Width = 80
+		'
+		'cmsPartList
+		'
+		Me.cmsPartList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PL_Edit, Me.mnu_PL_Delete})
+		Me.cmsPartList.Name = "cmsPartList"
+		Me.cmsPartList.Size = New System.Drawing.Size(108, 48)
+		'
+		'mnu_PL_Edit
+		'
+		Me.mnu_PL_Edit.Image = CType(resources.GetObject("mnu_PL_Edit.Image"), System.Drawing.Image)
+		Me.mnu_PL_Edit.Name = "mnu_PL_Edit"
+		Me.mnu_PL_Edit.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PL_Edit.Text = "Edit"
+		'
+		'mnu_PL_Delete
+		'
+		Me.mnu_PL_Delete.Image = CType(resources.GetObject("mnu_PL_Delete.Image"), System.Drawing.Image)
+		Me.mnu_PL_Delete.Name = "mnu_PL_Delete"
+		Me.mnu_PL_Delete.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PL_Delete.Text = "Delete"
+		'
 		'Label2
 		'
 		Me.Label2.AutoSize = True
@@ -194,28 +317,6 @@ Partial Class frmMain
 		Me.Label2.TabIndex = 1
 		Me.Label2.Text = "PART LIST"
 		'
-		'col_P_Price
-		'
-		Me.col_P_Price.Text = "Price"
-		Me.col_P_Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.col_P_Price.Width = 80
-		'
-		'tbxMachineSearch
-		'
-		Me.tbxMachineSearch.Location = New System.Drawing.Point(279, 9)
-		Me.tbxMachineSearch.Name = "tbxMachineSearch"
-		Me.tbxMachineSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxMachineSearch.TabIndex = 3
-		'
-		'Label3
-		'
-		Me.Label3.AutoSize = True
-		Me.Label3.Location = New System.Drawing.Point(221, 12)
-		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(60, 16)
-		Me.Label3.TabIndex = 4
-		Me.Label3.Text = "Search:"
-		'
 		'Label4
 		'
 		Me.Label4.AutoSize = True
@@ -225,52 +326,30 @@ Partial Class frmMain
 		Me.Label4.TabIndex = 6
 		Me.Label4.Text = "Search:"
 		'
-		'tbxPartSearch
-		'
-		Me.tbxPartSearch.Location = New System.Drawing.Point(279, 9)
-		Me.tbxPartSearch.Name = "tbxPartSearch"
-		Me.tbxPartSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxPartSearch.TabIndex = 5
-		'
-		'btnMachineSearch
-		'
-		Me.btnMachineSearch.Image = CType(resources.GetObject("btnMachineSearch.Image"), System.Drawing.Image)
-		Me.btnMachineSearch.Location = New System.Drawing.Point(404, 8)
-		Me.btnMachineSearch.Name = "btnMachineSearch"
-		Me.btnMachineSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnMachineSearch.TabIndex = 3
-		Me.btnMachineSearch.UseVisualStyleBackColor = True
-		'
-		'btnPartSearch
-		'
-		Me.btnPartSearch.Image = CType(resources.GetObject("btnPartSearch.Image"), System.Drawing.Image)
-		Me.btnPartSearch.Location = New System.Drawing.Point(404, 8)
-		Me.btnPartSearch.Name = "btnPartSearch"
-		Me.btnPartSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnPartSearch.TabIndex = 7
-		Me.btnPartSearch.UseVisualStyleBackColor = True
-		'
 		'pnlMaintenance
 		'
 		Me.pnlMaintenance.Controls.Add(Me.btnMaintenanceSearch)
 		Me.pnlMaintenance.Controls.Add(Me.tbxMaintenanceSearch)
 		Me.pnlMaintenance.Controls.Add(Me.btnAddMaintenance)
-		Me.pnlMaintenance.Controls.Add(Me.lvwMaintenanceList)
+		Me.pnlMaintenance.Controls.Add(Me.lvwPMList)
 		Me.pnlMaintenance.Controls.Add(Me.Label5)
 		Me.pnlMaintenance.Controls.Add(Me.Label6)
-		Me.pnlMaintenance.Location = New System.Drawing.Point(12, 464)
+		Me.pnlMaintenance.Location = New System.Drawing.Point(12, 533)
 		Me.pnlMaintenance.Name = "pnlMaintenance"
-		Me.pnlMaintenance.Size = New System.Drawing.Size(1443, 254)
+		Me.pnlMaintenance.Size = New System.Drawing.Size(1443, 277)
 		Me.pnlMaintenance.TabIndex = 8
 		'
 		'btnMaintenanceSearch
 		'
+		Me.btnMaintenanceSearch.BackColor = System.Drawing.Color.DeepSkyBlue
+		Me.btnMaintenanceSearch.FlatAppearance.BorderSize = 0
+		Me.btnMaintenanceSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnMaintenanceSearch.Image = CType(resources.GetObject("btnMaintenanceSearch.Image"), System.Drawing.Image)
 		Me.btnMaintenanceSearch.Location = New System.Drawing.Point(404, 8)
 		Me.btnMaintenanceSearch.Name = "btnMaintenanceSearch"
 		Me.btnMaintenanceSearch.Size = New System.Drawing.Size(24, 24)
 		Me.btnMaintenanceSearch.TabIndex = 7
-		Me.btnMaintenanceSearch.UseVisualStyleBackColor = True
+		Me.btnMaintenanceSearch.UseVisualStyleBackColor = False
 		'
 		'tbxMaintenanceSearch
 		'
@@ -281,29 +360,33 @@ Partial Class frmMain
 		'
 		'btnAddMaintenance
 		'
+		Me.btnAddMaintenance.BackColor = System.Drawing.Color.LimeGreen
+		Me.btnAddMaintenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnAddMaintenance.ForeColor = System.Drawing.Color.White
 		Me.btnAddMaintenance.Location = New System.Drawing.Point(1290, 8)
 		Me.btnAddMaintenance.Name = "btnAddMaintenance"
-		Me.btnAddMaintenance.Size = New System.Drawing.Size(149, 25)
+		Me.btnAddMaintenance.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddMaintenance.TabIndex = 1
 		Me.btnAddMaintenance.Text = "Add Maintenance"
-		Me.btnAddMaintenance.UseVisualStyleBackColor = True
+		Me.btnAddMaintenance.UseVisualStyleBackColor = False
 		'
-		'lvwMaintenanceList
+		'lvwPMList
 		'
-		Me.lvwMaintenanceList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+		Me.lvwPMList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lvwMaintenanceList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_Type, Me.col_PM_MachineName, Me.col_PM_PartName, Me.col_PM_PartQty, Me.col_PM_Frequency, Me.col_PM_PartPrice, Me.col_PM_TotalPrice, Me.col_PM_LastPM, Me.col_PM_NextPM, Me.col_PM_Action})
-		Me.lvwMaintenanceList.FullRowSelect = True
-		Me.lvwMaintenanceList.GridLines = True
-		Me.lvwMaintenanceList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
-		Me.lvwMaintenanceList.HideSelection = False
-		Me.lvwMaintenanceList.Location = New System.Drawing.Point(6, 37)
-		Me.lvwMaintenanceList.Name = "lvwMaintenanceList"
-		Me.lvwMaintenanceList.Size = New System.Drawing.Size(1433, 214)
-		Me.lvwMaintenanceList.TabIndex = 1
-		Me.lvwMaintenanceList.UseCompatibleStateImageBehavior = False
-		Me.lvwMaintenanceList.View = System.Windows.Forms.View.Details
+		Me.lvwPMList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_Type, Me.col_PM_MachineName, Me.col_PM_PartName, Me.col_PM_PartQty, Me.col_PM_Frequency, Me.col_PM_PartPrice, Me.col_PM_TotalPrice, Me.col_PM_LastPM, Me.col_PM_NextPM, Me.col_PM_Action})
+		Me.lvwPMList.ContextMenuStrip = Me.cmsPMList
+		Me.lvwPMList.FullRowSelect = True
+		Me.lvwPMList.GridLines = True
+		Me.lvwPMList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+		Me.lvwPMList.HideSelection = False
+		Me.lvwPMList.Location = New System.Drawing.Point(6, 37)
+		Me.lvwPMList.Name = "lvwPMList"
+		Me.lvwPMList.Size = New System.Drawing.Size(1433, 237)
+		Me.lvwPMList.TabIndex = 1
+		Me.lvwPMList.UseCompatibleStateImageBehavior = False
+		Me.lvwPMList.View = System.Windows.Forms.View.Details
 		'
 		'col_PM_ID
 		'
@@ -312,6 +395,7 @@ Partial Class frmMain
 		'col_PM_Type
 		'
 		Me.col_PM_Type.Text = "Type"
+		Me.col_PM_Type.Width = 80
 		'
 		'col_PM_MachineName
 		'
@@ -323,25 +407,6 @@ Partial Class frmMain
 		Me.col_PM_PartName.Text = "Part Name"
 		Me.col_PM_PartName.Width = 200
 		'
-		'Label5
-		'
-		Me.Label5.AutoSize = True
-		Me.Label5.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label5.Location = New System.Drawing.Point(3, 10)
-		Me.Label5.Name = "Label5"
-		Me.Label5.Size = New System.Drawing.Size(186, 18)
-		Me.Label5.TabIndex = 1
-		Me.Label5.Text = "MAINTENANCE LIST"
-		'
-		'Label6
-		'
-		Me.Label6.AutoSize = True
-		Me.Label6.Location = New System.Drawing.Point(221, 12)
-		Me.Label6.Name = "Label6"
-		Me.Label6.Size = New System.Drawing.Size(60, 16)
-		Me.Label6.TabIndex = 6
-		Me.Label6.Text = "Search:"
-		'
 		'col_PM_PartQty
 		'
 		Me.col_PM_PartQty.Text = "QTY"
@@ -351,7 +416,7 @@ Partial Class frmMain
 		'
 		Me.col_PM_Frequency.Text = "Frequency"
 		Me.col_PM_Frequency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.col_PM_Frequency.Width = 100
+		Me.col_PM_Frequency.Width = 90
 		'
 		'col_PM_PartPrice
 		'
@@ -378,28 +443,108 @@ Partial Class frmMain
 		'col_PM_Action
 		'
 		Me.col_PM_Action.Text = "Action"
-		Me.col_PM_Action.Width = 310
+		Me.col_PM_Action.Width = 300
+		'
+		'cmsPMList
+		'
+		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete})
+		Me.cmsPMList.Name = "cmsPMList"
+		Me.cmsPMList.Size = New System.Drawing.Size(108, 48)
+		'
+		'mnu_PML_Edit
+		'
+		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.edit16
+		Me.mnu_PML_Edit.Name = "mnu_PML_Edit"
+		Me.mnu_PML_Edit.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PML_Edit.Text = "Edit"
+		'
+		'mnu_PML_Delete
+		'
+		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.delete16
+		Me.mnu_PML_Delete.Name = "mnu_PML_Delete"
+		Me.mnu_PML_Delete.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PML_Delete.Text = "Delete"
+		'
+		'Label5
+		'
+		Me.Label5.AutoSize = True
+		Me.Label5.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label5.Location = New System.Drawing.Point(3, 10)
+		Me.Label5.Name = "Label5"
+		Me.Label5.Size = New System.Drawing.Size(186, 18)
+		Me.Label5.TabIndex = 1
+		Me.Label5.Text = "MAINTENANCE LIST"
+		'
+		'Label6
+		'
+		Me.Label6.AutoSize = True
+		Me.Label6.Location = New System.Drawing.Point(221, 12)
+		Me.Label6.Name = "Label6"
+		Me.Label6.Size = New System.Drawing.Size(60, 16)
+		Me.Label6.TabIndex = 6
+		Me.Label6.Text = "Search:"
 		'
 		'pnlDashboard
 		'
-		Me.pnlDashboard.Location = New System.Drawing.Point(728, 12)
+		Me.pnlDashboard.Location = New System.Drawing.Point(728, 81)
 		Me.pnlDashboard.Name = "pnlDashboard"
 		Me.pnlDashboard.Size = New System.Drawing.Size(727, 446)
 		Me.pnlDashboard.TabIndex = 9
+		'
+		'lblTitle
+		'
+		Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.ForeColor = System.Drawing.Color.White
+		Me.lblTitle.Location = New System.Drawing.Point(0, 0)
+		Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+		Me.lblTitle.Name = "lblTitle"
+		Me.lblTitle.Size = New System.Drawing.Size(1465, 57)
+		Me.lblTitle.TabIndex = 12
+		Me.lblTitle.Text = "PM.Sys"
+		Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'pnlFooter
+		'
+		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.pnlFooter.Location = New System.Drawing.Point(0, 837)
+		Me.pnlFooter.Name = "pnlFooter"
+		Me.pnlFooter.Size = New System.Drawing.Size(1465, 50)
+		Me.pnlFooter.TabIndex = 13
+		'
+		'btnExit
+		'
+		Me.btnExit.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.btnExit.FlatAppearance.BorderSize = 0
+		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
+		Me.btnExit.Location = New System.Drawing.Point(1431, 0)
+		Me.btnExit.Name = "btnExit"
+		Me.btnExit.Size = New System.Drawing.Size(32, 32)
+		Me.btnExit.TabIndex = 14
+		Me.btnExit.UseVisualStyleBackColor = False
 		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.White
-		Me.ClientSize = New System.Drawing.Size(1465, 730)
+		Me.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.ClientSize = New System.Drawing.Size(1465, 887)
+		Me.Controls.Add(Me.btnExit)
+		Me.Controls.Add(Me.pnlFooter)
+		Me.Controls.Add(Me.lblTitle)
 		Me.Controls.Add(Me.pnlDashboard)
 		Me.Controls.Add(Me.pnlMaintenance)
 		Me.Controls.Add(Me.pnlPart)
 		Me.Controls.Add(Me.pnlMachine)
 		Me.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-		Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+		Me.Margin = New System.Windows.Forms.Padding(4)
 		Me.MaximizeBox = False
 		Me.MinimizeBox = False
 		Me.Name = "frmMain"
@@ -407,10 +552,13 @@ Partial Class frmMain
 		Me.Text = "PM.Sys"
 		Me.pnlMachine.ResumeLayout(False)
 		Me.pnlMachine.PerformLayout()
+		Me.cmsMachineList.ResumeLayout(False)
 		Me.pnlPart.ResumeLayout(False)
 		Me.pnlPart.PerformLayout()
+		Me.cmsPartList.ResumeLayout(False)
 		Me.pnlMaintenance.ResumeLayout(False)
 		Me.pnlMaintenance.PerformLayout()
+		Me.cmsPMList.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -440,7 +588,7 @@ Partial Class frmMain
 	Friend WithEvents btnMaintenanceSearch As Button
 	Friend WithEvents tbxMaintenanceSearch As TextBox
 	Friend WithEvents btnAddMaintenance As Button
-	Friend WithEvents lvwMaintenanceList As ListView
+	Friend WithEvents lvwPMList As ListView
 	Friend WithEvents col_PM_ID As ColumnHeader
 	Friend WithEvents col_PM_Type As ColumnHeader
 	Friend WithEvents col_PM_MachineName As ColumnHeader
@@ -455,4 +603,17 @@ Partial Class frmMain
 	Friend WithEvents col_PM_NextPM As ColumnHeader
 	Friend WithEvents col_PM_Action As ColumnHeader
 	Friend WithEvents pnlDashboard As Panel
+	Friend WithEvents lblTitle As Label
+	Friend WithEvents pnlFooter As Panel
+	Friend WithEvents btnExit As Button
+	Friend WithEvents col_MC_Code As ColumnHeader
+	Friend WithEvents cmsPartList As ContextMenuStrip
+	Friend WithEvents mnu_PL_Edit As ToolStripMenuItem
+	Friend WithEvents mnu_PL_Delete As ToolStripMenuItem
+	Friend WithEvents cmsMachineList As ContextMenuStrip
+	Friend WithEvents mnu_ML_Edit As ToolStripMenuItem
+	Friend WithEvents mnu_ML_Delete As ToolStripMenuItem
+	Friend WithEvents cmsPMList As ContextMenuStrip
+	Friend WithEvents mnu_PML_Edit As ToolStripMenuItem
+	Friend WithEvents mnu_PML_Delete As ToolStripMenuItem
 End Class

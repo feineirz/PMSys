@@ -125,6 +125,12 @@
     <Compile Include="frmAddMachine.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAddPM.Designer.vb">
+      <DependentUpon>frmAddPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAddPart.Designer.vb">
       <DependentUpon>frmAddPart.vb</DependentUpon>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="frmAddMachine.resx">
       <DependentUpon>frmAddMachine.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddPM.resx">
+      <DependentUpon>frmAddPM.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddPart.resx">
       <DependentUpon>frmAddPart.vb</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +209,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="maintenance.ico" />
+    <None Include="Resources\delete16.png" />
+    <None Include="Resources\edit16.png" />
+    <None Include="Resources\close16.png" />
+    <None Include="Resources\floppy_disk16.png" />
     <None Include="Resources\DBInit.sql.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
