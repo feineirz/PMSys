@@ -21,9 +21,14 @@
 
 #End Region
 
-	Sub ListMachine()
+	Sub ListMachine(Optional Condition As String = "")
 
-		Dim MachineList = Machine.List()
+		Condition = Condition.Replace("'", "''")
+		If Not Condition = "" Then
+			Condition = "machine_code LIKE '%" + Condition + "%' OR machine_name LIKE '%" + Condition + "%'"
+		End If
+
+		Dim MachineList = Machine.List(Condition)
 		Dim lvi As ListViewItem
 		lvwMachine.Items.Clear()
 
@@ -39,9 +44,14 @@
 
 	End Sub
 
-	Sub ListPart()
+	Sub ListPart(Optional Condition As String = "")
 
-		Dim PartList = Part.List()
+		Condition = Condition.Replace("'", "''")
+		If Not Condition = "" Then
+			Condition = "part_no LIKE '%" + Condition + "%' OR part_name LIKE '%" + Condition + "%'"
+		End If
+
+		Dim PartList = Part.List(Condition)
 		Dim lvi As ListViewItem
 		lvwPartList.Items.Clear()
 
@@ -56,7 +66,12 @@
 
 	End Sub
 
-	Sub ListPM()
+	Sub ListPM(Optional Condition As String = "")
+
+		Condition = Condition.Replace("'", "''")
+		If Not Condition = "" Then
+			Condition = "part_no LIKE '%" + Condition + "%' OR part_name LIKE '%" + Condition + "%'"
+		End If
 
 		Dim mc As Machine
 		Dim pt As Part
@@ -193,6 +208,18 @@
 			frmMachineInfo.ShowMachineInfo(lvwMachine.SelectedItems(0).Text)
 			frmMachineInfo.ShowDialog()
 		End If
+
+	End Sub
+
+	Private Sub btnMachineSearch_Click(sender As Object, e As EventArgs) Handles btnMachineSearch.Click
+
+		ListMachine(tbxMachineSearch.Text.Trim)
+
+	End Sub
+
+	Private Sub btnPartSearch_Click(sender As Object, e As EventArgs) Handles btnPartSearch.Click
+
+		ListPart(tbxPartSearch.Text.Trim)
 
 	End Sub
 End Class

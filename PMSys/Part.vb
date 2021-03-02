@@ -46,7 +46,7 @@ Public Class Part
 
 	End Function
 
-	Shared Function GetMySQLConnection As MySqlConnection
+	Shared Function GetMySQLConnection() As MySqlConnection
 
 		Try
 			Dim SQLConn As New MySqlConnection(ConnString)
@@ -58,7 +58,7 @@ Public Class Part
 
 		End Try
 
-	End Function 
+	End Function
 
 	Private _part_id As Integer
 	Private _part_no As String
@@ -117,124 +117,124 @@ Public Class Part
 
 #End Region
 
-'============================== Class Properties =============================='
+	'============================== Class Properties =============================='
 
 #Region "Class Properties"
 
-  '--- part_id ---'
-  ReadOnly Property part_id As Integer
-    Get
-      Return _part_id
-    End Get
-  End Property
+	'--- part_id ---'
+	ReadOnly Property part_id As Integer
+		Get
+			Return _part_id
+		End Get
+	End Property
 
-  '--- part_no ---'
-  Property part_no As String
-    Get
-      Return _part_no
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET part_no = '" & value & "'" &
-             " WHERE part_id = '" & _part_id & "'"
+	'--- part_no ---'
+	Property part_no As String
+		Get
+			Return _part_no
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET part_no = '" & value & "'" &
+						 " WHERE part_id = '" & _part_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Part.part_no" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Part.part_no" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _part_no = value
-    End Set
-  End Property
+			_part_no = value
+		End Set
+	End Property
 
-  '--- part_name ---'
-  Property part_name As String
-    Get
-      Return _part_name
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET part_name = '" & value & "'" &
-             " WHERE part_id = '" & _part_id & "'"
+	'--- part_name ---'
+	Property part_name As String
+		Get
+			Return _part_name
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET part_name = '" & value & "'" &
+						 " WHERE part_id = '" & _part_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Part.part_name" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Part.part_name" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _part_name = value
-    End Set
-  End Property
+			_part_name = value
+		End Set
+	End Property
 
-  '--- price ---'
-  Property price As Decimal
-    Get
-      Return _price
-    End Get
-    Set(ByVal value As Decimal)
-      _QRY = "UPDATE " & tableName &
-             " SET price = '" & value & "'" &
-             " WHERE part_id = '" & _part_id & "'"
+	'--- price ---'
+	Property price As Decimal
+		Get
+			Return _price
+		End Get
+		Set(ByVal value As Decimal)
+			_QRY = "UPDATE " & tableName &
+						 " SET price = '" & value & "'" &
+						 " WHERE part_id = '" & _part_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Part.price" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Part.price" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _price = value
-    End Set
-  End Property
+			_price = value
+		End Set
+	End Property
 
-  '--- remark ---'
-  Property remark As String
-    Get
-      Return _remark
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET remark = '" & value & "'" &
-             " WHERE part_id = '" & _part_id & "'"
+	'--- remark ---'
+	Property remark As String
+		Get
+			Return _remark
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET remark = '" & value & "'" &
+						 " WHERE part_id = '" & _part_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : Part.remark" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : Part.remark" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _remark = value
-    End Set
-  End Property
+			_remark = value
+		End Set
+	End Property
 
 #End Region
 
-'============================== Required Function =============================='
+	'============================== Required Function =============================='
 
 #Region "Required Function"
 
@@ -333,9 +333,9 @@ Public Class Part
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-		Try		
+		Try
 			QRY = "DELETE FROM" &
-						" " & tableName & 
+						" " & tableName &
 						" WHERE part_id='" & Part_part_id & "'"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -512,10 +512,10 @@ Public Class Part
 
 	End Function
 
-  '---------- TOCLASSINFO ----------'
-  Function ToPartInfo() As PartInfo
+	'---------- TOCLASSINFO ----------'
+	Function ToPartInfo() As PartInfo
 
-    Dim CI As PartInfo = Nothing
+		Dim CI As PartInfo = Nothing
 
 		CI.part_id = _part_id
 		CI.part_no = _part_no
@@ -523,9 +523,9 @@ Public Class Part
 		CI.price = _price
 		CI.remark = _remark
 
-    Return CI
+		Return CI
 
-  End Function
+	End Function
 
 	'---------- COUNT ----------'
 	Shared Function Count(ByVal Condition As String, Optional SQLConn As MySqlConnection = Nothing) As Integer
@@ -542,8 +542,8 @@ Public Class Part
 		Dim QRY As String
 
 		Try
-			QRY = "SELECT COUNT(part_id) " & _
-						" FROM Part " & _
+			QRY = "SELECT COUNT(part_id) " &
+						" FROM Part " &
 						" WHERE " & Condition
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -600,15 +600,15 @@ Public Class Part
 
 #End Region
 
-'============================== Custom Functions =============================='
+	'============================== Custom Functions =============================='
 
 #Region "Custom Functions"
 
-  '-----------------------------------------------'
-  '---------- ADD CUSTOM FUNCTIONS HERE ----------'
-  '-----------------------------------------------'
-  '---- DO NOT COPY OR PASTE ON THIS SECTION -----'
-  '-----------------------------------------------'
+	'-----------------------------------------------'
+	'---------- ADD CUSTOM FUNCTIONS HERE ----------'
+	'-----------------------------------------------'
+	'---- DO NOT COPY OR PASTE ON THIS SECTION -----'
+	'-----------------------------------------------'
 
 
 

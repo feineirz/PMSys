@@ -101,7 +101,7 @@ Partial Class frmAddPM
 		Me.lblTitle.Name = "lblTitle"
 		Me.lblTitle.Size = New System.Drawing.Size(541, 57)
 		Me.lblTitle.TabIndex = 11
-		Me.lblTitle.Text = "NEW PM"
+		Me.lblTitle.Text = "NEW PM SCHEDULE"
 		Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'Label1

@@ -48,7 +48,7 @@
 		Dim pm As New PM(PMID)
 		Dim i, idx As Integer
 
-		lblTitle.Text = "Edit PM Info"
+		lblTitle.Text = "Edit PM Schedule Info"
 		lblMode.Text = "Edit"
 		lblPMID.Text = pm.pm_id
 		tbxPMType.Text = pm.pm_type

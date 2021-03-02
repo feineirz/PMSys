@@ -71,6 +71,8 @@ Partial Class frmMain
 		Me.cmsPMList = New System.Windows.Forms.ContextMenuStrip(Me.components)
 		Me.mnu_PML_Edit = New System.Windows.Forms.ToolStripMenuItem()
 		Me.mnu_PML_Delete = New System.Windows.Forms.ToolStripMenuItem()
+		Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+		Me.mnu_PML_CompleteSchedule = New System.Windows.Forms.ToolStripMenuItem()
 		Me.Label5 = New System.Windows.Forms.Label()
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.pnlDashboard = New System.Windows.Forms.Panel()
@@ -369,7 +371,7 @@ Partial Class frmMain
 		Me.btnAddMaintenance.Name = "btnAddMaintenance"
 		Me.btnAddMaintenance.Size = New System.Drawing.Size(149, 26)
 		Me.btnAddMaintenance.TabIndex = 1
-		Me.btnAddMaintenance.Text = "Add Maintenance"
+		Me.btnAddMaintenance.Text = "Add PM Schedule"
 		Me.btnAddMaintenance.UseVisualStyleBackColor = False
 		'
 		'lvwPMList
@@ -450,23 +452,35 @@ Partial Class frmMain
 		'
 		'cmsPMList
 		'
-		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete})
+		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete, Me.ToolStripMenuItem1, Me.mnu_PML_CompleteSchedule})
 		Me.cmsPMList.Name = "cmsPMList"
-		Me.cmsPMList.Size = New System.Drawing.Size(108, 48)
+		Me.cmsPMList.Size = New System.Drawing.Size(178, 76)
 		'
 		'mnu_PML_Edit
 		'
 		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.edit16
 		Me.mnu_PML_Edit.Name = "mnu_PML_Edit"
-		Me.mnu_PML_Edit.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PML_Edit.Size = New System.Drawing.Size(177, 22)
 		Me.mnu_PML_Edit.Text = "Edit"
 		'
 		'mnu_PML_Delete
 		'
 		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.delete16
 		Me.mnu_PML_Delete.Name = "mnu_PML_Delete"
-		Me.mnu_PML_Delete.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_PML_Delete.Size = New System.Drawing.Size(177, 22)
 		Me.mnu_PML_Delete.Text = "Delete"
+		'
+		'ToolStripMenuItem1
+		'
+		Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 6)
+		'
+		'mnu_PML_CompleteSchedule
+		'
+		Me.mnu_PML_CompleteSchedule.Image = Global.PMSys.My.Resources.Resources.check_mark16
+		Me.mnu_PML_CompleteSchedule.Name = "mnu_PML_CompleteSchedule"
+		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_CompleteSchedule.Text = "Complete Schedule"
 		'
 		'Label5
 		'
@@ -474,9 +488,9 @@ Partial Class frmMain
 		Me.Label5.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label5.Location = New System.Drawing.Point(3, 10)
 		Me.Label5.Name = "Label5"
-		Me.Label5.Size = New System.Drawing.Size(186, 18)
+		Me.Label5.Size = New System.Drawing.Size(81, 18)
 		Me.Label5.TabIndex = 1
-		Me.Label5.Text = "MAINTENANCE LIST"
+		Me.Label5.Text = "PM LIST"
 		'
 		'Label6
 		'
@@ -619,4 +633,6 @@ Partial Class frmMain
 	Friend WithEvents cmsPMList As ContextMenuStrip
 	Friend WithEvents mnu_PML_Edit As ToolStripMenuItem
 	Friend WithEvents mnu_PML_Delete As ToolStripMenuItem
+	Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+	Friend WithEvents mnu_PML_CompleteSchedule As ToolStripMenuItem
 End Class

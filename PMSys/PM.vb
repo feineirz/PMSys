@@ -46,7 +46,7 @@ Public Class PM
 
 	End Function
 
-	Shared Function GetMySQLConnection As MySqlConnection
+	Shared Function GetMySQLConnection() As MySqlConnection
 
 		Try
 			Dim SQLConn As New MySqlConnection(ConnString)
@@ -58,7 +58,7 @@ Public Class PM
 
 		End Try
 
-	End Function 
+	End Function
 
 	Private _pm_id As Integer
 	Private _pm_type As String
@@ -129,228 +129,228 @@ Public Class PM
 
 #End Region
 
-'============================== Class Properties =============================='
+	'============================== Class Properties =============================='
 
 #Region "Class Properties"
 
-  '--- pm_id ---'
-  ReadOnly Property pm_id As Integer
-    Get
-      Return _pm_id
-    End Get
-  End Property
+	'--- pm_id ---'
+	ReadOnly Property pm_id As Integer
+		Get
+			Return _pm_id
+		End Get
+	End Property
 
-  '--- pm_type ---'
-  Property pm_type As String
-    Get
-      Return _pm_type
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_type = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- pm_type ---'
+	Property pm_type As String
+		Get
+			Return _pm_type
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_type = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.pm_type" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.pm_type" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_type = value
-    End Set
-  End Property
+			_pm_type = value
+		End Set
+	End Property
 
-  '--- machine_id ---'
-  Property machine_id As Integer
-    Get
-      Return _machine_id
-    End Get
-    Set(ByVal value As Integer)
-      _QRY = "UPDATE " & tableName &
-             " SET machine_id = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- machine_id ---'
+	Property machine_id As Integer
+		Get
+			Return _machine_id
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET machine_id = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.machine_id" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.machine_id" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _machine_id = value
-    End Set
-  End Property
+			_machine_id = value
+		End Set
+	End Property
 
-  '--- part_id ---'
-  Property part_id As Integer
-    Get
-      Return _part_id
-    End Get
-    Set(ByVal value As Integer)
-      _QRY = "UPDATE " & tableName &
-             " SET part_id = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- part_id ---'
+	Property part_id As Integer
+		Get
+			Return _part_id
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET part_id = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.part_id" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.part_id" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _part_id = value
-    End Set
-  End Property
+			_part_id = value
+		End Set
+	End Property
 
-  '--- unit_require ---'
-  Property unit_require As Integer
-    Get
-      Return _unit_require
-    End Get
-    Set(ByVal value As Integer)
-      _QRY = "UPDATE " & tableName &
-             " SET unit_require = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- unit_require ---'
+	Property unit_require As Integer
+		Get
+			Return _unit_require
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET unit_require = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.unit_require" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.unit_require" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _unit_require = value
-    End Set
-  End Property
+			_unit_require = value
+		End Set
+	End Property
 
-  '--- frequency ---'
-  Property frequency As Integer
-    Get
-      Return _frequency
-    End Get
-    Set(ByVal value As Integer)
-      _QRY = "UPDATE " & tableName &
-             " SET frequency = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- frequency ---'
+	Property frequency As Integer
+		Get
+			Return _frequency
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET frequency = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.frequency" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.frequency" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _frequency = value
-    End Set
-  End Property
+			_frequency = value
+		End Set
+	End Property
 
-  '--- pm_action ---'
-  Property pm_action As String
-    Get
-      Return _pm_action
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_action = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- pm_action ---'
+	Property pm_action As String
+		Get
+			Return _pm_action
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_action = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.pm_action" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.pm_action" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_action = value
-    End Set
-  End Property
+			_pm_action = value
+		End Set
+	End Property
 
-  '--- last_pm ---'
-  Property last_pm As Date
-    Get
-      Return _last_pm
-    End Get
-    Set(ByVal value As Date)
-      _QRY = "UPDATE " & tableName &
-             " SET last_pm = '" & value.ToString("yyyy-M-d") & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- last_pm ---'
+	Property last_pm As Date
+		Get
+			Return _last_pm
+		End Get
+		Set(ByVal value As Date)
+			_QRY = "UPDATE " & tableName &
+						 " SET last_pm = '" & value.ToString("yyyy-M-d") & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.last_pm" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.last_pm" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _last_pm = value
-    End Set
-  End Property
+			_last_pm = value
+		End Set
+	End Property
 
-  '--- remark ---'
-  Property remark As String
-    Get
-      Return _remark
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET remark = '" & value & "'" &
-             " WHERE pm_id = '" & _pm_id & "'"
+	'--- remark ---'
+	Property remark As String
+		Get
+			Return _remark
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET remark = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PM.remark" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.remark" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _remark = value
-    End Set
-  End Property
+			_remark = value
+		End Set
+	End Property
 
 #End Region
 
-'============================== Required Function =============================='
+	'============================== Required Function =============================='
 
 #Region "Required Function"
 
@@ -461,9 +461,9 @@ Public Class PM
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-		Try		
+		Try
 			QRY = "DELETE FROM" &
-						" " & tableName & 
+						" " & tableName &
 						" WHERE pm_id='" & PM_pm_id & "'"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -644,10 +644,10 @@ Public Class PM
 
 	End Function
 
-  '---------- TOCLASSINFO ----------'
-  Function ToPMInfo() As PMInfo
+	'---------- TOCLASSINFO ----------'
+	Function ToPMInfo() As PMInfo
 
-    Dim CI As PMInfo = Nothing
+		Dim CI As PMInfo = Nothing
 
 		CI.pm_id = _pm_id
 		CI.pm_type = _pm_type
@@ -659,9 +659,9 @@ Public Class PM
 		CI.last_pm = _last_pm
 		CI.remark = _remark
 
-    Return CI
+		Return CI
 
-  End Function
+	End Function
 
 	'---------- COUNT ----------'
 	Shared Function Count(ByVal Condition As String, Optional SQLConn As MySqlConnection = Nothing) As Integer
@@ -678,8 +678,8 @@ Public Class PM
 		Dim QRY As String
 
 		Try
-			QRY = "SELECT COUNT(pm_id) " & _
-						" FROM PM " & _
+			QRY = "SELECT COUNT(pm_id) " &
+						" FROM PM " &
 						" WHERE " & Condition
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -736,15 +736,15 @@ Public Class PM
 
 #End Region
 
-'============================== Custom Functions =============================='
+	'============================== Custom Functions =============================='
 
 #Region "Custom Functions"
 
-  '-----------------------------------------------'
-  '---------- ADD CUSTOM FUNCTIONS HERE ----------'
-  '-----------------------------------------------'
-  '---- DO NOT COPY OR PASTE ON THIS SECTION -----'
-  '-----------------------------------------------'
+	'-----------------------------------------------'
+	'---------- ADD CUSTOM FUNCTIONS HERE ----------'
+	'-----------------------------------------------'
+	'---- DO NOT COPY OR PASTE ON THIS SECTION -----'
+	'-----------------------------------------------'
 
 
 
