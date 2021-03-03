@@ -27,23 +27,24 @@ Partial Class frmAddPMHistory
 		Me.picIcon = New System.Windows.Forms.PictureBox()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
+		Me.btnSave = New System.Windows.Forms.Button()
 		Me.btnClose = New System.Windows.Forms.Button()
 		Me.Label2 = New System.Windows.Forms.Label()
-		Me.tbxPMType = New System.Windows.Forms.TextBox()
+		Me.tbxReporter = New System.Windows.Forms.TextBox()
 		Me.Label6 = New System.Windows.Forms.Label()
-		Me.dtpLastPM = New System.Windows.Forms.DateTimePicker()
+		Me.dtpPMDate = New System.Windows.Forms.DateTimePicker()
 		Me.Label3 = New System.Windows.Forms.Label()
-		Me.TextBox1 = New System.Windows.Forms.TextBox()
+		Me.tbxOperatorName = New System.Windows.Forms.TextBox()
 		Me.Label10 = New System.Windows.Forms.Label()
 		Me.tbxRemark = New System.Windows.Forms.TextBox()
 		Me.Label8 = New System.Windows.Forms.Label()
-		Me.tbxAction = New System.Windows.Forms.TextBox()
+		Me.tbxPMResult = New System.Windows.Forms.TextBox()
 		Me.Label4 = New System.Windows.Forms.Label()
 		Me.lblPMID = New System.Windows.Forms.Label()
 		Me.lvwDetails = New System.Windows.Forms.ListView()
+		Me.col_DT_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_DT_Properties = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_DT_Value = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.col_DT_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlFooter.SuspendLayout()
@@ -90,6 +91,7 @@ Partial Class frmAddPMHistory
 		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.pnlFooter.Controls.Add(Me.btnSave)
 		Me.pnlFooter.Controls.Add(Me.btnClose)
 		Me.pnlFooter.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.pnlFooter.Location = New System.Drawing.Point(0, 707)
@@ -97,6 +99,18 @@ Partial Class frmAddPMHistory
 		Me.pnlFooter.Name = "pnlFooter"
 		Me.pnlFooter.Size = New System.Drawing.Size(574, 50)
 		Me.pnlFooter.TabIndex = 14
+		'
+		'btnSave
+		'
+		Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnSave.Image = Global.PMSys.My.Resources.Resources.floppy_disk16
+		Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnSave.Location = New System.Drawing.Point(299, 9)
+		Me.btnSave.Name = "btnSave"
+		Me.btnSave.Size = New System.Drawing.Size(130, 32)
+		Me.btnSave.TabIndex = 8
+		Me.btnSave.Text = "Save"
+		Me.btnSave.UseVisualStyleBackColor = True
 		'
 		'btnClose
 		'
@@ -120,14 +134,14 @@ Partial Class frmAddPMHistory
 		Me.Label2.TabIndex = 17
 		Me.Label2.Text = "Reporter"
 		'
-		'tbxPMType
+		'tbxReporter
 		'
-		Me.tbxPMType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+		Me.tbxReporter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPMType.Location = New System.Drawing.Point(45, 343)
-		Me.tbxPMType.Name = "tbxPMType"
-		Me.tbxPMType.Size = New System.Drawing.Size(486, 27)
-		Me.tbxPMType.TabIndex = 2
+		Me.tbxReporter.Location = New System.Drawing.Point(45, 343)
+		Me.tbxReporter.Name = "tbxReporter"
+		Me.tbxReporter.Size = New System.Drawing.Size(486, 27)
+		Me.tbxReporter.TabIndex = 2
 		'
 		'Label6
 		'
@@ -138,32 +152,32 @@ Partial Class frmAddPMHistory
 		Me.Label6.TabIndex = 26
 		Me.Label6.Text = "PM Date"
 		'
-		'dtpLastPM
+		'dtpPMDate
 		'
-		Me.dtpLastPM.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+		Me.dtpPMDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.dtpLastPM.Location = New System.Drawing.Point(45, 399)
-		Me.dtpLastPM.Name = "dtpLastPM"
-		Me.dtpLastPM.Size = New System.Drawing.Size(486, 27)
-		Me.dtpLastPM.TabIndex = 3
+		Me.dtpPMDate.Location = New System.Drawing.Point(45, 399)
+		Me.dtpPMDate.Name = "dtpPMDate"
+		Me.dtpPMDate.Size = New System.Drawing.Size(486, 27)
+		Me.dtpPMDate.TabIndex = 3
 		'
 		'Label3
 		'
 		Me.Label3.AutoSize = True
 		Me.Label3.Location = New System.Drawing.Point(42, 266)
 		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(80, 18)
+		Me.Label3.Size = New System.Drawing.Size(133, 18)
 		Me.Label3.TabIndex = 28
-		Me.Label3.Text = "Operator"
+		Me.Label3.Text = "Operator Name"
 		'
-		'TextBox1
+		'tbxOperatorName
 		'
-		Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+		Me.tbxOperatorName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.TextBox1.Location = New System.Drawing.Point(45, 287)
-		Me.TextBox1.Name = "TextBox1"
-		Me.TextBox1.Size = New System.Drawing.Size(486, 27)
-		Me.TextBox1.TabIndex = 1
+		Me.tbxOperatorName.Location = New System.Drawing.Point(45, 287)
+		Me.tbxOperatorName.Name = "tbxOperatorName"
+		Me.tbxOperatorName.Size = New System.Drawing.Size(486, 27)
+		Me.tbxOperatorName.TabIndex = 1
 		'
 		'Label10
 		'
@@ -193,14 +207,14 @@ Partial Class frmAddPMHistory
 		Me.Label8.TabIndex = 35
 		Me.Label8.Text = "PM Result"
 		'
-		'tbxAction
+		'tbxPMResult
 		'
-		Me.tbxAction.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+		Me.tbxPMResult.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxAction.Location = New System.Drawing.Point(45, 455)
-		Me.tbxAction.Name = "tbxAction"
-		Me.tbxAction.Size = New System.Drawing.Size(486, 27)
-		Me.tbxAction.TabIndex = 4
+		Me.tbxPMResult.Location = New System.Drawing.Point(45, 455)
+		Me.tbxPMResult.Name = "tbxPMResult"
+		Me.tbxPMResult.Size = New System.Drawing.Size(486, 27)
+		Me.tbxPMResult.TabIndex = 4
 		'
 		'Label4
 		'
@@ -223,6 +237,7 @@ Partial Class frmAddPMHistory
 		'lvwDetails
 		'
 		Me.lvwDetails.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_DT_ID, Me.col_DT_Properties, Me.col_DT_Value})
+		Me.lvwDetails.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lvwDetails.FullRowSelect = True
 		Me.lvwDetails.GridLines = True
 		Me.lvwDetails.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
@@ -234,21 +249,21 @@ Partial Class frmAddPMHistory
 		Me.lvwDetails.UseCompatibleStateImageBehavior = False
 		Me.lvwDetails.View = System.Windows.Forms.View.Details
 		'
-		'col_DT_Properties
-		'
-		Me.col_DT_Properties.Text = "Properties"
-		Me.col_DT_Properties.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.col_DT_Properties.Width = 120
-		'
-		'col_DT_Value
-		'
-		Me.col_DT_Value.Text = "Value"
-		Me.col_DT_Value.Width = 340
-		'
 		'col_DT_ID
 		'
 		Me.col_DT_ID.Text = "ID"
 		Me.col_DT_ID.Width = 0
+		'
+		'col_DT_Properties
+		'
+		Me.col_DT_Properties.Text = "Properties"
+		Me.col_DT_Properties.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_DT_Properties.Width = 100
+		'
+		'col_DT_Value
+		'
+		Me.col_DT_Value.Text = "Value"
+		Me.col_DT_Value.Width = 380
 		'
 		'frmAddPMHistory
 		'
@@ -262,13 +277,13 @@ Partial Class frmAddPMHistory
 		Me.Controls.Add(Me.Label10)
 		Me.Controls.Add(Me.tbxRemark)
 		Me.Controls.Add(Me.Label8)
-		Me.Controls.Add(Me.tbxAction)
+		Me.Controls.Add(Me.tbxPMResult)
 		Me.Controls.Add(Me.Label3)
-		Me.Controls.Add(Me.TextBox1)
+		Me.Controls.Add(Me.tbxOperatorName)
 		Me.Controls.Add(Me.Label6)
-		Me.Controls.Add(Me.dtpLastPM)
+		Me.Controls.Add(Me.dtpPMDate)
 		Me.Controls.Add(Me.Label2)
-		Me.Controls.Add(Me.tbxPMType)
+		Me.Controls.Add(Me.tbxReporter)
 		Me.Controls.Add(Me.pnlHeader)
 		Me.Controls.Add(Me.pnlFooter)
 		Me.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -292,19 +307,20 @@ Partial Class frmAddPMHistory
 	Friend WithEvents btnClose As Button
 	Friend WithEvents picIcon As PictureBox
 	Friend WithEvents Label2 As Label
-	Friend WithEvents tbxPMType As TextBox
+	Friend WithEvents tbxReporter As TextBox
 	Friend WithEvents Label6 As Label
-	Friend WithEvents dtpLastPM As DateTimePicker
+	Friend WithEvents dtpPMDate As DateTimePicker
 	Friend WithEvents Label3 As Label
-	Friend WithEvents TextBox1 As TextBox
+	Friend WithEvents tbxOperatorName As TextBox
 	Friend WithEvents Label10 As Label
 	Friend WithEvents tbxRemark As TextBox
 	Friend WithEvents Label8 As Label
-	Friend WithEvents tbxAction As TextBox
+	Friend WithEvents tbxPMResult As TextBox
 	Friend WithEvents Label4 As Label
 	Friend WithEvents lblPMID As Label
 	Friend WithEvents lvwDetails As ListView
 	Friend WithEvents col_DT_ID As ColumnHeader
 	Friend WithEvents col_DT_Properties As ColumnHeader
 	Friend WithEvents col_DT_Value As ColumnHeader
+	Friend WithEvents btnSave As Button
 End Class

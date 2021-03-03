@@ -53,8 +53,8 @@ Partial Class frmMain
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Label4 = New System.Windows.Forms.Label()
 		Me.pnlMaintenance = New System.Windows.Forms.Panel()
-		Me.btnMaintenanceSearch = New System.Windows.Forms.Button()
-		Me.tbxMaintenanceSearch = New System.Windows.Forms.TextBox()
+		Me.btnPMSearch = New System.Windows.Forms.Button()
+		Me.tbxPMSearch = New System.Windows.Forms.TextBox()
 		Me.btnAddMaintenance = New System.Windows.Forms.Button()
 		Me.lvwPMList = New System.Windows.Forms.ListView()
 		Me.col_PM_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -79,6 +79,9 @@ Partial Class frmMain
 		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
 		Me.btnExit = New System.Windows.Forms.Button()
+		Me.chkSearch_Type = New System.Windows.Forms.CheckBox()
+		Me.chkSearch_MachineName = New System.Windows.Forms.CheckBox()
+		Me.chkSearch_PartName = New System.Windows.Forms.CheckBox()
 		Me.pnlMachine.SuspendLayout()
 		Me.cmsMachineList.SuspendLayout()
 		Me.pnlPart.SuspendLayout()
@@ -332,8 +335,11 @@ Partial Class frmMain
 		'
 		'pnlMaintenance
 		'
-		Me.pnlMaintenance.Controls.Add(Me.btnMaintenanceSearch)
-		Me.pnlMaintenance.Controls.Add(Me.tbxMaintenanceSearch)
+		Me.pnlMaintenance.Controls.Add(Me.chkSearch_PartName)
+		Me.pnlMaintenance.Controls.Add(Me.chkSearch_MachineName)
+		Me.pnlMaintenance.Controls.Add(Me.chkSearch_Type)
+		Me.pnlMaintenance.Controls.Add(Me.btnPMSearch)
+		Me.pnlMaintenance.Controls.Add(Me.tbxPMSearch)
 		Me.pnlMaintenance.Controls.Add(Me.btnAddMaintenance)
 		Me.pnlMaintenance.Controls.Add(Me.lvwPMList)
 		Me.pnlMaintenance.Controls.Add(Me.Label5)
@@ -343,24 +349,24 @@ Partial Class frmMain
 		Me.pnlMaintenance.Size = New System.Drawing.Size(1443, 277)
 		Me.pnlMaintenance.TabIndex = 8
 		'
-		'btnMaintenanceSearch
+		'btnPMSearch
 		'
-		Me.btnMaintenanceSearch.BackColor = System.Drawing.Color.DeepSkyBlue
-		Me.btnMaintenanceSearch.FlatAppearance.BorderSize = 0
-		Me.btnMaintenanceSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-		Me.btnMaintenanceSearch.Image = CType(resources.GetObject("btnMaintenanceSearch.Image"), System.Drawing.Image)
-		Me.btnMaintenanceSearch.Location = New System.Drawing.Point(1260, 8)
-		Me.btnMaintenanceSearch.Name = "btnMaintenanceSearch"
-		Me.btnMaintenanceSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnMaintenanceSearch.TabIndex = 7
-		Me.btnMaintenanceSearch.UseVisualStyleBackColor = False
+		Me.btnPMSearch.BackColor = System.Drawing.Color.DeepSkyBlue
+		Me.btnPMSearch.FlatAppearance.BorderSize = 0
+		Me.btnPMSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnPMSearch.Image = CType(resources.GetObject("btnPMSearch.Image"), System.Drawing.Image)
+		Me.btnPMSearch.Location = New System.Drawing.Point(1260, 8)
+		Me.btnPMSearch.Name = "btnPMSearch"
+		Me.btnPMSearch.Size = New System.Drawing.Size(24, 24)
+		Me.btnPMSearch.TabIndex = 7
+		Me.btnPMSearch.UseVisualStyleBackColor = False
 		'
-		'tbxMaintenanceSearch
+		'tbxPMSearch
 		'
-		Me.tbxMaintenanceSearch.Location = New System.Drawing.Point(1135, 9)
-		Me.tbxMaintenanceSearch.Name = "tbxMaintenanceSearch"
-		Me.tbxMaintenanceSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxMaintenanceSearch.TabIndex = 5
+		Me.tbxPMSearch.Location = New System.Drawing.Point(1135, 9)
+		Me.tbxPMSearch.Name = "tbxPMSearch"
+		Me.tbxPMSearch.Size = New System.Drawing.Size(119, 23)
+		Me.tbxPMSearch.TabIndex = 5
 		'
 		'btnAddMaintenance
 		'
@@ -410,7 +416,7 @@ Partial Class frmMain
 		'col_PM_PartName
 		'
 		Me.col_PM_PartName.Text = "Part Name"
-		Me.col_PM_PartName.Width = 200
+		Me.col_PM_PartName.Width = 300
 		'
 		'col_PM_PartQty
 		'
@@ -448,38 +454,38 @@ Partial Class frmMain
 		'col_PM_Action
 		'
 		Me.col_PM_Action.Text = "Action"
-		Me.col_PM_Action.Width = 300
+		Me.col_PM_Action.Width = 200
 		'
 		'cmsPMList
 		'
 		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete, Me.ToolStripMenuItem1, Me.mnu_PML_CompleteSchedule})
 		Me.cmsPMList.Name = "cmsPMList"
-		Me.cmsPMList.Size = New System.Drawing.Size(181, 98)
+		Me.cmsPMList.Size = New System.Drawing.Size(178, 76)
 		'
 		'mnu_PML_Edit
 		'
 		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
 		Me.mnu_PML_Edit.Name = "mnu_PML_Edit"
-		Me.mnu_PML_Edit.Size = New System.Drawing.Size(180, 22)
+		Me.mnu_PML_Edit.Size = New System.Drawing.Size(177, 22)
 		Me.mnu_PML_Edit.Text = "Edit"
 		'
 		'mnu_PML_Delete
 		'
 		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
 		Me.mnu_PML_Delete.Name = "mnu_PML_Delete"
-		Me.mnu_PML_Delete.Size = New System.Drawing.Size(180, 22)
+		Me.mnu_PML_Delete.Size = New System.Drawing.Size(177, 22)
 		Me.mnu_PML_Delete.Text = "Delete"
 		'
 		'ToolStripMenuItem1
 		'
 		Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(177, 6)
+		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 6)
 		'
 		'mnu_PML_CompleteSchedule
 		'
 		Me.mnu_PML_CompleteSchedule.Image = Global.PMSys.My.Resources.Resources.file_mark16
 		Me.mnu_PML_CompleteSchedule.Name = "mnu_PML_CompleteSchedule"
-		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(180, 22)
+		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(177, 22)
 		Me.mnu_PML_CompleteSchedule.Text = "Complete Schedule"
 		'
 		'Label5
@@ -545,6 +551,39 @@ Partial Class frmMain
 		Me.btnExit.TabIndex = 14
 		Me.btnExit.UseVisualStyleBackColor = False
 		'
+		'chkSearch_Type
+		'
+		Me.chkSearch_Type.AutoSize = True
+		Me.chkSearch_Type.Location = New System.Drawing.Point(752, 11)
+		Me.chkSearch_Type.Name = "chkSearch_Type"
+		Me.chkSearch_Type.Size = New System.Drawing.Size(59, 20)
+		Me.chkSearch_Type.TabIndex = 8
+		Me.chkSearch_Type.Text = "Type"
+		Me.chkSearch_Type.UseVisualStyleBackColor = True
+		'
+		'chkSearch_MachineName
+		'
+		Me.chkSearch_MachineName.AutoSize = True
+		Me.chkSearch_MachineName.Checked = True
+		Me.chkSearch_MachineName.CheckState = System.Windows.Forms.CheckState.Checked
+		Me.chkSearch_MachineName.Enabled = False
+		Me.chkSearch_MachineName.Location = New System.Drawing.Point(817, 11)
+		Me.chkSearch_MachineName.Name = "chkSearch_MachineName"
+		Me.chkSearch_MachineName.Size = New System.Drawing.Size(122, 20)
+		Me.chkSearch_MachineName.TabIndex = 9
+		Me.chkSearch_MachineName.Text = "Machine Name"
+		Me.chkSearch_MachineName.UseVisualStyleBackColor = True
+		'
+		'chkSearch_PartName
+		'
+		Me.chkSearch_PartName.AutoSize = True
+		Me.chkSearch_PartName.Location = New System.Drawing.Point(945, 11)
+		Me.chkSearch_PartName.Name = "chkSearch_PartName"
+		Me.chkSearch_PartName.Size = New System.Drawing.Size(95, 20)
+		Me.chkSearch_PartName.TabIndex = 10
+		Me.chkSearch_PartName.Text = "Part Name"
+		Me.chkSearch_PartName.UseVisualStyleBackColor = True
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -602,8 +641,8 @@ Partial Class frmMain
 	Friend WithEvents btnMachineSearch As Button
 	Friend WithEvents btnPartSearch As Button
 	Friend WithEvents pnlMaintenance As Panel
-	Friend WithEvents btnMaintenanceSearch As Button
-	Friend WithEvents tbxMaintenanceSearch As TextBox
+	Friend WithEvents btnPMSearch As Button
+	Friend WithEvents tbxPMSearch As TextBox
 	Friend WithEvents btnAddMaintenance As Button
 	Friend WithEvents lvwPMList As ListView
 	Friend WithEvents col_PM_ID As ColumnHeader
@@ -635,4 +674,7 @@ Partial Class frmMain
 	Friend WithEvents mnu_PML_Delete As ToolStripMenuItem
 	Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
 	Friend WithEvents mnu_PML_CompleteSchedule As ToolStripMenuItem
+	Friend WithEvents chkSearch_PartName As CheckBox
+	Friend WithEvents chkSearch_MachineName As CheckBox
+	Friend WithEvents chkSearch_Type As CheckBox
 End Class

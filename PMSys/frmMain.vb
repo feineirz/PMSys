@@ -68,15 +68,10 @@
 
 	Sub ListPM(Optional Condition As String = "")
 
-		Condition = Condition.Replace("'", "''")
-		If Not Condition = "" Then
-			Condition = "part_no LIKE '%" + Condition + "%' OR part_name LIKE '%" + Condition + "%'"
-		End If
-
 		Dim mc As Machine
 		Dim pt As Part
 
-		Dim PMList = PM.List
+		Dim PMList = PM.List()
 		Dim lvi As ListViewItem
 		lvwPMList.Items.Clear()
 
@@ -217,6 +212,12 @@
 
 	End Sub
 
+	Private Sub btnPMSearch_Click(sender As Object, e As EventArgs) Handles btnPMSearch.Click
+
+		ListPM(tbxPMSearch.Text.Trim)
+
+	End Sub
+
 	Private Sub btnPartSearch_Click(sender As Object, e As EventArgs) Handles btnPartSearch.Click
 
 		ListPart(tbxPartSearch.Text.Trim)
@@ -243,7 +244,7 @@
 
 	End Sub
 
-	Private Sub tbxMaintenanceSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxMaintenanceSearch.KeyDown
+	Private Sub tbxMaintenanceSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxPMSearch.KeyDown
 
 
 

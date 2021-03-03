@@ -41,12 +41,12 @@
 			lvi.SubItems.Add(part_info)
 
 			lvi = lvwDetails.Items.Add(0)
-			lvi.SubItems.Add("Req. QTY")
-			lvi.SubItems.Add(pm.unit_require & " Unit(s)")
-
-			lvi = lvwDetails.Items.Add(0)
 			lvi.SubItems.Add("Unit Price")
 			lvi.SubItems.Add(p.price.ToString("#,##0.00") & " THB")
+
+			lvi = lvwDetails.Items.Add(0)
+			lvi.SubItems.Add("Req. QTY")
+			lvi.SubItems.Add(pm.unit_require & " Unit(s)")
 
 			lvi = lvwDetails.Items.Add(0)
 			lvi.SubItems.Add("Total Price")
@@ -59,6 +59,27 @@
 	Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
 		Me.Dispose()
+
+	End Sub
+
+	Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+
+		Dim pmh_info As PMHistory.PMHistoryInfo
+		pmh_info.pm_id = lblPMID.Text
+		pmh_info.reporter = tbxReporter.Text.Trim
+		pmh_info.operator_name = tbxOperatorName.Text.Trim
+		pmh_info.pm_date = dtpPMDate.Value
+		pmh_info.report_date = Now
+		pmh_info.pm_result = tbxPMResult.Text.Trim
+		pmh_info.remark = tbxRemark.Text.Trim
+
+		If PMHistory.Add(pmh_info) Then
+			Dim pm As New PM(lblPMID.Text)
+			pm.last_pm = dtpPMDate.Value
+
+			frmMain.ListPM()
+			Me.Dispose()
+		End If
 
 	End Sub
 End Class

@@ -182,6 +182,7 @@
     </Compile>
     <Compile Include="Part.vb" />
     <Compile Include="PM.vb" />
+    <Compile Include="PMHistory.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAddMachine.resx">
