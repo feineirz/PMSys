@@ -134,8 +134,8 @@ Partial Class frmMain
 		'lvwMachine
 		'
 		Me.lvwMachine.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwMachine.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_M_ID, Me.col_MC_Code, Me.col_M_Name, Me.col_M_Detail})
 		Me.lvwMachine.ContextMenuStrip = Me.cmsMachineList
 		Me.lvwMachine.FullRowSelect = True
@@ -177,16 +177,16 @@ Partial Class frmMain
 		'
 		'mnu_ML_Edit
 		'
-		Me.mnu_ML_Edit.Image = Global.PMSys.My.Resources.Resources.edit16
+		Me.mnu_ML_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
 		Me.mnu_ML_Edit.Name = "mnu_ML_Edit"
-		Me.mnu_ML_Edit.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_ML_Edit.Size = New System.Drawing.Size(180, 22)
 		Me.mnu_ML_Edit.Text = "Edit"
 		'
 		'mnu_ML_Delete
 		'
-		Me.mnu_ML_Delete.Image = Global.PMSys.My.Resources.Resources.delete16
+		Me.mnu_ML_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
 		Me.mnu_ML_Delete.Name = "mnu_ML_Delete"
-		Me.mnu_ML_Delete.Size = New System.Drawing.Size(107, 22)
+		Me.mnu_ML_Delete.Size = New System.Drawing.Size(180, 22)
 		Me.mnu_ML_Delete.Text = "Delete"
 		'
 		'Label1
@@ -255,8 +255,8 @@ Partial Class frmMain
 		'lvwPartList
 		'
 		Me.lvwPartList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwPartList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_P_ID, Me.col_P_PartNo, Me.col_P_Name, Me.col_P_Price})
 		Me.lvwPartList.ContextMenuStrip = Me.cmsPartList
 		Me.lvwPartList.FullRowSelect = True
@@ -299,14 +299,14 @@ Partial Class frmMain
 		'
 		'mnu_PL_Edit
 		'
-		Me.mnu_PL_Edit.Image = CType(resources.GetObject("mnu_PL_Edit.Image"), System.Drawing.Image)
+		Me.mnu_PL_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
 		Me.mnu_PL_Edit.Name = "mnu_PL_Edit"
 		Me.mnu_PL_Edit.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_PL_Edit.Text = "Edit"
 		'
 		'mnu_PL_Delete
 		'
-		Me.mnu_PL_Delete.Image = CType(resources.GetObject("mnu_PL_Delete.Image"), System.Drawing.Image)
+		Me.mnu_PL_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
 		Me.mnu_PL_Delete.Name = "mnu_PL_Delete"
 		Me.mnu_PL_Delete.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_PL_Delete.Text = "Delete"
@@ -377,8 +377,8 @@ Partial Class frmMain
 		'lvwPMList
 		'
 		Me.lvwPMList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwPMList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_Type, Me.col_PM_MachineName, Me.col_PM_PartName, Me.col_PM_PartQty, Me.col_PM_Frequency, Me.col_PM_PartPrice, Me.col_PM_TotalPrice, Me.col_PM_LastPM, Me.col_PM_NextPM, Me.col_PM_Action})
 		Me.lvwPMList.ContextMenuStrip = Me.cmsPMList
 		Me.lvwPMList.FullRowSelect = True
@@ -454,20 +454,20 @@ Partial Class frmMain
 		'
 		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete, Me.ToolStripMenuItem1, Me.mnu_PML_CompleteSchedule})
 		Me.cmsPMList.Name = "cmsPMList"
-		Me.cmsPMList.Size = New System.Drawing.Size(178, 76)
+		Me.cmsPMList.Size = New System.Drawing.Size(181, 98)
 		'
 		'mnu_PML_Edit
 		'
-		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.edit16
+		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
 		Me.mnu_PML_Edit.Name = "mnu_PML_Edit"
-		Me.mnu_PML_Edit.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_Edit.Size = New System.Drawing.Size(180, 22)
 		Me.mnu_PML_Edit.Text = "Edit"
 		'
 		'mnu_PML_Delete
 		'
-		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.delete16
+		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
 		Me.mnu_PML_Delete.Name = "mnu_PML_Delete"
-		Me.mnu_PML_Delete.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_Delete.Size = New System.Drawing.Size(180, 22)
 		Me.mnu_PML_Delete.Text = "Delete"
 		'
 		'ToolStripMenuItem1
@@ -477,9 +477,9 @@ Partial Class frmMain
 		'
 		'mnu_PML_CompleteSchedule
 		'
-		Me.mnu_PML_CompleteSchedule.Image = Global.PMSys.My.Resources.Resources.check_mark16
+		Me.mnu_PML_CompleteSchedule.Image = Global.PMSys.My.Resources.Resources.file_mark16
 		Me.mnu_PML_CompleteSchedule.Name = "mnu_PML_CompleteSchedule"
-		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(180, 22)
 		Me.mnu_PML_CompleteSchedule.Text = "Complete Schedule"
 		'
 		'Label5
@@ -511,7 +511,7 @@ Partial Class frmMain
 		'lblTitle
 		'
 		Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblTitle.ForeColor = System.Drawing.Color.White
@@ -526,7 +526,7 @@ Partial Class frmMain
 		'pnlFooter
 		'
 		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.pnlFooter.Location = New System.Drawing.Point(0, 837)
 		Me.pnlFooter.Name = "pnlFooter"

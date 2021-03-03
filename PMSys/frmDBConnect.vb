@@ -73,4 +73,14 @@
 		tbx.Text = tbx.Text.Replace(" ", "").Trim
 
 	End Sub
+
+	Private Sub tbxPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxPassword.KeyDown
+
+		If e.KeyCode = Keys.Enter Then
+			e.SuppressKeyPress = True
+			e.Handled = True
+			btnConnect_Click(Nothing, Nothing)
+		End If
+
+	End Sub
 End Class

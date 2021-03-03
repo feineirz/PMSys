@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property check_mark16() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("check_mark16", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property close16() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("close16", resourceCulture)
@@ -112,9 +102,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property delete16() As System.Drawing.Bitmap
+        Friend ReadOnly Property file_add16() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("delete16", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("file_add16", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -122,9 +112,39 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property edit16() As System.Drawing.Bitmap
+        Friend ReadOnly Property file_check16() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("edit16", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("file_check16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property file_delete16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("file_delete16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property file_mark16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("file_mark16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property file_search16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("file_search16", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

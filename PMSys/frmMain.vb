@@ -222,4 +222,30 @@
 		ListPart(tbxPartSearch.Text.Trim)
 
 	End Sub
+
+	Private Sub tbxMachineSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxMachineSearch.KeyDown
+
+		If e.KeyCode = Keys.Enter Then
+			e.SuppressKeyPress = True
+			e.Handled = True
+			btnMachineSearch_Click(Nothing, Nothing)
+		End If
+
+	End Sub
+
+	Private Sub tbxPartSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxPartSearch.KeyDown
+
+		If e.KeyCode = Keys.Enter Then
+			e.SuppressKeyPress = True
+			e.Handled = True
+			btnPartSearch_Click(Nothing, Nothing)
+		End If
+
+	End Sub
+
+	Private Sub tbxMaintenanceSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxMaintenanceSearch.KeyDown
+
+
+
+	End Sub
 End Class

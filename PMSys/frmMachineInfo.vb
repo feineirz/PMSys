@@ -4,7 +4,6 @@
 
 		Dim m As New Machine(MachineID)
 		Dim p As Part
-		Dim pm As PM
 		Dim pmlist = PM.List("machine_id=" & m.machine_id)
 
 		Dim lvi As ListViewItem

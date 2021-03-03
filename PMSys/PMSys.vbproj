@@ -218,9 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="maintenance.ico" />
-    <None Include="Resources\check_mark16.png" />
-    <None Include="Resources\delete16.png" />
-    <None Include="Resources\edit16.png" />
+    <None Include="Resources\file_search16.png" />
+    <None Include="Resources\file_mark16.png" />
+    <None Include="Resources\file_delete16.png" />
+    <None Include="Resources\file_check16.png" />
+    <None Include="Resources\file_add16.png" />
     <None Include="Resources\close16.png" />
     <None Include="Resources\floppy_disk16.png" />
     <None Include="Resources\DBInit.sql.txt" />
