@@ -42,3 +42,18 @@ CREATE TABLE PM(
 		on delete restrict
 		on update cascade
 )ENGINE=INNODB;
+
+CREATE TABLE PM_History(
+	pm_history_id int unsigned not null primary key,
+	pm_id int unsigned not null,
+	reporter varchar(255) not null default 'Reporter',
+	operator varchar(255) not null default 'Operator',
+	pm_date date not null,
+	report_date datetime default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+	pm_result varchar(255) not null default 'PASSED',
+	remark text,
+	foreign key fk_pm_history_pm_id (pm_id)
+		references PM(pm_id)
+		on delete cascade
+		on update cascade
+)ENGINE=INNODB;

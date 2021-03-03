@@ -248,4 +248,15 @@
 
 
 	End Sub
+
+	Private Sub mnu_PML_CompleteSchedule_Click(sender As Object, e As EventArgs) Handles mnu_PML_CompleteSchedule.Click
+
+		If lvwPMList.SelectedItems.Count = 1 Then
+
+			frmAddPMHistory.InitData(lvwPMList.SelectedItems(0).Text.Trim)
+			frmAddPMHistory.ShowDialog()
+
+		End If
+
+	End Sub
 End Class

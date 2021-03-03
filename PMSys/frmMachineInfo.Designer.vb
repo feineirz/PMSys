@@ -23,9 +23,9 @@ Partial Class frmMachineInfo
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
+		Me.btnClose = New System.Windows.Forms.Button()
 		Me.pnlHeader = New System.Windows.Forms.Panel()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.btnClose = New System.Windows.Forms.Button()
 		Me.lblMachineName = New System.Windows.Forms.Label()
 		Me.lvwPartList = New System.Windows.Forms.ListView()
 		Me.col_P_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -47,8 +47,21 @@ Partial Class frmMachineInfo
 		Me.pnlFooter.Location = New System.Drawing.Point(0, 682)
 		Me.pnlFooter.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
 		Me.pnlFooter.Name = "pnlFooter"
-		Me.pnlFooter.Size = New System.Drawing.Size(759, 50)
+		Me.pnlFooter.Size = New System.Drawing.Size(1227, 50)
 		Me.pnlFooter.TabIndex = 12
+		'
+		'btnClose
+		'
+		Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnClose.Image = Global.PMSys.My.Resources.Resources.close16
+		Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnClose.Location = New System.Drawing.Point(1111, 8)
+		Me.btnClose.Margin = New System.Windows.Forms.Padding(2)
+		Me.btnClose.Name = "btnClose"
+		Me.btnClose.Size = New System.Drawing.Size(108, 32)
+		Me.btnClose.TabIndex = 6
+		Me.btnClose.Text = "Close"
+		Me.btnClose.UseVisualStyleBackColor = True
 		'
 		'pnlHeader
 		'
@@ -60,7 +73,7 @@ Partial Class frmMachineInfo
 		Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
 		Me.pnlHeader.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
 		Me.pnlHeader.Name = "pnlHeader"
-		Me.pnlHeader.Size = New System.Drawing.Size(759, 60)
+		Me.pnlHeader.Size = New System.Drawing.Size(1227, 60)
 		Me.pnlHeader.TabIndex = 13
 		'
 		'Label1
@@ -74,19 +87,6 @@ Partial Class frmMachineInfo
 		Me.Label1.Size = New System.Drawing.Size(134, 23)
 		Me.Label1.TabIndex = 0
 		Me.Label1.Text = "Machine Info"
-		'
-		'btnClose
-		'
-		Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnClose.Image = Global.PMSys.My.Resources.Resources.close16
-		Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnClose.Location = New System.Drawing.Point(643, 8)
-		Me.btnClose.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-		Me.btnClose.Name = "btnClose"
-		Me.btnClose.Size = New System.Drawing.Size(108, 32)
-		Me.btnClose.TabIndex = 6
-		Me.btnClose.Text = "Close"
-		Me.btnClose.UseVisualStyleBackColor = True
 		'
 		'lblMachineName
 		'
@@ -147,7 +147,7 @@ Partial Class frmMachineInfo
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(759, 732)
+		Me.ClientSize = New System.Drawing.Size(1227, 732)
 		Me.Controls.Add(Me.lvwPartList)
 		Me.Controls.Add(Me.Label2)
 		Me.Controls.Add(Me.lblMachineName)
