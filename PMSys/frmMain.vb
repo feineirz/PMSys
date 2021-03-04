@@ -21,14 +21,14 @@
 
 #End Region
 
-	Sub ListMachine(Optional Condition As String = "")
+	Sub ListMachine(Optional Query As String = "", Optional Condition As String = "")
 
 		Condition = Condition.Replace("'", "''")
 		If Not Condition = "" Then
 			Condition = "machine_code LIKE '%" + Condition + "%' OR machine_name LIKE '%" + Condition + "%'"
 		End If
 
-		Dim MachineList = Machine.List(Condition)
+		Dim MachineList = Machine.List(Query, Condition)
 		Dim lvi As ListViewItem
 		lvwMachine.Items.Clear()
 
@@ -44,14 +44,14 @@
 
 	End Sub
 
-	Sub ListPart(Optional Condition As String = "")
+	Sub ListPart(Optional Query As String = "", Optional Condition As String = "")
 
 		Condition = Condition.Replace("'", "''")
 		If Not Condition = "" Then
 			Condition = "part_no LIKE '%" + Condition + "%' OR part_name LIKE '%" + Condition + "%'"
 		End If
 
-		Dim PartList = Part.List(Condition)
+		Dim PartList = Part.List(Query, Condition)
 		Dim lvi As ListViewItem
 		lvwPartList.Items.Clear()
 
@@ -87,13 +87,12 @@
 				lvi.SubItems.Add(pm.frequency)
 				lvi.SubItems.Add(pt.price.ToString("#,##0.00"))
 				lvi.SubItems.Add((pt.price * pm.unit_require).ToString("#,##0.00"))
-				lvi.SubItems.Add(pm.last_pm.ToString("yyyy/MM/dd"))
-
-				Dim dtNext As Date = DateAdd("d", pm.frequency, pm.last_pm)
-				Dim diff As Integer = DateDiff(DateInterval.Day, Now, dtNext)
+				lvi.SubItems.Add(pm.last_pm)
+				lvi.SubItems.Add(pm.next_pm.ToString("yyyy-MM-dd"))
+				lvi.SubItems.Add(pm.pm_action)
 
 				' Highlighter
-
+				Dim diff As Integer = DateDiff(DateInterval.Day, Now, pm.next_pm)
 				If diff < 0 Then
 					lvi.BackColor = Color.DimGray
 					lvi.ForeColor = Color.White
@@ -106,19 +105,17 @@
 					lvi.BackColor = Color.LightGoldenrodYellow
 				End If
 
-				lvi.SubItems.Add(dtNext.ToString("yyyy/MM/dd"))
-				lvi.SubItems.Add(pm.pm_action)
 			Next
 		End If
 
 	End Sub
 
-	Sub ListPMHistory(Optional Condition As String = "")
+	Sub ListPMHistory(Optional Query As String = "", Optional Condition As String = "")
 
 		Dim pm As PM
 		Dim m As Machine
 		Dim p As Part
-		Dim PMHList = PMHistory.List()
+		Dim PMHList = PMHistory.List(Query, Condition)
 		Dim lvi As ListViewItem
 
 		lvwPMHistoryList.Items.Clear()
@@ -130,7 +127,7 @@
 
 				lvi = lvwPMHistoryList.Items.Add(pmh.pm_history_id)
 				lvi.SubItems.Add(pm.pm_id)
-				lvi.SubItems.Add(pmh.pm_date.ToString("yyyy/MM/dd"))
+				lvi.SubItems.Add(pmh.pm_date.ToString("yyyy-MM-dd"))
 				lvi.SubItems.Add(m.machine_name)
 				lvi.SubItems.Add(p.part_name)
 				lvi.SubItems.Add(pmh.operator_name)
@@ -285,7 +282,7 @@
 
 	End Sub
 
-	Private Sub mnu_PML_CompleteSchedule_Click(sender As Object, e As EventArgs) Handles mnu_PML_CompleteSchedule.Click
+	Private Sub mnu_PML_CompletePMSchedule_Click(sender As Object, e As EventArgs) Handles mnu_PML_CompletePMSchedule.Click
 
 		If lvwPMList.SelectedItems.Count = 1 Then
 
@@ -311,13 +308,12 @@
 			cmsPMList.Enabled = True
 
 			Dim pm As New PM(lvwPMList.SelectedItems(0).Text)
-			Dim nextPM As Date = DateAdd("d", pm.frequency, pm.last_pm)
-			Dim diff = DateDiff(DateInterval.Day, Now, nextPM)
+			Dim diff = DateDiff(DateInterval.Day, Now, pm.next_pm)
 
 			If diff > 15 Then
-				mnu_PML_CompleteSchedule.Enabled = False
+				mnu_PML_CompletePMSchedule.Enabled = False
 			Else
-				mnu_PML_CompleteSchedule.Enabled = True
+				mnu_PML_CompletePMSchedule.Enabled = True
 			End If
 
 		Else

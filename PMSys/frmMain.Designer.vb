@@ -75,7 +75,7 @@ Partial Class frmMain
 		Me.mnu_PML_Edit = New System.Windows.Forms.ToolStripMenuItem()
 		Me.mnu_PML_Delete = New System.Windows.Forms.ToolStripMenuItem()
 		Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-		Me.mnu_PML_CompleteSchedule = New System.Windows.Forms.ToolStripMenuItem()
+		Me.mnu_PML_CompletePMSchedule = New System.Windows.Forms.ToolStripMenuItem()
 		Me.Label5 = New System.Windows.Forms.Label()
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
@@ -199,7 +199,7 @@ Partial Class frmMain
 		'
 		'mnu_ML_Edit
 		'
-		Me.mnu_ML_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
+		Me.mnu_ML_Edit.Image = Global.PMSys.My.Resources.Resources.approval16
 		Me.mnu_ML_Edit.Name = "mnu_ML_Edit"
 		Me.mnu_ML_Edit.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_ML_Edit.Text = "Edit"
@@ -207,7 +207,7 @@ Partial Class frmMain
 		'mnu_ML_Delete
 		'
 		Me.mnu_ML_Delete.Enabled = False
-		Me.mnu_ML_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
+		Me.mnu_ML_Delete.Image = Global.PMSys.My.Resources.Resources.close16
 		Me.mnu_ML_Delete.Name = "mnu_ML_Delete"
 		Me.mnu_ML_Delete.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_ML_Delete.Text = "Delete"
@@ -322,7 +322,7 @@ Partial Class frmMain
 		'
 		'mnu_PL_Edit
 		'
-		Me.mnu_PL_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
+		Me.mnu_PL_Edit.Image = Global.PMSys.My.Resources.Resources.approval16
 		Me.mnu_PL_Edit.Name = "mnu_PL_Edit"
 		Me.mnu_PL_Edit.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_PL_Edit.Text = "Edit"
@@ -330,7 +330,7 @@ Partial Class frmMain
 		'mnu_PL_Delete
 		'
 		Me.mnu_PL_Delete.Enabled = False
-		Me.mnu_PL_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
+		Me.mnu_PL_Delete.Image = Global.PMSys.My.Resources.Resources.close16
 		Me.mnu_PL_Delete.Name = "mnu_PL_Delete"
 		Me.mnu_PL_Delete.Size = New System.Drawing.Size(107, 22)
 		Me.mnu_PL_Delete.Text = "Delete"
@@ -512,36 +512,36 @@ Partial Class frmMain
 		'
 		'cmsPMList
 		'
-		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete, Me.ToolStripMenuItem1, Me.mnu_PML_CompleteSchedule})
+		Me.cmsPMList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnu_PML_Edit, Me.mnu_PML_Delete, Me.ToolStripMenuItem1, Me.mnu_PML_CompletePMSchedule})
 		Me.cmsPMList.Name = "cmsPMList"
-		Me.cmsPMList.Size = New System.Drawing.Size(178, 76)
+		Me.cmsPMList.Size = New System.Drawing.Size(199, 76)
 		'
 		'mnu_PML_Edit
 		'
-		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
+		Me.mnu_PML_Edit.Image = Global.PMSys.My.Resources.Resources.approval16
 		Me.mnu_PML_Edit.Name = "mnu_PML_Edit"
-		Me.mnu_PML_Edit.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_Edit.Size = New System.Drawing.Size(198, 22)
 		Me.mnu_PML_Edit.Text = "Edit"
 		'
 		'mnu_PML_Delete
 		'
 		Me.mnu_PML_Delete.Enabled = False
-		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.file_delete16
+		Me.mnu_PML_Delete.Image = Global.PMSys.My.Resources.Resources.close16
 		Me.mnu_PML_Delete.Name = "mnu_PML_Delete"
-		Me.mnu_PML_Delete.Size = New System.Drawing.Size(177, 22)
+		Me.mnu_PML_Delete.Size = New System.Drawing.Size(198, 22)
 		Me.mnu_PML_Delete.Text = "Delete"
 		'
 		'ToolStripMenuItem1
 		'
 		Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 6)
+		Me.ToolStripMenuItem1.Size = New System.Drawing.Size(195, 6)
 		'
-		'mnu_PML_CompleteSchedule
+		'mnu_PML_CompletePMSchedule
 		'
-		Me.mnu_PML_CompleteSchedule.Image = Global.PMSys.My.Resources.Resources.file_mark16
-		Me.mnu_PML_CompleteSchedule.Name = "mnu_PML_CompleteSchedule"
-		Me.mnu_PML_CompleteSchedule.Size = New System.Drawing.Size(177, 22)
-		Me.mnu_PML_CompleteSchedule.Text = "Complete Schedule"
+		Me.mnu_PML_CompletePMSchedule.Image = Global.PMSys.My.Resources.Resources.check_mark16
+		Me.mnu_PML_CompletePMSchedule.Name = "mnu_PML_CompletePMSchedule"
+		Me.mnu_PML_CompletePMSchedule.Size = New System.Drawing.Size(198, 22)
+		Me.mnu_PML_CompletePMSchedule.Text = "Complete PM Schedule"
 		'
 		'Label5
 		'
@@ -664,7 +664,7 @@ Partial Class frmMain
 		'
 		'mnu_PMH_Edit
 		'
-		Me.mnu_PMH_Edit.Image = Global.PMSys.My.Resources.Resources.file_check16
+		Me.mnu_PMH_Edit.Image = Global.PMSys.My.Resources.Resources.approval16
 		Me.mnu_PMH_Edit.Name = "mnu_PMH_Edit"
 		Me.mnu_PMH_Edit.Size = New System.Drawing.Size(94, 22)
 		Me.mnu_PMH_Edit.Text = "Edit"
@@ -695,7 +695,7 @@ Partial Class frmMain
 		'picIcon
 		'
 		Me.picIcon.Image = CType(resources.GetObject("picIcon.Image"), System.Drawing.Image)
-		Me.picIcon.Location = New System.Drawing.Point(6, 6)
+		Me.picIcon.Location = New System.Drawing.Point(3, 2)
 		Me.picIcon.Name = "picIcon"
 		Me.picIcon.Size = New System.Drawing.Size(50, 50)
 		Me.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -705,12 +705,12 @@ Partial Class frmMain
 		'lblTitle
 		'
 		Me.lblTitle.AutoSize = True
-		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblTitle.ForeColor = System.Drawing.Color.White
-		Me.lblTitle.Location = New System.Drawing.Point(64, 6)
+		Me.lblTitle.Location = New System.Drawing.Point(61, 9)
 		Me.lblTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
 		Me.lblTitle.Name = "lblTitle"
-		Me.lblTitle.Size = New System.Drawing.Size(272, 25)
+		Me.lblTitle.Size = New System.Drawing.Size(375, 36)
 		Me.lblTitle.TabIndex = 17
 		Me.lblTitle.Text = "PM Management System"
 		'
@@ -806,7 +806,7 @@ Partial Class frmMain
 	Friend WithEvents mnu_PML_Edit As ToolStripMenuItem
 	Friend WithEvents mnu_PML_Delete As ToolStripMenuItem
 	Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
-	Friend WithEvents mnu_PML_CompleteSchedule As ToolStripMenuItem
+	Friend WithEvents mnu_PML_CompletePMSchedule As ToolStripMenuItem
 	Friend WithEvents chkSearch_PartName As CheckBox
 	Friend WithEvents chkSearch_MachineName As CheckBox
 	Friend WithEvents chkSearch_Type As CheckBox

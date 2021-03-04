@@ -228,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="maintenance.ico" />
+    <None Include="Resources\add16.png" />
+    <None Include="Resources\administration16.png" />
+    <None Include="Resources\approval16.png" />
+    <None Include="Resources\button16.png" />
+    <None Include="Resources\check_mark16.png" />
+    <None Include="Resources\favorite16.png" />
     <Content Include="support_services.ico" />
     <None Include="Resources\file_search16.png" />
     <None Include="Resources\file_mark16.png" />

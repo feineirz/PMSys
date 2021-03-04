@@ -63,6 +63,56 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property add16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("add16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property administration16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("administration16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property approval16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("approval16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property button16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("button16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property check_mark16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("check_mark16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property close16() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("close16", resourceCulture)
@@ -72,6 +122,10 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to DROP DATABASE PMSys;
+        '''
+        '''-- SET FOREIGN_KEY_CHECKS=0;
+        '''-- DROP TABLE PM;
+        '''-- SET FOREIGN_KEY_CHECKS=1;
         '''
         '''CREATE DATABASE PMSys
         '''	character set &apos;utf8mb4&apos;
@@ -84,18 +138,27 @@ Namespace My.Resources
         '''	machine_id int unsigned auto_increment not null primary key,
         '''	machine_code varchar(255) not null default &apos;&apos;,
         '''	machine_name varchar(255) not null,
-        '''	detail text,
+        '''	details text,
         '''	remark text
         ''')ENGINE=INNODB;
         '''
         '''CREATE TABLE Part(
         '''	part_id int unsigned auto_increment not null primary key,
-        '''	part_no varchar(255) not null default &apos;&apos;,
-        '''	part_name varchar(255) not null default &apos;&apos; [rest of string was truncated]&quot;;.
+        '''	part [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property DBInit_sql() As String
             Get
                 Return ResourceManager.GetString("DBInit.sql", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property favorite16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("favorite16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

@@ -1,5 +1,9 @@
 DROP DATABASE PMSys;
 
+-- SET FOREIGN_KEY_CHECKS=0;
+-- DROP TABLE PM;
+-- SET FOREIGN_KEY_CHECKS=1;
+
 CREATE DATABASE PMSys
 	character set 'utf8mb4'
 	collate 'utf8mb4_general_ci'
@@ -31,7 +35,8 @@ CREATE TABLE PM(
 	unit_require int not null default 1,
 	frequency int not null default 30,
 	pm_action varchar(255) not null default '',
-	last_pm date not null default '2000-01-01',
+	last_pm varchar(20) not null default '',
+	next_pm date not null default '2000-01-01',
 	remark text,
 	foreign key fk_pm_machine_id (machine_id)
 		references Machine(machine_id)

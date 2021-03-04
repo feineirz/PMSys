@@ -4,7 +4,7 @@
 
 		Dim m As New Machine(MachineID)
 		Dim p As Part
-		Dim pmlist = PM.List("machine_id=" & m.machine_id)
+		Dim pmlist = PM.List("", "machine_id=" & m.machine_id)
 
 		Dim lvi As ListViewItem
 
@@ -14,12 +14,16 @@
 		lvwPartList.Items.Clear()
 
 		If pmlist.Count > 0 Then
-			For Each item In pmlist.Items
-				p = New Part(item.part_id)
+			For Each pm In pmlist.Items
+				p = New Part(pm.part_id)
 				lvi = lvwPartList.Items.Add(p.part_id)
 				lvi.SubItems.Add(p.part_no)
 				lvi.SubItems.Add(p.part_name)
 				lvi.SubItems.Add(p.price.ToString("#,##0.00"))
+				lvi.SubItems.Add(pm.unit_require)
+				lvi.SubItems.Add((p.price * pm.unit_require).ToString("#,##0.00"))
+				lvi.SubItems.Add(pm.next_pm.ToString("yyyy-MM-dd"))
+				lvi.SubItems.Add(pm.remark)
 			Next
 		End If
 

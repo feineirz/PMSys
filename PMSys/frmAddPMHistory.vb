@@ -1,5 +1,27 @@
 ﻿Public Class frmAddPMHistory
 
+#Region "Moveable Form Code"
+	<System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+	Public Shared Function SendMessage(hWnd As IntPtr, Msg As Integer, wParam As Integer, lParam As Integer) As Integer
+	End Function
+
+	<System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+	Public Shared Function ReleaseCapture() As Boolean
+	End Function
+
+	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, lblTitle.MouseDown, pnlHeader.MouseDown
+		Const WM_NCLBUTTONDOWN As Integer = &HA1
+		Const HT_CAPTION As Integer = &H2
+
+		If e.Button = MouseButtons.Left Then
+			ReleaseCapture()
+			SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0)
+		End If
+	End Sub
+
+#End Region
+
+
 	Sub InitData(PMID As Integer)
 
 		Dim pm As New PM(PMID)
@@ -96,7 +118,8 @@
 
 			If PMHistory.Add(pmh_info) Then
 				Dim pm As New PM(lblPMID.Text)
-				pm.last_pm = dtpPMDate.Value
+				pm.last_pm = dtpPMDate.Value.ToString("yyyy-MM-dd")
+				pm.next_pm = DateAdd("d", pm.frequency, dtpPMDate.Value)
 
 				frmMain.ListPM()
 				frmMain.ListPMHistory()
@@ -108,7 +131,8 @@
 			pmh_info.pm_history_id = lblPMHID.Text
 			If PMHistory.Update(pmh_info) Then
 				Dim pm As New PM(lblPMID.Text)
-				pm.last_pm = dtpPMDate.Value
+				pm.last_pm = dtpPMDate.Value.ToString("yyyy-MM-dd")
+				pm.next_pm = DateAdd("d", pm.frequency, dtpPMDate.Value)
 
 				frmMain.ListPM()
 				frmMain.ListPMHistory()

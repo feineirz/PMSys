@@ -71,7 +71,8 @@
 
 		numRequiredQTY.Value = pm.unit_require
 		numFrequency.Value = pm.frequency
-		dtpLastPM.Value = pm.last_pm
+		lblLastPM.Text = pm.last_pm
+		dtpNextPM.Value = pm.next_pm
 		tbxAction.Text = pm.pm_action
 		tbxRemark.Text = pm.remark
 
@@ -134,7 +135,8 @@
 		PMInfoA.part_id = cmbPartID.SelectedValue
 		PMInfoA.unit_require = numRequiredQTY.Value
 		PMInfoA.frequency = numFrequency.Value
-		PMInfoA.last_pm = dtpLastPM.Value
+		PMInfoA.last_pm = lblLastPM.Text
+		PMInfoA.next_pm = dtpNextPM.Value
 		PMInfoA.pm_action = tbxAction.Text.Trim
 		PMInfoA.remark = tbxRemark.Text.Trim
 

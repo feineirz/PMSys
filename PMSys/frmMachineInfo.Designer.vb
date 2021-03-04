@@ -22,19 +22,26 @@ Partial Class frmMachineInfo
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMachineInfo))
 		Me.pnlFooter = New System.Windows.Forms.Panel()
 		Me.btnClose = New System.Windows.Forms.Button()
 		Me.pnlHeader = New System.Windows.Forms.Panel()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.lblMachineName = New System.Windows.Forms.Label()
 		Me.lvwPartList = New System.Windows.Forms.ListView()
-		Me.col_P_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.col_P_PartNo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.col_P_Name = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.col_P_Price = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_PartNo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_PartName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_PartPrice = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.Label2 = New System.Windows.Forms.Label()
+		Me.col_PM_RequireQTY = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_TotalPrice = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_NextPM = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_Remark = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.picIcon = New System.Windows.Forms.PictureBox()
 		Me.pnlFooter.SuspendLayout()
 		Me.pnlHeader.SuspendLayout()
+		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'pnlFooter
@@ -68,6 +75,7 @@ Partial Class frmMachineInfo
 		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.pnlHeader.Controls.Add(Me.picIcon)
 		Me.pnlHeader.Controls.Add(Me.Label1)
 		Me.pnlHeader.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
@@ -79,12 +87,12 @@ Partial Class frmMachineInfo
 		'Label1
 		'
 		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label1.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Label1.ForeColor = System.Drawing.Color.White
-		Me.Label1.Location = New System.Drawing.Point(30, 14)
+		Me.Label1.Location = New System.Drawing.Point(61, 9)
 		Me.Label1.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
 		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(134, 23)
+		Me.Label1.Size = New System.Drawing.Size(186, 33)
 		Me.Label1.TabIndex = 0
 		Me.Label1.Text = "Machine Info"
 		'
@@ -100,38 +108,38 @@ Partial Class frmMachineInfo
 		'
 		'lvwPartList
 		'
-		Me.lvwPartList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_P_ID, Me.col_P_PartNo, Me.col_P_Name, Me.col_P_Price})
+		Me.lvwPartList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_PartNo, Me.col_PM_PartName, Me.col_PM_PartPrice, Me.col_PM_RequireQTY, Me.col_PM_TotalPrice, Me.col_PM_NextPM, Me.col_PM_Remark})
 		Me.lvwPartList.FullRowSelect = True
 		Me.lvwPartList.GridLines = True
 		Me.lvwPartList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
 		Me.lvwPartList.HideSelection = False
 		Me.lvwPartList.Location = New System.Drawing.Point(34, 142)
 		Me.lvwPartList.Name = "lvwPartList"
-		Me.lvwPartList.Size = New System.Drawing.Size(700, 180)
+		Me.lvwPartList.Size = New System.Drawing.Size(1160, 180)
 		Me.lvwPartList.TabIndex = 15
 		Me.lvwPartList.UseCompatibleStateImageBehavior = False
 		Me.lvwPartList.View = System.Windows.Forms.View.Details
 		'
-		'col_P_ID
+		'col_PM_ID
 		'
-		Me.col_P_ID.Text = "ID"
-		Me.col_P_ID.Width = 50
+		Me.col_PM_ID.Text = "ID"
+		Me.col_PM_ID.Width = 0
 		'
-		'col_P_PartNo
+		'col_PM_PartNo
 		'
-		Me.col_P_PartNo.Text = "PartNo"
-		Me.col_P_PartNo.Width = 200
+		Me.col_PM_PartNo.Text = "PartNo"
+		Me.col_PM_PartNo.Width = 200
 		'
-		'col_P_Name
+		'col_PM_PartName
 		'
-		Me.col_P_Name.Text = "Name"
-		Me.col_P_Name.Width = 350
+		Me.col_PM_PartName.Text = "Name"
+		Me.col_PM_PartName.Width = 350
 		'
-		'col_P_Price
+		'col_PM_PartPrice
 		'
-		Me.col_P_Price.Text = "Price"
-		Me.col_P_Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.col_P_Price.Width = 80
+		Me.col_PM_PartPrice.Text = "Price"
+		Me.col_PM_PartPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_PM_PartPrice.Width = 80
 		'
 		'Label2
 		'
@@ -142,6 +150,38 @@ Partial Class frmMachineInfo
 		Me.Label2.Size = New System.Drawing.Size(92, 18)
 		Me.Label2.TabIndex = 16
 		Me.Label2.Text = "PART LIST"
+		'
+		'col_PM_RequireQTY
+		'
+		Me.col_PM_RequireQTY.Text = "QTY"
+		Me.col_PM_RequireQTY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_PM_RequireQTY.Width = 70
+		'
+		'col_PM_TotalPrice
+		'
+		Me.col_PM_TotalPrice.Text = "Total Price"
+		Me.col_PM_TotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_PM_TotalPrice.Width = 110
+		'
+		'col_PM_NextPM
+		'
+		Me.col_PM_NextPM.Text = "Next PM"
+		Me.col_PM_NextPM.Width = 120
+		'
+		'col_PM_Remark
+		'
+		Me.col_PM_Remark.Text = "Remark"
+		Me.col_PM_Remark.Width = 210
+		'
+		'picIcon
+		'
+		Me.picIcon.Image = CType(resources.GetObject("picIcon.Image"), System.Drawing.Image)
+		Me.picIcon.Location = New System.Drawing.Point(3, 3)
+		Me.picIcon.Name = "picIcon"
+		Me.picIcon.Size = New System.Drawing.Size(50, 50)
+		Me.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+		Me.picIcon.TabIndex = 17
+		Me.picIcon.TabStop = False
 		'
 		'frmMachineInfo
 		'
@@ -162,6 +202,7 @@ Partial Class frmMachineInfo
 		Me.pnlFooter.ResumeLayout(False)
 		Me.pnlHeader.ResumeLayout(False)
 		Me.pnlHeader.PerformLayout()
+		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -173,9 +214,14 @@ Partial Class frmMachineInfo
 	Friend WithEvents btnClose As Button
 	Friend WithEvents lblMachineName As Label
 	Friend WithEvents lvwPartList As ListView
-	Friend WithEvents col_P_ID As ColumnHeader
-	Friend WithEvents col_P_PartNo As ColumnHeader
-	Friend WithEvents col_P_Name As ColumnHeader
-	Friend WithEvents col_P_Price As ColumnHeader
+	Friend WithEvents col_PM_ID As ColumnHeader
+	Friend WithEvents col_PM_PartNo As ColumnHeader
+	Friend WithEvents col_PM_PartName As ColumnHeader
+	Friend WithEvents col_PM_PartPrice As ColumnHeader
 	Friend WithEvents Label2 As Label
+	Friend WithEvents col_PM_RequireQTY As ColumnHeader
+	Friend WithEvents col_PM_TotalPrice As ColumnHeader
+	Friend WithEvents col_PM_NextPM As ColumnHeader
+	Friend WithEvents col_PM_Remark As ColumnHeader
+	Friend WithEvents picIcon As PictureBox
 End Class

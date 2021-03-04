@@ -71,7 +71,7 @@ Partial Class frmAddPMHistory
 		'picIcon
 		'
 		Me.picIcon.Image = CType(resources.GetObject("picIcon.Image"), System.Drawing.Image)
-		Me.picIcon.Location = New System.Drawing.Point(5, 5)
+		Me.picIcon.Location = New System.Drawing.Point(3, 3)
 		Me.picIcon.Name = "picIcon"
 		Me.picIcon.Size = New System.Drawing.Size(50, 50)
 		Me.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -81,12 +81,12 @@ Partial Class frmAddPMHistory
 		'lblTitle
 		'
 		Me.lblTitle.AutoSize = True
-		Me.lblTitle.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.lblTitle.ForeColor = System.Drawing.Color.White
-		Me.lblTitle.Location = New System.Drawing.Point(63, 5)
+		Me.lblTitle.Location = New System.Drawing.Point(61, 9)
 		Me.lblTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
 		Me.lblTitle.Name = "lblTitle"
-		Me.lblTitle.Size = New System.Drawing.Size(228, 23)
+		Me.lblTitle.Size = New System.Drawing.Size(329, 33)
 		Me.lblTitle.TabIndex = 0
 		Me.lblTitle.Text = "Complete PM Schedule"
 		'
@@ -98,7 +98,7 @@ Partial Class frmAddPMHistory
 		Me.pnlFooter.Controls.Add(Me.btnSave)
 		Me.pnlFooter.Controls.Add(Me.btnClose)
 		Me.pnlFooter.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.pnlFooter.Location = New System.Drawing.Point(0, 734)
+		Me.pnlFooter.Location = New System.Drawing.Point(0, 721)
 		Me.pnlFooter.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
 		Me.pnlFooter.Name = "pnlFooter"
 		Me.pnlFooter.Size = New System.Drawing.Size(574, 50)
@@ -132,7 +132,7 @@ Partial Class frmAddPMHistory
 		'Label2
 		'
 		Me.Label2.AutoSize = True
-		Me.Label2.Location = New System.Drawing.Point(291, 266)
+		Me.Label2.Location = New System.Drawing.Point(291, 254)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(78, 18)
 		Me.Label2.TabIndex = 17
@@ -142,7 +142,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.tbxReporter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxReporter.Location = New System.Drawing.Point(294, 287)
+		Me.tbxReporter.Location = New System.Drawing.Point(294, 275)
 		Me.tbxReporter.Name = "tbxReporter"
 		Me.tbxReporter.Size = New System.Drawing.Size(237, 27)
 		Me.tbxReporter.TabIndex = 2
@@ -150,7 +150,7 @@ Partial Class frmAddPMHistory
 		'Label6
 		'
 		Me.Label6.AutoSize = True
-		Me.Label6.Location = New System.Drawing.Point(42, 322)
+		Me.Label6.Location = New System.Drawing.Point(42, 310)
 		Me.Label6.Name = "Label6"
 		Me.Label6.Size = New System.Drawing.Size(76, 18)
 		Me.Label6.TabIndex = 26
@@ -160,7 +160,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.dtpPMDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.dtpPMDate.Location = New System.Drawing.Point(45, 343)
+		Me.dtpPMDate.Location = New System.Drawing.Point(45, 331)
 		Me.dtpPMDate.Name = "dtpPMDate"
 		Me.dtpPMDate.Size = New System.Drawing.Size(486, 27)
 		Me.dtpPMDate.TabIndex = 3
@@ -168,7 +168,7 @@ Partial Class frmAddPMHistory
 		'Label3
 		'
 		Me.Label3.AutoSize = True
-		Me.Label3.Location = New System.Drawing.Point(42, 266)
+		Me.Label3.Location = New System.Drawing.Point(42, 254)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(133, 18)
 		Me.Label3.TabIndex = 28
@@ -178,7 +178,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.tbxOperatorName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxOperatorName.Location = New System.Drawing.Point(45, 287)
+		Me.tbxOperatorName.Location = New System.Drawing.Point(45, 275)
 		Me.tbxOperatorName.Name = "tbxOperatorName"
 		Me.tbxOperatorName.Size = New System.Drawing.Size(237, 27)
 		Me.tbxOperatorName.TabIndex = 1
@@ -186,7 +186,7 @@ Partial Class frmAddPMHistory
 		'Label10
 		'
 		Me.Label10.AutoSize = True
-		Me.Label10.Location = New System.Drawing.Point(42, 574)
+		Me.Label10.Location = New System.Drawing.Point(42, 562)
 		Me.Label10.Name = "Label10"
 		Me.Label10.Size = New System.Drawing.Size(69, 18)
 		Me.Label10.TabIndex = 36
@@ -196,7 +196,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.tbxRemark.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxRemark.Location = New System.Drawing.Point(45, 595)
+		Me.tbxRemark.Location = New System.Drawing.Point(45, 583)
 		Me.tbxRemark.Multiline = True
 		Me.tbxRemark.Name = "tbxRemark"
 		Me.tbxRemark.Size = New System.Drawing.Size(486, 111)
@@ -205,7 +205,7 @@ Partial Class frmAddPMHistory
 		'Label8
 		'
 		Me.Label8.AutoSize = True
-		Me.Label8.Location = New System.Drawing.Point(42, 518)
+		Me.Label8.Location = New System.Drawing.Point(42, 506)
 		Me.Label8.Name = "Label8"
 		Me.Label8.Size = New System.Drawing.Size(89, 18)
 		Me.Label8.TabIndex = 35
@@ -215,7 +215,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.tbxPMResult.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPMResult.Location = New System.Drawing.Point(45, 539)
+		Me.tbxPMResult.Location = New System.Drawing.Point(45, 527)
 		Me.tbxPMResult.Name = "tbxPMResult"
 		Me.tbxPMResult.Size = New System.Drawing.Size(486, 27)
 		Me.tbxPMResult.TabIndex = 5
@@ -223,7 +223,7 @@ Partial Class frmAddPMHistory
 		'Label4
 		'
 		Me.Label4.AutoSize = True
-		Me.Label4.Location = New System.Drawing.Point(42, 94)
+		Me.Label4.Location = New System.Drawing.Point(42, 82)
 		Me.Label4.Name = "Label4"
 		Me.Label4.Size = New System.Drawing.Size(66, 18)
 		Me.Label4.TabIndex = 38
@@ -237,6 +237,7 @@ Partial Class frmAddPMHistory
 		Me.lblPMID.Size = New System.Drawing.Size(50, 18)
 		Me.lblPMID.TabIndex = 39
 		Me.lblPMID.Text = "PMID"
+		Me.lblPMID.Visible = False
 		'
 		'lvwDetails
 		'
@@ -246,7 +247,7 @@ Partial Class frmAddPMHistory
 		Me.lvwDetails.GridLines = True
 		Me.lvwDetails.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
 		Me.lvwDetails.HideSelection = False
-		Me.lvwDetails.Location = New System.Drawing.Point(45, 115)
+		Me.lvwDetails.Location = New System.Drawing.Point(45, 103)
 		Me.lvwDetails.Name = "lvwDetails"
 		Me.lvwDetails.Size = New System.Drawing.Size(486, 143)
 		Me.lvwDetails.TabIndex = 40
@@ -272,7 +273,7 @@ Partial Class frmAddPMHistory
 		'Label5
 		'
 		Me.Label5.AutoSize = True
-		Me.Label5.Location = New System.Drawing.Point(42, 378)
+		Me.Label5.Location = New System.Drawing.Point(42, 366)
 		Me.Label5.Name = "Label5"
 		Me.Label5.Size = New System.Drawing.Size(95, 18)
 		Me.Label5.TabIndex = 42
@@ -282,7 +283,7 @@ Partial Class frmAddPMHistory
 		'
 		Me.tbxPMDetails.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPMDetails.Location = New System.Drawing.Point(45, 399)
+		Me.tbxPMDetails.Location = New System.Drawing.Point(45, 387)
 		Me.tbxPMDetails.Multiline = True
 		Me.tbxPMDetails.Name = "tbxPMDetails"
 		Me.tbxPMDetails.Size = New System.Drawing.Size(486, 111)
@@ -296,6 +297,7 @@ Partial Class frmAddPMHistory
 		Me.lblMode.Size = New System.Drawing.Size(39, 18)
 		Me.lblMode.TabIndex = 43
 		Me.lblMode.Text = "Add"
+		Me.lblMode.Visible = False
 		'
 		'lblPMHID
 		'
@@ -305,13 +307,14 @@ Partial Class frmAddPMHistory
 		Me.lblPMHID.Size = New System.Drawing.Size(62, 18)
 		Me.lblPMHID.TabIndex = 44
 		Me.lblPMHID.Text = "PMHID"
+		Me.lblPMHID.Visible = False
 		'
 		'frmAddPMHistory
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Gainsboro
-		Me.ClientSize = New System.Drawing.Size(574, 784)
+		Me.ClientSize = New System.Drawing.Size(574, 771)
 		Me.Controls.Add(Me.lblPMHID)
 		Me.Controls.Add(Me.lblMode)
 		Me.Controls.Add(Me.Label5)
