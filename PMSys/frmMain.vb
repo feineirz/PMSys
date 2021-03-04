@@ -87,7 +87,7 @@
 				lvi.SubItems.Add(pm.frequency)
 				lvi.SubItems.Add(pt.price.ToString("#,##0.00"))
 				lvi.SubItems.Add((pt.price * pm.unit_require).ToString("#,##0.00"))
-				lvi.SubItems.Add(pm.last_pm.ToString("yyyy/MMM/dd"))
+				lvi.SubItems.Add(pm.last_pm.ToString("yyyy/MM/dd"))
 
 				Dim dtNext As Date = DateAdd("d", pm.frequency, pm.last_pm)
 				Dim diff As Integer = DateDiff(DateInterval.Day, Now, dtNext)
@@ -286,6 +286,65 @@
 			frmAddPMHistory.EditMode(lvwPMHistoryList.SelectedItems(0).Text)
 			frmAddPMHistory.ShowDialog()
 		End If
+
+	End Sub
+
+	Private Sub cmsPMList_Opened(sender As Object, e As EventArgs) Handles cmsPMList.Opened
+
+		If lvwPMList.SelectedItems.Count = 1 Then
+			cmsPMList.Enabled = True
+
+			Dim pm As New PM(lvwPMList.SelectedItems(0).Text)
+			Dim nextPM As Date = DateAdd("d", pm.frequency, pm.last_pm)
+			Dim diff = DateDiff(DateInterval.Day, Now, nextPM)
+
+			If diff > 15 Then
+				mnu_PML_CompleteSchedule.Enabled = False
+			Else
+				mnu_PML_CompleteSchedule.Enabled = True
+			End If
+
+		Else
+			cmsPMList.Enabled = False
+
+		End If
+
+	End Sub
+
+	Private Sub cmsMachineList_Opened(sender As Object, e As EventArgs) Handles cmsMachineList.Opened
+
+		If lvwMachine.SelectedItems.Count = 1 Then
+			cmsMachineList.Enabled = True
+		Else
+			cmsMachineList.Enabled = False
+		End If
+
+	End Sub
+
+	Private Sub cmsPartList_Opened(sender As Object, e As EventArgs) Handles cmsPartList.Opened
+
+		If lvwPartList.SelectedItems.Count = 1 Then
+			cmsPartList.Enabled = True
+		Else
+			cmsPartList.Enabled = False
+		End If
+
+	End Sub
+
+	Private Sub cmsPMHistoryList_Opened(sender As Object, e As EventArgs) Handles cmsPMHistoryList.Opened
+
+		If lvwPMHistoryList.SelectedItems.Count = 1 Then
+			cmsPMHistoryList.Enabled = True
+		Else
+			cmsPMHistoryList.Enabled = False
+		End If
+
+	End Sub
+
+	Private Sub tbxSearch_GotFocus(sender As Object, e As EventArgs) Handles tbxMachineSearch.GotFocus, tbxPartSearch.GotFocus, tbxPMSearch.GotFocus
+
+		Dim tbxSearch As TextBox = DirectCast(sender, TextBox)
+		tbxSearch.SelectAll()
 
 	End Sub
 End Class

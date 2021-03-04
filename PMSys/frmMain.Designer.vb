@@ -131,7 +131,7 @@ Partial Class frmMain
 		Me.btnMachineSearch.Location = New System.Drawing.Point(527, 8)
 		Me.btnMachineSearch.Name = "btnMachineSearch"
 		Me.btnMachineSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnMachineSearch.TabIndex = 3
+		Me.btnMachineSearch.TabIndex = 1
 		Me.btnMachineSearch.UseVisualStyleBackColor = False
 		'
 		'tbxMachineSearch
@@ -139,7 +139,7 @@ Partial Class frmMain
 		Me.tbxMachineSearch.Location = New System.Drawing.Point(402, 9)
 		Me.tbxMachineSearch.Name = "tbxMachineSearch"
 		Me.tbxMachineSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxMachineSearch.TabIndex = 3
+		Me.tbxMachineSearch.TabIndex = 0
 		'
 		'btnAddMachine
 		'
@@ -149,7 +149,7 @@ Partial Class frmMain
 		Me.btnAddMachine.Location = New System.Drawing.Point(557, 7)
 		Me.btnAddMachine.Name = "btnAddMachine"
 		Me.btnAddMachine.Size = New System.Drawing.Size(149, 26)
-		Me.btnAddMachine.TabIndex = 1
+		Me.btnAddMachine.TabIndex = 2
 		Me.btnAddMachine.Text = "Add Machine"
 		Me.btnAddMachine.UseVisualStyleBackColor = False
 		'
@@ -167,7 +167,7 @@ Partial Class frmMain
 		Me.lvwMachine.Location = New System.Drawing.Point(6, 37)
 		Me.lvwMachine.Name = "lvwMachine"
 		Me.lvwMachine.Size = New System.Drawing.Size(708, 180)
-		Me.lvwMachine.TabIndex = 1
+		Me.lvwMachine.TabIndex = 3
 		Me.lvwMachine.UseCompatibleStateImageBehavior = False
 		Me.lvwMachine.View = System.Windows.Forms.View.Details
 		'
@@ -242,7 +242,7 @@ Partial Class frmMain
 		Me.pnlPart.Location = New System.Drawing.Point(738, 81)
 		Me.pnlPart.Name = "pnlPart"
 		Me.pnlPart.Size = New System.Drawing.Size(718, 220)
-		Me.pnlPart.TabIndex = 2
+		Me.pnlPart.TabIndex = 1
 		'
 		'btnPartSearch
 		'
@@ -253,7 +253,7 @@ Partial Class frmMain
 		Me.btnPartSearch.Location = New System.Drawing.Point(527, 8)
 		Me.btnPartSearch.Name = "btnPartSearch"
 		Me.btnPartSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnPartSearch.TabIndex = 7
+		Me.btnPartSearch.TabIndex = 1
 		Me.btnPartSearch.UseVisualStyleBackColor = False
 		'
 		'tbxPartSearch
@@ -261,7 +261,7 @@ Partial Class frmMain
 		Me.tbxPartSearch.Location = New System.Drawing.Point(402, 9)
 		Me.tbxPartSearch.Name = "tbxPartSearch"
 		Me.tbxPartSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxPartSearch.TabIndex = 5
+		Me.tbxPartSearch.TabIndex = 0
 		'
 		'btnAddPart
 		'
@@ -271,7 +271,7 @@ Partial Class frmMain
 		Me.btnAddPart.Location = New System.Drawing.Point(557, 7)
 		Me.btnAddPart.Name = "btnAddPart"
 		Me.btnAddPart.Size = New System.Drawing.Size(149, 26)
-		Me.btnAddPart.TabIndex = 1
+		Me.btnAddPart.TabIndex = 2
 		Me.btnAddPart.Text = "Add Part"
 		Me.btnAddPart.UseVisualStyleBackColor = False
 		'
@@ -289,7 +289,7 @@ Partial Class frmMain
 		Me.lvwPartList.Location = New System.Drawing.Point(6, 37)
 		Me.lvwPartList.Name = "lvwPartList"
 		Me.lvwPartList.Size = New System.Drawing.Size(708, 180)
-		Me.lvwPartList.TabIndex = 1
+		Me.lvwPartList.TabIndex = 3
 		Me.lvwPartList.UseCompatibleStateImageBehavior = False
 		Me.lvwPartList.View = System.Windows.Forms.View.Details
 		'
@@ -368,7 +368,7 @@ Partial Class frmMain
 		Me.pnlMaintenance.Location = New System.Drawing.Point(12, 307)
 		Me.pnlMaintenance.Name = "pnlMaintenance"
 		Me.pnlMaintenance.Size = New System.Drawing.Size(1444, 277)
-		Me.pnlMaintenance.TabIndex = 8
+		Me.pnlMaintenance.TabIndex = 2
 		'
 		'chkSearch_PartName
 		'
@@ -376,7 +376,7 @@ Partial Class frmMain
 		Me.chkSearch_PartName.Location = New System.Drawing.Point(945, 11)
 		Me.chkSearch_PartName.Name = "chkSearch_PartName"
 		Me.chkSearch_PartName.Size = New System.Drawing.Size(95, 20)
-		Me.chkSearch_PartName.TabIndex = 10
+		Me.chkSearch_PartName.TabIndex = 1
 		Me.chkSearch_PartName.Text = "Part Name"
 		Me.chkSearch_PartName.UseVisualStyleBackColor = True
 		'
@@ -399,7 +399,7 @@ Partial Class frmMain
 		Me.chkSearch_Type.Location = New System.Drawing.Point(752, 11)
 		Me.chkSearch_Type.Name = "chkSearch_Type"
 		Me.chkSearch_Type.Size = New System.Drawing.Size(59, 20)
-		Me.chkSearch_Type.TabIndex = 8
+		Me.chkSearch_Type.TabIndex = 0
 		Me.chkSearch_Type.Text = "Type"
 		Me.chkSearch_Type.UseVisualStyleBackColor = True
 		'
@@ -412,7 +412,7 @@ Partial Class frmMain
 		Me.btnPMSearch.Location = New System.Drawing.Point(1260, 8)
 		Me.btnPMSearch.Name = "btnPMSearch"
 		Me.btnPMSearch.Size = New System.Drawing.Size(24, 24)
-		Me.btnPMSearch.TabIndex = 7
+		Me.btnPMSearch.TabIndex = 3
 		Me.btnPMSearch.UseVisualStyleBackColor = False
 		'
 		'tbxPMSearch
@@ -420,7 +420,7 @@ Partial Class frmMain
 		Me.tbxPMSearch.Location = New System.Drawing.Point(1135, 9)
 		Me.tbxPMSearch.Name = "tbxPMSearch"
 		Me.tbxPMSearch.Size = New System.Drawing.Size(119, 23)
-		Me.tbxPMSearch.TabIndex = 5
+		Me.tbxPMSearch.TabIndex = 2
 		'
 		'btnAddMaintenance
 		'
@@ -430,7 +430,7 @@ Partial Class frmMain
 		Me.btnAddMaintenance.Location = New System.Drawing.Point(1290, 7)
 		Me.btnAddMaintenance.Name = "btnAddMaintenance"
 		Me.btnAddMaintenance.Size = New System.Drawing.Size(149, 26)
-		Me.btnAddMaintenance.TabIndex = 1
+		Me.btnAddMaintenance.TabIndex = 4
 		Me.btnAddMaintenance.Text = "Add PM Schedule"
 		Me.btnAddMaintenance.UseVisualStyleBackColor = False
 		'
@@ -448,7 +448,7 @@ Partial Class frmMain
 		Me.lvwPMList.Location = New System.Drawing.Point(6, 37)
 		Me.lvwPMList.Name = "lvwPMList"
 		Me.lvwPMList.Size = New System.Drawing.Size(1434, 237)
-		Me.lvwPMList.TabIndex = 1
+		Me.lvwPMList.TabIndex = 5
 		Me.lvwPMList.UseCompatibleStateImageBehavior = False
 		Me.lvwPMList.View = System.Windows.Forms.View.Details
 		'
@@ -591,7 +591,7 @@ Partial Class frmMain
 		Me.pnlPMHistory.Location = New System.Drawing.Point(12, 590)
 		Me.pnlPMHistory.Name = "pnlPMHistory"
 		Me.pnlPMHistory.Size = New System.Drawing.Size(1444, 277)
-		Me.pnlPMHistory.TabIndex = 15
+		Me.pnlPMHistory.TabIndex = 3
 		'
 		'lvwPMHistoryList
 		'
@@ -607,7 +607,7 @@ Partial Class frmMain
 		Me.lvwPMHistoryList.Location = New System.Drawing.Point(6, 37)
 		Me.lvwPMHistoryList.Name = "lvwPMHistoryList"
 		Me.lvwPMHistoryList.Size = New System.Drawing.Size(1434, 237)
-		Me.lvwPMHistoryList.TabIndex = 1
+		Me.lvwPMHistoryList.TabIndex = 0
 		Me.lvwPMHistoryList.UseCompatibleStateImageBehavior = False
 		Me.lvwPMHistoryList.View = System.Windows.Forms.View.Details
 		'
