@@ -11,7 +11,7 @@ CREATE TABLE Machine(
 	machine_id int unsigned auto_increment not null primary key,
 	machine_code varchar(255) not null default '',
 	machine_name varchar(255) not null,
-	detail text,
+	details text,
 	remark text
 )ENGINE=INNODB;
 
@@ -50,6 +50,7 @@ CREATE TABLE PM_History(
 	operator_name varchar(255) not null default 'Operator',
 	pm_date date not null,
 	report_date datetime default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+	pm_details text,
 	pm_result varchar(255) not null default 'PASSED',
 	remark text,
 	foreign key fk_pm_history_pm_id (pm_id)

@@ -50,7 +50,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>maintenance.ico</ApplicationIcon>
+    <ApplicationIcon>support_services.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -228,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="maintenance.ico" />
+    <Content Include="support_services.ico" />
     <None Include="Resources\file_search16.png" />
     <None Include="Resources\file_mark16.png" />
     <None Include="Resources\file_delete16.png" />

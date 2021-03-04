@@ -9,7 +9,7 @@
 	Public Shared Function ReleaseCapture() As Boolean
 	End Function
 
-	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, lblTitle.MouseDown
+	Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown, pnlHeader.MouseDown
 		Const WM_NCLBUTTONDOWN As Integer = &HA1
 		Const HT_CAPTION As Integer = &H2
 
@@ -101,36 +101,55 @@
 					lvi.BackColor = Color.OrangeRed
 					lvi.ForeColor = Color.White
 				ElseIf diff < 10 Then
-					lvi.BackColor = Color.Orange
-					lvi.ForeColor = Color.White
+					lvi.BackColor = Color.Gold
 				ElseIf diff < 15 Then
-					lvi.BackColor = Color.Yellow
-					lvi.ForeColor = Color.White
+					lvi.BackColor = Color.LightGoldenrodYellow
 				End If
 
-				lvi.SubItems.Add(dtNext.ToString("yyyy/MMM/dd"))
+				lvi.SubItems.Add(dtNext.ToString("yyyy/MM/dd"))
 				lvi.SubItems.Add(pm.pm_action)
 			Next
 		End If
 
 	End Sub
 
-	Sub CheckPMStatus()
+	Sub ListPMHistory(Optional Condition As String = "")
 
-		For Each lvi In lvwPMList.Items
+		Dim pm As PM
+		Dim m As Machine
+		Dim p As Part
+		Dim PMHList = PMHistory.List()
+		Dim lvi As ListViewItem
 
+		lvwPMHistoryList.Items.Clear()
+		If PMHList.Count > 0 Then
+			For Each pmh In PMHList.Items
+				pm = New PM(pmh.pm_id)
+				m = New Machine(pm.machine_id)
+				p = New Part(pm.part_id)
 
+				lvi = lvwPMHistoryList.Items.Add(pmh.pm_history_id)
+				lvi.SubItems.Add(pm.pm_id)
+				lvi.SubItems.Add(pmh.pm_date.ToString("yyyy/MM/dd"))
+				lvi.SubItems.Add(m.machine_name)
+				lvi.SubItems.Add(p.part_name)
+				lvi.SubItems.Add(pmh.operator_name)
+				lvi.SubItems.Add(pmh.reporter)
+				lvi.SubItems.Add(pmh.pm_details)
+				lvi.SubItems.Add(pmh.pm_result)
 
-
-		Next
+			Next
+		End If
 
 	End Sub
+
 
 	Private Sub InitEnv()
 
 		ListMachine()
 		ListPart()
 		ListPM()
+		ListPMHistory()
 
 	End Sub
 
@@ -257,6 +276,15 @@
 			frmAddPMHistory.InitData(lvwPMList.SelectedItems(0).Text.Trim)
 			frmAddPMHistory.ShowDialog()
 
+		End If
+
+	End Sub
+
+	Private Sub mnu_PMH_Edit_Click(sender As Object, e As EventArgs) Handles mnu_PMH_Edit.Click
+
+		If lvwPMHistoryList.SelectedItems.Count = 1 Then
+			frmAddPMHistory.EditMode(lvwPMHistoryList.SelectedItems(0).Text)
+			frmAddPMHistory.ShowDialog()
 		End If
 
 	End Sub

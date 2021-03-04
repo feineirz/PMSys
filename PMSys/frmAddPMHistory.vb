@@ -56,6 +56,24 @@
 
 	End Sub
 
+	Sub EditMode(PMHID As Integer)
+
+		Dim pmh As New PMHistory(PMHID)
+
+		lblTitle.Text = "Edit PM Schedule info"
+		lblMode.Text = "Edit"
+		lblPMHID.Text = pmh.pm_history_id
+		lblPMID.Text = pmh.pm_id
+		InitData(pmh.pm_id)
+		tbxOperatorName.Text = pmh.operator_name
+		tbxReporter.Text = pmh.reporter
+		dtpPMDate.Value = pmh.pm_date
+		tbxPMDetails.Text = pmh.pm_details
+		tbxPMResult.Text = pmh.pm_result
+		tbxRemark.Text = pmh.remark
+
+	End Sub
+
 	Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
 
 		Me.Dispose()
@@ -70,16 +88,35 @@
 		pmh_info.operator_name = tbxOperatorName.Text.Trim
 		pmh_info.pm_date = dtpPMDate.Value
 		pmh_info.report_date = Now
+		pmh_info.pm_details = tbxPMDetails.Text.Trim
 		pmh_info.pm_result = tbxPMResult.Text.Trim
 		pmh_info.remark = tbxRemark.Text.Trim
 
-		If PMHistory.Add(pmh_info) Then
-			Dim pm As New PM(lblPMID.Text)
-			pm.last_pm = dtpPMDate.Value
+		If lblMode.Text = "Add" Then
 
-			frmMain.ListPM()
-			Me.Dispose()
+			If PMHistory.Add(pmh_info) Then
+				Dim pm As New PM(lblPMID.Text)
+				pm.last_pm = dtpPMDate.Value
+
+				frmMain.ListPM()
+				frmMain.ListPMHistory()
+				Me.Dispose()
+			End If
+
+		ElseIf lblMode.Text = "Edit" Then
+
+			pmh_info.pm_history_id = lblPMHID.Text
+			If PMHistory.Update(pmh_info) Then
+				Dim pm As New PM(lblPMID.Text)
+				pm.last_pm = dtpPMDate.Value
+
+				frmMain.ListPM()
+				frmMain.ListPMHistory()
+				Me.Dispose()
+			End If
+
 		End If
+
 
 	End Sub
 End Class
