@@ -46,7 +46,7 @@ Public Class PMHistory
 
 	End Function
 
-	Shared Function GetMySQLConnection As MySqlConnection
+	Shared Function GetMySQLConnection() As MySqlConnection
 
 		Try
 			Dim SQLConn As New MySqlConnection(ConnString)
@@ -58,7 +58,7 @@ Public Class PMHistory
 
 		End Try
 
-	End Function 
+	End Function
 
 	Private _operator_name As String
 	Private _pm_date As Date
@@ -129,228 +129,228 @@ Public Class PMHistory
 
 #End Region
 
-'============================== Class Properties =============================='
+	'============================== Class Properties =============================='
 
 #Region "Class Properties"
 
-  '--- operator_name ---'
-  Property operator_name As String
-    Get
-      Return _operator_name
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET operator_name = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- operator_name ---'
+	Property operator_name As String
+		Get
+			Return _operator_name
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET operator_name = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.operator_name" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.operator_name" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _operator_name = value
-    End Set
-  End Property
+			_operator_name = value
+		End Set
+	End Property
 
-  '--- pm_date ---'
-  Property pm_date As Date
-    Get
-      Return _pm_date
-    End Get
-    Set(ByVal value As Date)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_date = '" & value.ToString("yyyy-M-d") & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- pm_date ---'
+	Property pm_date As Date
+		Get
+			Return _pm_date
+		End Get
+		Set(ByVal value As Date)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_date = '" & value.ToString("yyyy-M-d") & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.pm_date" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.pm_date" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_date = value
-    End Set
-  End Property
+			_pm_date = value
+		End Set
+	End Property
 
-  '--- pm_details ---'
-  Property pm_details As String
-    Get
-      Return _pm_details
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_details = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- pm_details ---'
+	Property pm_details As String
+		Get
+			Return _pm_details
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_details = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.pm_details" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.pm_details" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_details = value
-    End Set
-  End Property
+			_pm_details = value
+		End Set
+	End Property
 
-  '--- pm_history_id ---'
-  ReadOnly Property pm_history_id As Integer
-    Get
-      Return _pm_history_id
-    End Get
-  End Property
+	'--- pm_history_id ---'
+	ReadOnly Property pm_history_id As Integer
+		Get
+			Return _pm_history_id
+		End Get
+	End Property
 
-  '--- pm_id ---'
-  Property pm_id As Integer
-    Get
-      Return _pm_id
-    End Get
-    Set(ByVal value As Integer)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_id = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- pm_id ---'
+	Property pm_id As Integer
+		Get
+			Return _pm_id
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_id = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.pm_id" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.pm_id" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_id = value
-    End Set
-  End Property
+			_pm_id = value
+		End Set
+	End Property
 
-  '--- pm_result ---'
-  Property pm_result As String
-    Get
-      Return _pm_result
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET pm_result = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- pm_result ---'
+	Property pm_result As String
+		Get
+			Return _pm_result
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET pm_result = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.pm_result" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.pm_result" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _pm_result = value
-    End Set
-  End Property
+			_pm_result = value
+		End Set
+	End Property
 
-  '--- remark ---'
-  Property remark As String
-    Get
-      Return _remark
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET remark = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- remark ---'
+	Property remark As String
+		Get
+			Return _remark
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET remark = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.remark" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.remark" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _remark = value
-    End Set
-  End Property
+			_remark = value
+		End Set
+	End Property
 
-  '--- report_date ---'
-  Property report_date As DateTime
-    Get
-      Return _report_date
-    End Get
-    Set(ByVal value As DateTime)
-      _QRY = "UPDATE " & tableName &
-             " SET report_date = '" & value.ToString("yyyy-M-d H:m:s") & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- report_date ---'
+	Property report_date As DateTime
+		Get
+			Return _report_date
+		End Get
+		Set(ByVal value As DateTime)
+			_QRY = "UPDATE " & tableName &
+						 " SET report_date = '" & value.ToString("yyyy-M-d H:m:s") & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.report_date" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.report_date" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _report_date = value
-    End Set
-  End Property
+			_report_date = value
+		End Set
+	End Property
 
-  '--- reporter ---'
-  Property reporter As String
-    Get
-      Return _reporter
-    End Get
-    Set(ByVal value As String)
-      _QRY = "UPDATE " & tableName &
-             " SET reporter = '" & value & "'" &
-             " WHERE pm_history_id = '" & _pm_history_id & "'"
+	'--- reporter ---'
+	Property reporter As String
+		Get
+			Return _reporter
+		End Get
+		Set(ByVal value As String)
+			_QRY = "UPDATE " & tableName &
+						 " SET reporter = '" & value & "'" &
+						 " WHERE pm_history_id = '" & _pm_history_id & "'"
 
-      Try
-        _SQLConn.Open()
-        _CMD = New MySqlCommand(_QRY, _SQLConn)
-        _CMD.ExecuteNonQuery()
-        _SQLConn.Close()
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
 
-      Catch ex As Exception
-        _SQLConn.Close()
-        MsgBox("[Error] Property : PMHistory.reporter" & vbCrLf & ex.Message, , "Error")
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PMHistory.reporter" & vbCrLf & ex.Message, , "Error")
 
-      End Try
+			End Try
 
-      _reporter = value
-    End Set
-  End Property
+			_reporter = value
+		End Set
+	End Property
 
 #End Region
 
-'============================== Required Function =============================='
+	'============================== Required Function =============================='
 
 #Region "Required Function"
 
@@ -461,9 +461,9 @@ Public Class PMHistory
 		Dim CMD As MySqlCommand
 		Dim QRY As String
 
-		Try		
+		Try
 			QRY = "DELETE FROM" &
-						" " & tableName & 
+						" " & tableName &
 						" WHERE pm_history_id='" & PMHistory_pm_history_id & "'"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -644,10 +644,10 @@ Public Class PMHistory
 
 	End Function
 
-  '---------- TOCLASSINFO ----------'
-  Function ToPMHistoryInfo() As PMHistoryInfo
+	'---------- TOCLASSINFO ----------'
+	Function ToPMHistoryInfo() As PMHistoryInfo
 
-    Dim CI As PMHistoryInfo = Nothing
+		Dim CI As PMHistoryInfo = Nothing
 
 		CI.operator_name = _operator_name
 		CI.pm_date = _pm_date
@@ -659,9 +659,9 @@ Public Class PMHistory
 		CI.report_date = _report_date
 		CI.reporter = _reporter
 
-    Return CI
+		Return CI
 
-  End Function
+	End Function
 
 	'---------- COUNT ----------'
 	Shared Function Count(ByVal Condition As String, Optional SQLConn As MySqlConnection = Nothing) As Integer
@@ -678,8 +678,8 @@ Public Class PMHistory
 		Dim QRY As String
 
 		Try
-			QRY = "SELECT COUNT(pm_history_id) " & _
-						" FROM PM_History " & _
+			QRY = "SELECT COUNT(pm_history_id) " &
+						" FROM PM_History " &
 						" WHERE " & Condition
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -736,15 +736,15 @@ Public Class PMHistory
 
 #End Region
 
-'============================== Custom Functions =============================='
+	'============================== Custom Functions =============================='
 
 #Region "Custom Functions"
 
-  '-----------------------------------------------'
-  '---------- ADD CUSTOM FUNCTIONS HERE ----------'
-  '-----------------------------------------------'
-  '---- DO NOT COPY OR PASTE ON THIS SECTION -----'
-  '-----------------------------------------------'
+	'-----------------------------------------------'
+	'---------- ADD CUSTOM FUNCTIONS HERE ----------'
+	'-----------------------------------------------'
+	'---- DO NOT COPY OR PASTE ON THIS SECTION -----'
+	'-----------------------------------------------'
 
 
 

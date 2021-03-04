@@ -60,26 +60,26 @@ Public Class PM
 
 	End Function
 
-	Private _pm_id As Integer
-	Private _pm_type As String
+	Private _frequency As Integer
+	Private _last_pm As Date
 	Private _machine_id As Integer
 	Private _part_id As Integer
-	Private _unit_require As Integer
-	Private _frequency As Integer
 	Private _pm_action As String
-	Private _last_pm As Date
+	Private _pm_id As Integer
+	Private _pm_type As String
 	Private _remark As String
+	Private _unit_require As Integer
 
 	Structure PMInfo
-		Dim pm_id As Integer
-		Dim pm_type As String
+		Dim frequency As Integer
+		Dim last_pm As Date
 		Dim machine_id As Integer
 		Dim part_id As Integer
-		Dim unit_require As Integer
-		Dim frequency As Integer
 		Dim pm_action As String
-		Dim last_pm As Date
+		Dim pm_id As Integer
+		Dim pm_type As String
 		Dim remark As String
+		Dim unit_require As Integer
 	End Structure
 
 	'------------ CONSTRUCTOR ------------'
@@ -106,15 +106,15 @@ Public Class PM
 
 			If RD.HasRows Then
 				While RD.Read
-					_pm_id = RD!pm_id
-					_pm_type = RD!pm_type
+					_frequency = RD!frequency
+					_last_pm = RD!last_pm
 					_machine_id = RD!machine_id
 					_part_id = RD!part_id
-					_unit_require = RD!unit_require
-					_frequency = RD!frequency
 					_pm_action = RD!pm_action
-					_last_pm = RD!last_pm
+					_pm_id = RD!pm_id
+					_pm_type = RD!pm_type
 					_remark = RD!remark
+					_unit_require = RD!unit_require
 				End While
 			End If
 			If autoCloseConnection Then SQLConn.Close()
@@ -133,21 +133,14 @@ Public Class PM
 
 #Region "Class Properties"
 
-	'--- pm_id ---'
-	ReadOnly Property pm_id As Integer
+	'--- frequency ---'
+	Property frequency As Integer
 		Get
-			Return _pm_id
+			Return _frequency
 		End Get
-	End Property
-
-	'--- pm_type ---'
-	Property pm_type As String
-		Get
-			Return _pm_type
-		End Get
-		Set(ByVal value As String)
+		Set(ByVal value As Integer)
 			_QRY = "UPDATE " & tableName &
-						 " SET pm_type = '" & value & "'" &
+						 " SET frequency = '" & value & "'" &
 						 " WHERE pm_id = '" & _pm_id & "'"
 
 			Try
@@ -158,11 +151,37 @@ Public Class PM
 
 			Catch ex As Exception
 				_SQLConn.Close()
-				MsgBox("[Error] Property : PM.pm_type" & vbCrLf & ex.Message, , "Error")
+				MsgBox("[Error] Property : PM.frequency" & vbCrLf & ex.Message, , "Error")
 
 			End Try
 
-			_pm_type = value
+			_frequency = value
+		End Set
+	End Property
+
+	'--- last_pm ---'
+	Property last_pm As Date
+		Get
+			Return _last_pm
+		End Get
+		Set(ByVal value As Date)
+			_QRY = "UPDATE " & tableName &
+						 " SET last_pm = '" & value.ToString("yyyy-M-d") & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
+
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
+
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.last_pm" & vbCrLf & ex.Message, , "Error")
+
+			End Try
+
+			_last_pm = value
 		End Set
 	End Property
 
@@ -218,58 +237,6 @@ Public Class PM
 		End Set
 	End Property
 
-	'--- unit_require ---'
-	Property unit_require As Integer
-		Get
-			Return _unit_require
-		End Get
-		Set(ByVal value As Integer)
-			_QRY = "UPDATE " & tableName &
-						 " SET unit_require = '" & value & "'" &
-						 " WHERE pm_id = '" & _pm_id & "'"
-
-			Try
-				_SQLConn.Open()
-				_CMD = New MySqlCommand(_QRY, _SQLConn)
-				_CMD.ExecuteNonQuery()
-				_SQLConn.Close()
-
-			Catch ex As Exception
-				_SQLConn.Close()
-				MsgBox("[Error] Property : PM.unit_require" & vbCrLf & ex.Message, , "Error")
-
-			End Try
-
-			_unit_require = value
-		End Set
-	End Property
-
-	'--- frequency ---'
-	Property frequency As Integer
-		Get
-			Return _frequency
-		End Get
-		Set(ByVal value As Integer)
-			_QRY = "UPDATE " & tableName &
-						 " SET frequency = '" & value & "'" &
-						 " WHERE pm_id = '" & _pm_id & "'"
-
-			Try
-				_SQLConn.Open()
-				_CMD = New MySqlCommand(_QRY, _SQLConn)
-				_CMD.ExecuteNonQuery()
-				_SQLConn.Close()
-
-			Catch ex As Exception
-				_SQLConn.Close()
-				MsgBox("[Error] Property : PM.frequency" & vbCrLf & ex.Message, , "Error")
-
-			End Try
-
-			_frequency = value
-		End Set
-	End Property
-
 	'--- pm_action ---'
 	Property pm_action As String
 		Get
@@ -296,14 +263,21 @@ Public Class PM
 		End Set
 	End Property
 
-	'--- last_pm ---'
-	Property last_pm As Date
+	'--- pm_id ---'
+	ReadOnly Property pm_id As Integer
 		Get
-			Return _last_pm
+			Return _pm_id
 		End Get
-		Set(ByVal value As Date)
+	End Property
+
+	'--- pm_type ---'
+	Property pm_type As String
+		Get
+			Return _pm_type
+		End Get
+		Set(ByVal value As String)
 			_QRY = "UPDATE " & tableName &
-						 " SET last_pm = '" & value.ToString("yyyy-M-d") & "'" &
+						 " SET pm_type = '" & value & "'" &
 						 " WHERE pm_id = '" & _pm_id & "'"
 
 			Try
@@ -314,11 +288,11 @@ Public Class PM
 
 			Catch ex As Exception
 				_SQLConn.Close()
-				MsgBox("[Error] Property : PM.last_pm" & vbCrLf & ex.Message, , "Error")
+				MsgBox("[Error] Property : PM.pm_type" & vbCrLf & ex.Message, , "Error")
 
 			End Try
 
-			_last_pm = value
+			_pm_type = value
 		End Set
 	End Property
 
@@ -348,6 +322,32 @@ Public Class PM
 		End Set
 	End Property
 
+	'--- unit_require ---'
+	Property unit_require As Integer
+		Get
+			Return _unit_require
+		End Get
+		Set(ByVal value As Integer)
+			_QRY = "UPDATE " & tableName &
+						 " SET unit_require = '" & value & "'" &
+						 " WHERE pm_id = '" & _pm_id & "'"
+
+			Try
+				_SQLConn.Open()
+				_CMD = New MySqlCommand(_QRY, _SQLConn)
+				_CMD.ExecuteNonQuery()
+				_SQLConn.Close()
+
+			Catch ex As Exception
+				_SQLConn.Close()
+				MsgBox("[Error] Property : PM.unit_require" & vbCrLf & ex.Message, , "Error")
+
+			End Try
+
+			_unit_require = value
+		End Set
+	End Property
+
 #End Region
 
 	'============================== Required Function =============================='
@@ -368,20 +368,20 @@ Public Class PM
 		Dim QRY As String
 
 		Try
-			QRY = "INSERT INTO " & tableName & "(pm_id, pm_type, machine_id, part_id, unit_require, frequency, pm_action, last_pm, remark)" &
-						" VALUES(@pm_id, @pm_type, @machine_id, @part_id, @unit_require, @frequency, @pm_action, @last_pm, @remark)"
+			QRY = "INSERT INTO " & tableName & "(frequency, last_pm, machine_id, part_id, pm_action, pm_id, pm_type, remark, unit_require)" &
+						" VALUES(@frequency, @last_pm, @machine_id, @part_id, @pm_action, @pm_id, @pm_type, @remark, @unit_require)"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
 
-			CMD.Parameters.AddWithValue("@pm_id", PMInfoA.pm_id)
-			CMD.Parameters.AddWithValue("@pm_type", PMInfoA.pm_type)
+			CMD.Parameters.AddWithValue("@frequency", PMInfoA.frequency)
+			CMD.Parameters.AddWithValue("@last_pm", PMInfoA.last_pm)
 			CMD.Parameters.AddWithValue("@machine_id", PMInfoA.machine_id)
 			CMD.Parameters.AddWithValue("@part_id", PMInfoA.part_id)
-			CMD.Parameters.AddWithValue("@unit_require", PMInfoA.unit_require)
-			CMD.Parameters.AddWithValue("@frequency", PMInfoA.frequency)
 			CMD.Parameters.AddWithValue("@pm_action", PMInfoA.pm_action)
-			CMD.Parameters.AddWithValue("@last_pm", PMInfoA.last_pm)
+			CMD.Parameters.AddWithValue("@pm_id", PMInfoA.pm_id)
+			CMD.Parameters.AddWithValue("@pm_type", PMInfoA.pm_type)
 			CMD.Parameters.AddWithValue("@remark", PMInfoA.remark)
+			CMD.Parameters.AddWithValue("@unit_require", PMInfoA.unit_require)
 
 			CMD.ExecuteNonQuery()
 			If autoCloseConnection Then SQLConn.Close()
@@ -413,26 +413,26 @@ Public Class PM
 		Try
 			QRY = "UPDATE " & tableName &
 					" SET" &
-					" pm_type = @pm_type," &
+					" frequency = @frequency," &
+					" last_pm = @last_pm," &
 					" machine_id = @machine_id," &
 					" part_id = @part_id," &
-					" unit_require = @unit_require," &
-					" frequency = @frequency," &
 					" pm_action = @pm_action," &
-					" last_pm = @last_pm," &
-					" remark = @remark" &
+					" pm_type = @pm_type," &
+					" remark = @remark," &
+					" unit_require = @unit_require" &
 					" WHERE pm_id='" & PMInfoA.pm_id & "'"
 
 			CMD = New MySqlCommand(QRY, SQLConn)
 
-			CMD.Parameters.AddWithValue("@pm_type", PMInfoA.pm_type)
+			CMD.Parameters.AddWithValue("@frequency", PMInfoA.frequency)
+			CMD.Parameters.AddWithValue("@last_pm", PMInfoA.last_pm)
 			CMD.Parameters.AddWithValue("@machine_id", PMInfoA.machine_id)
 			CMD.Parameters.AddWithValue("@part_id", PMInfoA.part_id)
-			CMD.Parameters.AddWithValue("@unit_require", PMInfoA.unit_require)
-			CMD.Parameters.AddWithValue("@frequency", PMInfoA.frequency)
 			CMD.Parameters.AddWithValue("@pm_action", PMInfoA.pm_action)
-			CMD.Parameters.AddWithValue("@last_pm", PMInfoA.last_pm)
+			CMD.Parameters.AddWithValue("@pm_type", PMInfoA.pm_type)
 			CMD.Parameters.AddWithValue("@remark", PMInfoA.remark)
+			CMD.Parameters.AddWithValue("@unit_require", PMInfoA.unit_require)
 
 			CMD.ExecuteNonQuery()
 			If autoCloseConnection Then SQLConn.Close()
@@ -488,7 +488,7 @@ Public Class PM
 	End Structure
 
 	'---------- LIST ----------'
-	Shared Function List(Optional Query As String = "", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "pm_id", Optional SQLConn As MySqlConnection = Nothing) As ListItem
+	Shared Function List(Optional ByVal Query As String = "", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "pm_id", Optional SQLConn As MySqlConnection = Nothing) As ListItem
 
 		If Not Condition = "" Then Condition = " WHERE " & Condition
 		If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
@@ -517,7 +517,6 @@ Public Class PM
 				QRY = "SELECT *" &
 						" FROM " & tableName
 			End If
-
 			QRY &= Condition & SortOrder
 
 			CMD = New MySqlCommand(QRY, SQLConn)
@@ -528,15 +527,15 @@ Public Class PM
 				While RD.Read
 					ReDim Preserve PMInfoA(Ix)
 
-					PMInfoA(Ix).pm_id = RD!pm_id
-					PMInfoA(Ix).pm_type = RD!pm_type
+					PMInfoA(Ix).frequency = RD!frequency
+					PMInfoA(Ix).last_pm = RD!last_pm
 					PMInfoA(Ix).machine_id = RD!machine_id
 					PMInfoA(Ix).part_id = RD!part_id
-					PMInfoA(Ix).unit_require = RD!unit_require
-					PMInfoA(Ix).frequency = RD!frequency
 					PMInfoA(Ix).pm_action = RD!pm_action
-					PMInfoA(Ix).last_pm = RD!last_pm
+					PMInfoA(Ix).pm_id = RD!pm_id
+					PMInfoA(Ix).pm_type = RD!pm_type
 					PMInfoA(Ix).remark = RD!remark
+					PMInfoA(Ix).unit_require = RD!unit_require
 
 					Ix += 1
 				End While
@@ -653,15 +652,15 @@ Public Class PM
 
 		Dim CI As PMInfo = Nothing
 
-		CI.pm_id = _pm_id
-		CI.pm_type = _pm_type
+		CI.frequency = _frequency
+		CI.last_pm = _last_pm
 		CI.machine_id = _machine_id
 		CI.part_id = _part_id
-		CI.unit_require = _unit_require
-		CI.frequency = _frequency
 		CI.pm_action = _pm_action
-		CI.last_pm = _last_pm
+		CI.pm_id = _pm_id
+		CI.pm_type = _pm_type
 		CI.remark = _remark
+		CI.unit_require = _unit_require
 
 		Return CI
 
