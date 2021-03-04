@@ -66,12 +66,12 @@
 
 	End Sub
 
-	Sub ListPM(Optional Condition As String = "")
+	Sub ListPM(Optional Query As String = "", Optional Condition As String = "")
 
 		Dim mc As Machine
 		Dim pt As Part
 
-		Dim PMList = PM.List()
+		Dim PMList = PM.List(Query, Condition)
 		Dim lvi As ListViewItem
 		lvwPMList.Items.Clear()
 
@@ -233,7 +233,19 @@
 
 	Private Sub btnPMSearch_Click(sender As Object, e As EventArgs) Handles btnPMSearch.Click
 
-		ListPM(tbxPMSearch.Text.Trim)
+		Dim searchText = tbxPMSearch.Text.Trim.Replace("'", "''")
+		Dim Query As String = "select *
+			from PM as pm 
+				inner join Machine as m
+				on pm.machine_id = m.machine_id 
+			inner join Part as p
+			on pm.part_id = p.part_id "
+
+		Dim Condition As String = "machine_name LIKE '%" + searchText + "%' "
+		If chkSearch_Type.Checked Then Condition &= " OR pm_type LIKE '%" + searchText + "%' "
+		If chkSearch_PartName.Checked Then Condition &= " OR part_name LIKE '%" + searchText + "%' "
+
+		ListPM(Query, Condition)
 
 	End Sub
 
@@ -265,7 +277,11 @@
 
 	Private Sub tbxMaintenanceSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles tbxPMSearch.KeyDown
 
-
+		If e.KeyCode = Keys.Enter Then
+			e.SuppressKeyPress = True
+			e.Handled = True
+			btnPMSearch_Click(Nothing, Nothing)
+		End If
 
 	End Sub
 

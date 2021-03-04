@@ -488,7 +488,7 @@ Public Class PM
 	End Structure
 
 	'---------- LIST ----------'
-	Shared Function List(Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "pm_id", Optional SQLConn As MySqlConnection = Nothing) As ListItem
+	Shared Function List(Optional Query As String = "", Optional ByVal Condition As String = "", Optional ByVal SortOrder As String = "pm_id", Optional SQLConn As MySqlConnection = Nothing) As ListItem
 
 		If Not Condition = "" Then Condition = " WHERE " & Condition
 		If Not SortOrder = "" Then SortOrder = " ORDER BY " & SortOrder
@@ -511,10 +511,14 @@ Public Class PM
 		ListItemA.Count = 0
 
 		Try
-			QRY = "SELECT *" &
-						" FROM " & tableName &
-						" " & Condition &
-						" " & SortOrder
+			If Not Query = "" Then
+				QRY = Query
+			Else
+				QRY = "SELECT *" &
+						" FROM " & tableName
+			End If
+
+			QRY &= Condition & SortOrder
 
 			CMD = New MySqlCommand(QRY, SQLConn)
 			RD = CMD.ExecuteReader
