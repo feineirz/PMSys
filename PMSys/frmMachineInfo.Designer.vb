@@ -37,12 +37,12 @@ Partial Class frmMachineInfo
 		Me.col_PM_RequireQTY = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_TotalPrice = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_Frequency = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+		Me.col_PM_CostPerYear = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_NextPM = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.col_PM_Remark = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Label4 = New System.Windows.Forms.Label()
 		Me.lblTotalPMCost = New System.Windows.Forms.Label()
-		Me.col_PM_CostPerYear = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.pnlPMHistory = New System.Windows.Forms.Panel()
 		Me.lvwPMHistoryList = New System.Windows.Forms.ListView()
 		Me.col_PMH_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -194,6 +194,12 @@ Partial Class frmMachineInfo
 		Me.col_PM_Frequency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.col_PM_Frequency.Width = 90
 		'
+		'col_PM_CostPerYear
+		'
+		Me.col_PM_CostPerYear.Text = "Cost/Year"
+		Me.col_PM_CostPerYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.col_PM_CostPerYear.Width = 100
+		'
 		'col_PM_NextPM
 		'
 		Me.col_PM_NextPM.Text = "Next PM"
@@ -236,12 +242,6 @@ Partial Class frmMachineInfo
 		Me.lblTotalPMCost.TabIndex = 19
 		Me.lblTotalPMCost.Text = "0.00"
 		Me.lblTotalPMCost.TextAlign = System.Drawing.ContentAlignment.TopRight
-		'
-		'col_PM_CostPerYear
-		'
-		Me.col_PM_CostPerYear.Text = "Cost/Year"
-		Me.col_PM_CostPerYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.col_PM_CostPerYear.Width = 100
 		'
 		'pnlPMHistory
 		'

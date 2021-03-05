@@ -22,10 +22,10 @@ Partial Class frmAddPM
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddPM))
 		Me.pnlFooter = New System.Windows.Forms.Panel()
 		Me.btnClose = New System.Windows.Forms.Button()
 		Me.btnSave = New System.Windows.Forms.Button()
-		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.tbxPMType = New System.Windows.Forms.TextBox()
 		Me.cmbMachineID = New System.Windows.Forms.ComboBox()
@@ -49,9 +49,14 @@ Partial Class frmAddPM
 		Me.lblPMID = New System.Windows.Forms.Label()
 		Me.lblMode = New System.Windows.Forms.Label()
 		Me.lblLastPM = New System.Windows.Forms.Label()
+		Me.pnlHeader = New System.Windows.Forms.Panel()
+		Me.picIcon = New System.Windows.Forms.PictureBox()
+		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.pnlFooter.SuspendLayout()
 		CType(Me.numRequiredQTY, System.ComponentModel.ISupportInitialize).BeginInit()
 		CType(Me.numFrequency, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnlHeader.SuspendLayout()
+		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'pnlFooter
@@ -89,21 +94,6 @@ Partial Class frmAddPM
 		Me.btnSave.TabIndex = 8
 		Me.btnSave.Text = "Save"
 		Me.btnSave.UseVisualStyleBackColor = True
-		'
-		'lblTitle
-		'
-		Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-		Me.lblTitle.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblTitle.ForeColor = System.Drawing.Color.White
-		Me.lblTitle.Location = New System.Drawing.Point(0, 0)
-		Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-		Me.lblTitle.Name = "lblTitle"
-		Me.lblTitle.Size = New System.Drawing.Size(541, 57)
-		Me.lblTitle.TabIndex = 11
-		Me.lblTitle.Text = "NEW PM SCHEDULE"
-		Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
 		'
 		'Label1
 		'
@@ -322,6 +312,42 @@ Partial Class frmAddPM
 		Me.lblLastPM.Text = "-"
 		Me.lblLastPM.Visible = False
 		'
+		'pnlHeader
+		'
+		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.pnlHeader.Controls.Add(Me.picIcon)
+		Me.pnlHeader.Controls.Add(Me.lblTitle)
+		Me.pnlHeader.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+		Me.pnlHeader.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+		Me.pnlHeader.Name = "pnlHeader"
+		Me.pnlHeader.Size = New System.Drawing.Size(541, 60)
+		Me.pnlHeader.TabIndex = 36
+		'
+		'picIcon
+		'
+		Me.picIcon.Image = CType(resources.GetObject("picIcon.Image"), System.Drawing.Image)
+		Me.picIcon.Location = New System.Drawing.Point(3, 3)
+		Me.picIcon.Name = "picIcon"
+		Me.picIcon.Size = New System.Drawing.Size(50, 50)
+		Me.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+		Me.picIcon.TabIndex = 16
+		Me.picIcon.TabStop = False
+		'
+		'lblTitle
+		'
+		Me.lblTitle.AutoSize = True
+		Me.lblTitle.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.ForeColor = System.Drawing.Color.White
+		Me.lblTitle.Location = New System.Drawing.Point(61, 9)
+		Me.lblTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+		Me.lblTitle.Name = "lblTitle"
+		Me.lblTitle.Size = New System.Drawing.Size(255, 33)
+		Me.lblTitle.TabIndex = 0
+		Me.lblTitle.Text = "New PM Schedule"
+		'
 		'frmAddPM
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
@@ -329,6 +355,7 @@ Partial Class frmAddPM
 		Me.BackColor = System.Drawing.Color.Gainsboro
 		Me.ClientSize = New System.Drawing.Size(541, 756)
 		Me.ControlBox = False
+		Me.Controls.Add(Me.pnlHeader)
 		Me.Controls.Add(Me.lblLastPM)
 		Me.Controls.Add(Me.lblPMID)
 		Me.Controls.Add(Me.lblMode)
@@ -353,7 +380,6 @@ Partial Class frmAddPM
 		Me.Controls.Add(Me.Label1)
 		Me.Controls.Add(Me.tbxPMType)
 		Me.Controls.Add(Me.pnlFooter)
-		Me.Controls.Add(Me.lblTitle)
 		Me.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
@@ -363,6 +389,9 @@ Partial Class frmAddPM
 		Me.pnlFooter.ResumeLayout(False)
 		CType(Me.numRequiredQTY, System.ComponentModel.ISupportInitialize).EndInit()
 		CType(Me.numFrequency, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlHeader.ResumeLayout(False)
+		Me.pnlHeader.PerformLayout()
+		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -371,7 +400,6 @@ Partial Class frmAddPM
 	Friend WithEvents pnlFooter As Panel
 	Friend WithEvents btnClose As Button
 	Friend WithEvents btnSave As Button
-	Friend WithEvents lblTitle As Label
 	Friend WithEvents Label1 As Label
 	Friend WithEvents tbxPMType As TextBox
 	Friend WithEvents cmbMachineID As ComboBox
@@ -395,4 +423,7 @@ Partial Class frmAddPM
 	Friend WithEvents lblPMID As Label
 	Friend WithEvents lblMode As Label
 	Friend WithEvents lblLastPM As Label
+	Friend WithEvents pnlHeader As Panel
+	Friend WithEvents picIcon As PictureBox
+	Friend WithEvents lblTitle As Label
 End Class
