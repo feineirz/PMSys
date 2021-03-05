@@ -223,7 +223,9 @@
 
 	Private Sub btnMachineSearch_Click(sender As Object, e As EventArgs) Handles btnMachineSearch.Click
 
-		ListMachine(tbxMachineSearch.Text.Trim)
+		ListMachine("", tbxMachineSearch.Text.Trim)
+		tbxMachineSearch.Focus()
+		tbxMachineSearch.SelectAll()
 
 	End Sub
 
@@ -242,12 +244,16 @@
 		If chkSearch_PartName.Checked Then Condition &= " OR part_name LIKE '%" + searchText + "%' "
 
 		ListPM(Query, Condition)
+		tbxPMSearch.Focus()
+		tbxPMSearch.SelectAll()
 
 	End Sub
 
 	Private Sub btnPartSearch_Click(sender As Object, e As EventArgs) Handles btnPartSearch.Click
 
-		ListPart(tbxPartSearch.Text.Trim)
+		ListPart("", tbxPartSearch.Text.Trim)
+		tbxPartSearch.Focus()
+		tbxPartSearch.SelectAll()
 
 	End Sub
 

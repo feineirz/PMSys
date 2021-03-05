@@ -76,7 +76,7 @@
 				lvi.SubItems.Add(pm.required_qty)
 				lvi.SubItems.Add((p.price * pm.required_qty).ToString("#,##0.00"))
 				lvi.SubItems.Add(pm.frequency & " days")
-				lvi.SubItems.Add((p.price * 365.25 / pm.frequency).ToString("#,##0.00"))
+				lvi.SubItems.Add((p.price * pm.required_qty * 365.25 / pm.frequency).ToString("#,##0.00"))
 				lvi.SubItems.Add(pm.next_pm.ToString("yyyy-MM-dd"))
 				lvi.SubItems.Add(pm.remark)
 

@@ -27,7 +27,7 @@ Partial Class frmMachineInfo
 		Me.btnClose = New System.Windows.Forms.Button()
 		Me.pnlHeader = New System.Windows.Forms.Panel()
 		Me.picIcon = New System.Windows.Forms.PictureBox()
-		Me.Label1 = New System.Windows.Forms.Label()
+		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.lblMachineName = New System.Windows.Forms.Label()
 		Me.lvwPartList = New System.Windows.Forms.ListView()
 		Me.col_PM_ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -83,10 +83,10 @@ Partial Class frmMachineInfo
 		Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.btnClose.Image = Global.PMSys.My.Resources.Resources.close16
 		Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnClose.Location = New System.Drawing.Point(1214, 8)
-		Me.btnClose.Margin = New System.Windows.Forms.Padding(2)
+		Me.btnClose.Location = New System.Drawing.Point(1191, 9)
+		Me.btnClose.Margin = New System.Windows.Forms.Padding(6)
 		Me.btnClose.Name = "btnClose"
-		Me.btnClose.Size = New System.Drawing.Size(108, 32)
+		Me.btnClose.Size = New System.Drawing.Size(132, 32)
 		Me.btnClose.TabIndex = 6
 		Me.btnClose.Text = "Close"
 		Me.btnClose.UseVisualStyleBackColor = True
@@ -97,7 +97,7 @@ Partial Class frmMachineInfo
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.pnlHeader.Controls.Add(Me.picIcon)
-		Me.pnlHeader.Controls.Add(Me.Label1)
+		Me.pnlHeader.Controls.Add(Me.lblTitle)
 		Me.pnlHeader.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
 		Me.pnlHeader.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
@@ -115,17 +115,17 @@ Partial Class frmMachineInfo
 		Me.picIcon.TabIndex = 17
 		Me.picIcon.TabStop = False
 		'
-		'Label1
+		'lblTitle
 		'
-		Me.Label1.AutoSize = True
-		Me.Label1.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label1.ForeColor = System.Drawing.Color.White
-		Me.Label1.Location = New System.Drawing.Point(61, 9)
-		Me.Label1.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-		Me.Label1.Name = "Label1"
-		Me.Label1.Size = New System.Drawing.Size(186, 33)
-		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "Machine Info"
+		Me.lblTitle.AutoSize = True
+		Me.lblTitle.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTitle.ForeColor = System.Drawing.Color.White
+		Me.lblTitle.Location = New System.Drawing.Point(61, 9)
+		Me.lblTitle.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+		Me.lblTitle.Name = "lblTitle"
+		Me.lblTitle.Size = New System.Drawing.Size(186, 33)
+		Me.lblTitle.TabIndex = 0
+		Me.lblTitle.Text = "Machine Info"
 		'
 		'lblMachineName
 		'
@@ -215,18 +215,18 @@ Partial Class frmMachineInfo
 		Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.Label3.AutoSize = True
 		Me.Label3.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(818, 644)
+		Me.Label3.Location = New System.Drawing.Point(932, 652)
 		Me.Label3.Name = "Label3"
-		Me.Label3.Size = New System.Drawing.Size(208, 18)
+		Me.Label3.Size = New System.Drawing.Size(179, 18)
 		Me.Label3.TabIndex = 17
-		Me.Label3.Text = "TOTAL PM COST / YEAR:"
+		Me.Label3.Text = "Total PM cost / Year:"
 		'
 		'Label4
 		'
 		Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.Label4.AutoSize = True
 		Me.Label4.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label4.Location = New System.Drawing.Point(1258, 644)
+		Me.Label4.Location = New System.Drawing.Point(1258, 652)
 		Me.Label4.Name = "Label4"
 		Me.Label4.Size = New System.Drawing.Size(41, 18)
 		Me.Label4.TabIndex = 18
@@ -235,10 +235,11 @@ Partial Class frmMachineInfo
 		'lblTotalPMCost
 		'
 		Me.lblTotalPMCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lblTotalPMCost.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblTotalPMCost.Location = New System.Drawing.Point(1051, 640)
+		Me.lblTotalPMCost.Font = New System.Drawing.Font("Century Gothic", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTotalPMCost.ForeColor = System.Drawing.Color.DodgerBlue
+		Me.lblTotalPMCost.Location = New System.Drawing.Point(1117, 644)
 		Me.lblTotalPMCost.Name = "lblTotalPMCost"
-		Me.lblTotalPMCost.Size = New System.Drawing.Size(201, 25)
+		Me.lblTotalPMCost.Size = New System.Drawing.Size(135, 25)
 		Me.lblTotalPMCost.TabIndex = 19
 		Me.lblTotalPMCost.Text = "0.00"
 		Me.lblTotalPMCost.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -288,12 +289,12 @@ Partial Class frmMachineInfo
 		'col_PMH_MachineName
 		'
 		Me.col_PMH_MachineName.Text = "Machine Name"
-		Me.col_PMH_MachineName.Width = 250
+		Me.col_PMH_MachineName.Width = 230
 		'
 		'col_PMH_PartName
 		'
 		Me.col_PMH_PartName.Text = "Part Name"
-		Me.col_PMH_PartName.Width = 250
+		Me.col_PMH_PartName.Width = 270
 		'
 		'col_PMH_Operator
 		'
@@ -389,7 +390,7 @@ Partial Class frmMachineInfo
 
 	Friend WithEvents pnlFooter As Panel
 	Friend WithEvents pnlHeader As Panel
-	Friend WithEvents Label1 As Label
+	Friend WithEvents lblTitle As Label
 	Friend WithEvents btnClose As Button
 	Friend WithEvents lblMachineName As Label
 	Friend WithEvents lvwPartList As ListView

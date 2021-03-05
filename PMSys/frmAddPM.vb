@@ -153,4 +153,18 @@
 		Me.Dispose()
 
 	End Sub
+
+	Private Sub numFrequency_ValueChanged(sender As Object, e As EventArgs) Handles numFrequency.ValueChanged
+
+		If lblMode.Text = "Edit" Then
+
+			Dim pm = New PM(lblPMID.Text)
+			If IsDate(pm.last_pm) Then
+				Dim lastPM As Date = pm.last_pm
+				dtpNextPM.Value = DateAdd("d", numFrequency.Value, lastPM)
+			End If
+
+		End If
+
+	End Sub
 End Class
