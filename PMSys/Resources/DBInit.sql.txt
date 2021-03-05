@@ -32,7 +32,7 @@ CREATE TABLE PM(
 	pm_type varchar(255) not null default '',
 	machine_id int unsigned not null,
 	part_id int unsigned not null,
-	unit_require int not null default 1,
+	required_qty int not null default 1,
 	frequency int not null default 30,
 	pm_action varchar(255) not null default '',
 	last_pm varchar(20) not null default '',

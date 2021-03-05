@@ -439,7 +439,7 @@ Partial Class frmMain
 		Me.lvwPMList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lvwPMList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_Type, Me.col_PM_MachineName, Me.col_PM_PartName, Me.col_PM_PartQty, Me.col_PM_Frequency, Me.col_PM_PartPrice, Me.col_PM_TotalPrice, Me.col_PM_LastPM, Me.col_PM_NextPM, Me.col_PM_Action})
+		Me.lvwPMList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.col_PM_ID, Me.col_PM_Type, Me.col_PM_MachineName, Me.col_PM_PartName, Me.col_PM_PartPrice, Me.col_PM_PartQty, Me.col_PM_TotalPrice, Me.col_PM_Frequency, Me.col_PM_LastPM, Me.col_PM_NextPM, Me.col_PM_Action})
 		Me.lvwPMList.ContextMenuStrip = Me.cmsPMList
 		Me.lvwPMList.FullRowSelect = True
 		Me.lvwPMList.GridLines = True

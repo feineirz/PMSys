@@ -68,11 +68,11 @@
 
 			lvi = lvwDetails.Items.Add(0)
 			lvi.SubItems.Add("Req. QTY")
-			lvi.SubItems.Add(pm.unit_require & " Unit(s)")
+			lvi.SubItems.Add(pm.required_qty & " Unit(s)")
 
 			lvi = lvwDetails.Items.Add(0)
 			lvi.SubItems.Add("Total Price")
-			lvi.SubItems.Add((p.price * pm.unit_require).ToString("#,##0.00") & " THB")
+			lvi.SubItems.Add((p.price * pm.required_qty).ToString("#,##0.00") & " THB")
 
 		End If
 
@@ -91,7 +91,7 @@
 		tbxReporter.Text = pmh.reporter
 		dtpPMDate.Value = pmh.pm_date
 		tbxPMDetails.Text = pmh.pm_details
-		tbxPMResult.Text = pmh.pm_result
+		cmbPMResult.Text = pmh.pm_result
 		tbxRemark.Text = pmh.remark
 
 	End Sub
@@ -111,7 +111,7 @@
 		pmh_info.pm_date = dtpPMDate.Value
 		pmh_info.report_date = Now
 		pmh_info.pm_details = tbxPMDetails.Text.Trim
-		pmh_info.pm_result = tbxPMResult.Text.Trim
+		pmh_info.pm_result = cmbPMResult.Text.Trim
 		pmh_info.remark = tbxRemark.Text.Trim
 
 		If lblMode.Text = "Add" Then

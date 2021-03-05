@@ -14,11 +14,11 @@ Imports System.Windows.Forms
 
 Public Class PMHistory
 
-'============================== Class Header =============================='
+	'============================== Class Header =============================='
 
 #Region "Class Header"
 
-	Private Shared ConnString As String = "Server=10.13.1.10;Database=PMSys;Uid=dbadmin;Pwd=v9bdko9Nx;"
+	Private Shared ConnString As String = "Server=" + My.Settings.Host + ";Database=" + My.Settings.Database + ";Uid=" + My.Settings.Username + ";Pwd=" + My.Settings.Password + ";"
 	Private Shared tableName As String = "PM_History"
 
 	Private _SQLConn As New MySqlConnection(ConnString)

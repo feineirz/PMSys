@@ -38,7 +38,6 @@ Partial Class frmAddPMHistory
 		Me.Label10 = New System.Windows.Forms.Label()
 		Me.tbxRemark = New System.Windows.Forms.TextBox()
 		Me.Label8 = New System.Windows.Forms.Label()
-		Me.tbxPMResult = New System.Windows.Forms.TextBox()
 		Me.Label4 = New System.Windows.Forms.Label()
 		Me.lblPMID = New System.Windows.Forms.Label()
 		Me.lvwDetails = New System.Windows.Forms.ListView()
@@ -49,6 +48,7 @@ Partial Class frmAddPMHistory
 		Me.tbxPMDetails = New System.Windows.Forms.TextBox()
 		Me.lblMode = New System.Windows.Forms.Label()
 		Me.lblPMHID = New System.Windows.Forms.Label()
+		Me.cmbPMResult = New System.Windows.Forms.ComboBox()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlFooter.SuspendLayout()
@@ -211,15 +211,6 @@ Partial Class frmAddPMHistory
 		Me.Label8.TabIndex = 35
 		Me.Label8.Text = "PM Result"
 		'
-		'tbxPMResult
-		'
-		Me.tbxPMResult.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPMResult.Location = New System.Drawing.Point(45, 527)
-		Me.tbxPMResult.Name = "tbxPMResult"
-		Me.tbxPMResult.Size = New System.Drawing.Size(486, 27)
-		Me.tbxPMResult.TabIndex = 5
-		'
 		'Label4
 		'
 		Me.Label4.AutoSize = True
@@ -309,12 +300,23 @@ Partial Class frmAddPMHistory
 		Me.lblPMHID.Text = "PMHID"
 		Me.lblPMHID.Visible = False
 		'
+		'cmbPMResult
+		'
+		Me.cmbPMResult.FormattingEnabled = True
+		Me.cmbPMResult.Items.AddRange(New Object() {"Successful", "Successful with Caution!", "Failed!"})
+		Me.cmbPMResult.Location = New System.Drawing.Point(45, 527)
+		Me.cmbPMResult.Name = "cmbPMResult"
+		Me.cmbPMResult.Size = New System.Drawing.Size(486, 26)
+		Me.cmbPMResult.TabIndex = 5
+		Me.cmbPMResult.Text = "Successful"
+		'
 		'frmAddPMHistory
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Gainsboro
 		Me.ClientSize = New System.Drawing.Size(574, 771)
+		Me.Controls.Add(Me.cmbPMResult)
 		Me.Controls.Add(Me.lblPMHID)
 		Me.Controls.Add(Me.lblMode)
 		Me.Controls.Add(Me.Label5)
@@ -325,7 +327,6 @@ Partial Class frmAddPMHistory
 		Me.Controls.Add(Me.Label10)
 		Me.Controls.Add(Me.tbxRemark)
 		Me.Controls.Add(Me.Label8)
-		Me.Controls.Add(Me.tbxPMResult)
 		Me.Controls.Add(Me.Label3)
 		Me.Controls.Add(Me.tbxOperatorName)
 		Me.Controls.Add(Me.Label6)
@@ -363,7 +364,6 @@ Partial Class frmAddPMHistory
 	Friend WithEvents Label10 As Label
 	Friend WithEvents tbxRemark As TextBox
 	Friend WithEvents Label8 As Label
-	Friend WithEvents tbxPMResult As TextBox
 	Friend WithEvents Label4 As Label
 	Friend WithEvents lblPMID As Label
 	Friend WithEvents lvwDetails As ListView
@@ -375,4 +375,5 @@ Partial Class frmAddPMHistory
 	Friend WithEvents tbxPMDetails As TextBox
 	Friend WithEvents lblMode As Label
 	Friend WithEvents lblPMHID As Label
+	Friend WithEvents cmbPMResult As ComboBox
 End Class

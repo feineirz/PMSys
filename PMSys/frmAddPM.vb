@@ -69,7 +69,7 @@
 			End If
 		Next
 
-		numRequiredQTY.Value = pm.unit_require
+		numRequiredQTY.Value = pm.required_qty
 		numFrequency.Value = pm.frequency
 		lblLastPM.Text = pm.last_pm
 		dtpNextPM.Value = pm.next_pm
@@ -133,7 +133,7 @@
 		PMInfoA.pm_type = tbxPMType.Text.Trim
 		PMInfoA.machine_id = cmbMachineID.SelectedValue
 		PMInfoA.part_id = cmbPartID.SelectedValue
-		PMInfoA.unit_require = numRequiredQTY.Value
+		PMInfoA.required_qty = numRequiredQTY.Value
 		PMInfoA.frequency = numFrequency.Value
 		PMInfoA.last_pm = lblLastPM.Text
 		PMInfoA.next_pm = dtpNextPM.Value

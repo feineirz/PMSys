@@ -83,10 +83,10 @@
 				lvi.SubItems.Add(mc.machine_name)
 				pt = New Part(pm.part_id)
 				lvi.SubItems.Add(pt.part_name)
-				lvi.SubItems.Add(pm.unit_require)
-				lvi.SubItems.Add(pm.frequency)
 				lvi.SubItems.Add(pt.price.ToString("#,##0.00"))
-				lvi.SubItems.Add((pt.price * pm.unit_require).ToString("#,##0.00"))
+				lvi.SubItems.Add(pm.required_qty)
+				lvi.SubItems.Add((pt.price * pm.required_qty).ToString("#,##0.00"))
+				lvi.SubItems.Add(pm.frequency & " days")
 				lvi.SubItems.Add(pm.last_pm)
 				lvi.SubItems.Add(pm.next_pm.ToString("yyyy-MM-dd"))
 				lvi.SubItems.Add(pm.pm_action)
@@ -139,7 +139,6 @@
 		End If
 
 	End Sub
-
 
 	Private Sub InitEnv()
 
